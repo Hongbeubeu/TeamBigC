@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <style>
+        body, form, input, b{
+            margin: 10px;
+            align-content: center;
+        }
+    </style>
+</head>
+<body>
+    <form action = "HandleForm.php" method="POST">
+        <input type = "text" name="name" placeholder="Name"/><br/>
+        <input type = "text" name="class" placeholder="Class"/><br/>
+        <input type = "text" name="university" placeholder="University"/><br/>
+        <b>Hobbies</b><br/>
+        <input type = "checkbox" id="Playing games" name = "hobby[]" value="Playing games"/>
+        <label for="Playing games">Playing games</label><br/>
+        <input type = "checkbox" id="Listening to music" name = "hobby[]" value="Listening to music"/>
+        <label for="Listening to music">Playing games</label><br/>
+        <input type = "checkbox" id="Watching TV" name = "hobby[]" value="Watching TV"/>
+        <label for="Watching TV">Watching TV</label><br/>
+        <input type = "text" placeholder="Other hobies"><br/>
+        <input type = "submit" name = "submit"/>
+    </form>
+</body>
+</html>
