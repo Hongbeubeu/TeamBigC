@@ -23,7 +23,6 @@ body {
     width: 300px;
     display: flex;
     flex-direction: column;
-    align-items: center;
     position: relative;
     border-radius: 15px;
     box-shadow: 0px 0px 14px 0px grey;
@@ -37,17 +36,18 @@ body {
 }
 
 h2 {
+    align-self: center;
     margin-top: 50px;
     margin-bottom: 30px;
 }
-
-label {
-    margin-left: -126px;
+.label1 {
+    margin-left: 42px;
     display: block;
     font-weight: lighter;
 }
 
-input {
+.cinput {
+    align-self: center;
     display: block;
     border-bottom: 2px solid #00BCD4;
     margin-top: 6px;
@@ -65,7 +65,7 @@ input#submit {
     position: absolute;
     bottom: 10px;
     cursor: pointer;
-    background: greenyellow;
+    background: rgb(192, 186, 207);
     box-shadow: 0px 0px 14px 0px green;
 }
 

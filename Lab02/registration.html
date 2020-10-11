@@ -8,19 +8,22 @@
 
 <Body>
     <div class="to">
-        <form class="form" action="registration.php">
-            <h2>Đăng ký</h2>
-            <lable style="margin-left: -150px;"> Họ và tên </lable>
-            <input type="text" name="fullname"></input>
-            <lable style="margin-left: -180px;"> Email </lable>
-            <input type="email" name="email"></input>
-            <lable style="margin-left: -150px;"> Mật khẩu </lable>
-            <input type="password" name="password"></input>
-            <lable style="margin-left: -90px;"> Nhập lại mật khẩu </lable>
-            <input type="password" name="repassword"></input>
-            <lable style="margin-left: -130px;"> Số điện thoại </lable>
-            <input type="text" name="phone"></input>
-            <input id="submit" type="submit" name="submit" value="Đăng ký">
+        <form class="form" action="registration.php" method="POST">
+            <h2>FILL FORM</h2>
+            <input class="cinput" type="text" name="name" placeholder="Name"></input>
+            <input class="cinput" type="text" name="class" placeholder="Class"></input>
+            <input class="cinput" type="text" name="university" placeholder="University"></input>
+            <lable style="margin-left: 42px;  margin-bottom: 10px;"> Hobbies </lable>
+            <div>
+                <input style="margin-left: 42px; margin-top: 10px; margin-bottom: 10px;" type="checkbox" name="hobby[]" value="Playing Games"/>
+                <label style="margin-left: 42px; margin-top: 10px;">Playing Games</label><br/>
+                <input style="margin-left: 42px; margin-top: 10px;  margin-bottom: 10px;" type="checkbox" name="hobby[]" value="Reading Books"/>
+                <label style="margin-left: 42px; margin-top: 10px;">Reading Books</label><br/>
+                <input style="margin-left: 42px; margin-top: 10px; margin-bottom: 10px;" type="checkbox" name="hobby[]" value="Playing Sports"/>
+                <label style="margin-left: 42px; margin-top: 10px;">Playing Sports</label><br/>
+            </div>
+            <input class="cinput"  type="text" name="hobbies" placeholder="Other Hobbies"></input>
+            <input class="cinput" id="submit" type="submit" name="submit" value="Submit">
         </form>
     </div>
 </body>
