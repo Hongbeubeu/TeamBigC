@@ -7,7 +7,7 @@
 <div class="alert success">
   <?php 
     echo "Hello, " . $_POST['name']."<br/>";
-    echo "You are studying at " . $_POST['class'] . ", ". $_POST['university']."<br/>";
+    echo "You are studying at class: " . $_POST['class'] . ", University: ". $_POST['university']."<br/>";
     echo "Your hobby is". "<br/>";
     
     $counter = 1;
@@ -18,7 +18,7 @@
           $counter++;
       }
     }
-    if(isset($_POST['hobbies']))
+    if(!empty($_POST['hobbies']))
         echo $counter . ". " . $_POST['hobbies'];
   ?> 
 </div>
