@@ -1,3 +1,10 @@
+<html>
+<head><title>Kết quả</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="caculate.css">
+</head>
+<body>
+    <div> 
 <?php
     $input_date = strtotime($_POST['date']);
     $input_time = strtotime($_POST['time']);
@@ -51,3 +58,6 @@
     }
     echo "This month has " . $numberOfMonth . " days!";
 ?>
+</div>
+</body>
+</html>
