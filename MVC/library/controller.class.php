@@ -1,4 +1,7 @@
 <?php
+include_once ('model.class.php');
+include_once ('template.class.php');
+include_once (ROOT . DS . 'application' . DS . 'models'. DS . 'Item.php');
 class Controller {
  
     protected $_model;
@@ -12,8 +15,8 @@ class Controller {
         $this->_action = $action;
         $this->_model = $model;
  
-        $this->$model =&amp; new $model;
-        $this->_template =&amp; new Template($controller,$action);
+        $this->_model = new $model;
+        $this->_template = new Template($controller,$action);
  
     }
  

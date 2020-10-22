@@ -1,4 +1,5 @@
 <?php
+include_once ('sqlquery.class.php');
 class Model extends SQLQuery {
     protected $_model;
  
