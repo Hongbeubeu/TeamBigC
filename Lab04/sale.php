@@ -1,10 +1,8 @@
 <html>
-    <head><title>Sale</title></head>
-    <style>
-    table, th, td {
-        border: 1px solid black;
-    }
-</style>
+    <head><title>Sale</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
 <body>
     <?php
         require_once 'config.php';

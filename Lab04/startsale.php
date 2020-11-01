@@ -1,10 +1,7 @@
 <html>
-<head><title>Start Sale</title></head>
-<style>
-    table, th, td {
-        border: 1px solid black;
-    }
-</style>
+<head>
+<link rel="stylesheet" href="styles.css">    
+<title>Start Sale</title></head>
 <body>
     <?php
         require_once 'config.php';
