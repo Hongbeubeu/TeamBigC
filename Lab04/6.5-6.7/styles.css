@@ -1,0 +1,25 @@
+table,
+th,
+td {
+    border: 1px solid black;
+}
+
+.flex-container {
+    display: table;
+}
+
+form {
+    display: table;
+}
+
+p {
+    display: table-row;
+}
+
+label {
+    display: table-cell;
+}
+
+input {
+    display: table-cell;
+}
