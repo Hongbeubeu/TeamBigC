@@ -1,10 +1,5 @@
 <html>
     <head><title>Products Data</title></head>
-    <style>
-    table, th, td {
-        border: 1px solid black;
-    }
-</style>
 <body>
  <?php
  require_once 'config.php';
