@@ -3,13 +3,14 @@ class tasksController extends Controller
 {
     function index()
     {
-        require(ROOT . 'Models/Task.php');
+        echo "hello";
+        // require(ROOT . 'Models/Task.php');
 
-        $tasks = new Task();
+        // $tasks = new Task();
 
-        $d['tasks'] = $tasks->showAllTasks();
-        $this->set($d);
-        $this->render("index");
+        // $d['tasks'] = $tasks->showAllTasks();
+        // $this->set($d);
+        // $this->render("index");
     }
 
     function create()
