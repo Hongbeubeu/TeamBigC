@@ -1,13 +1,23 @@
 <?php
-define('WEBROOT', str_replace("Webroot/index.php", "", $_SERVER["SCRIPT_NAME"]));
-define('ROOT', str_replace("Webroot/index.php", "", $_SERVER["SCRIPT_FILENAME"]));
+define('PATH_ROOT', str_replace("\Webroot", "",__DIR__));
+define('DS', DIRECTORY_SEPARATOR);
 
-require(ROOT . 'Config/core.php');
-require(ROOT . 'router.php');
-require(ROOT . 'request.php');
-require(ROOT . 'dispatcher.php');
-require(ROOT . 'autoload.php');
+//Autoload class
+spl_autoload_register(function (string $class_name){
+    include_once PATH_ROOT . DS . $class_name . '.php';
+});
 
-$dispatch = new Dispatcher();
-$dispatch->dispatch();
-?>
+//Load class Route
+$router = new Core\Route();
+include_once PATH_ROOT . DS . 'Routes' . DS . 'web.php';
+
+//Get current URL of web app
+$request_url = !empty($_GET['url']) ? '/'. $_GET['url'] : '/';
+
+//Get method of url is being called (GET | POST). Default: GET.
+$method_url = !empty($_SERVER['REQUEST_METHOD']) ? $_SERVER['REQUEST_METHOD'] : 'GET';
+
+require(PATH_ROOT . DS . 'Config' . DS . 'core.php');
+
+//Map URL with method
+$router->map($request_url, $method_url);
