@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>Địa chỉ nhà riêng</name>
+	<Style id="icon-1899-0288D1-highlight">
+		<IconStyle>
+			<Icon>
+				<href>files/icon-1.png</href>
+			</Icon>
+			<hotSpot x="32" y="64" xunits="pixels" yunits="insetPixels"/>
+		</IconStyle>
+	</Style>
+	<Style id="icon-1899-0288D1-normal">
+		<IconStyle>
+			<Icon>
+				<href>files/icon-1.png</href>
+			</Icon>
+			<hotSpot x="32" y="64" xunits="pixels" yunits="insetPixels"/>
+		</IconStyle>
+		<LabelStyle>
+			<scale>0</scale>
+		</LabelStyle>
+	</Style>
+	<StyleMap id="icon-1899-0288D1">
+		<Pair>
+			<key>normal</key>
+			<styleUrl>#icon-1899-0288D1-normal</styleUrl>
+		</Pair>
+		<Pair>
+			<key>highlight</key>
+			<styleUrl>#icon-1899-0288D1-highlight</styleUrl>
+		</Pair>
+	</StyleMap>
+	<Folder id="0E51B7BA1D16EC5A51D5">
+		<name>Địa chỉ nhà riêng</name>
+		<open>1</open>
+		<Placemark id="0FE56C9FDE16EC62A3B5">
+			<name>20.095332, 105.853367</name>
+			<description>Địa chỉ nhà</description>
+			<styleUrl>#icon-1899-0288D1</styleUrl>
+			<Point>
+				<coordinates>105.853367,20.095332,0</coordinates>
+			</Point>
+		</Placemark>
+	</Folder>
+</Document>
+</kml>
