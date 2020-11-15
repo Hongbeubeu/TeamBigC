@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE students [
+    <!ELEMENT students (student)>
+    <!ELEMENT student (name, address)>
+    <!ELEMENT name (firstname, lastname)>
+    <!ELEMENT firstname (#PCDATA)>
+    <!ELEMENT lastname (#PCDATA)>
+    <!ELEMENT address (street, school, email, phone)>
+    <!ELEMENT street (#PCDATA)>
+    <!ELEMENT school (#PCDATA)>
+    <!ELEMENT email (#PCDATA)>
+    <!ELEMENT phone (#PCDATA)>
+]>
+<students>
+    <student>
+        <name>
+            <firstname> Lê </firstname>
+            <lastname> Dũng </lastname>
+        </name>
+        <address>
+            <street > 219 Nguyễn Ngọc Vũ</street>
+            <school > Đại học Bách Khoa </school>
+            <email > killteammate@gmail.com </email>
+            <phone > 0321234567 </phone>
+        </address>
+    </student>
+    <student>
+        <name>
+            <firstname> Lê </firstname>
+            <lastname> Tuấn </lastname>
+        </name>
+        <address>
+            <street > 219 Nguyễn Ngọc Vũ </street>
+            <school > Đại học Bách Khoa </school>
+            <email > nath@gmail.com</email>
+            <phone > 0324383239 </phone>
+        </address>
+    </student>
+</students>
