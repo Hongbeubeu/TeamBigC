@@ -1,0 +1,16 @@
+1. Giới thiệu về xss
+XSS (Cross Site Scripting) là một lỗi bảo mật cho phép hacker nhúng mã độc (javascript) vào một trang web khác. Hacker có thể lợi dụng mã độc này để deface trang web, cài keylog, chiếm quyền điều khiển của người dùng, dụ dỗ người dùng tải virus về máy.
+2. Những dạng XSS
+* Persistent XSS (Stored XSS): cuộc tấn công này có thể xảy ra khi một trang web hoặc ứng dụng web lưu thông tin đầu vào của người dùng và sau đó phục vụ cho những người dùng khác.
+Một số loại trang web dễ có lỗ hổng này: Diễn đàn, blog, mạng xã hội, trang web có nhận xét của người dùng,...
+* Reflected XSS: với dạng tấn công này hacker chèn mã độc vào URL dưới dạng query string, khi người dùng nhấp vào url này trang web sẽ đọc query string render mã độc vào html
+* Client XSS: do javascript được sử dụng nhiều để xử lý DOM, mã độc được chèn thẳng vào javascript.
+3. Cách phòng tránh
+* Encoding: sử dụng hàm encoding có sẵn trong ngôn ngữ lập trình/framework để chuyển các ký tự < > , ... thành &lt; %gt, ...
+* Validation/Sanitize: Loại bỏ hoàng toàn các ký tự khả nghi trong input của người dùng, hoặc thông báo nếu có các ký tự này
+* CSP(Content Security Policy): với CSP, trình duyệt chỉ chạy javascript từ những domain được chỉ định. Thêm header Content-Security-Policy vào mỗi response, Nội dung header chứ những domain mà ta tin tưởng: vd: Content-Security-Policy: script-src 'self' https://apis.google.com
+
+4. Một số website mô phỏng tấn công: 
+https://www.hacksplaining.com
+https://www.xss-game.appspot.com
+https://alf.nu/alert1
