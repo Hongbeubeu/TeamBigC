@@ -12,7 +12,7 @@ class ORMMapper implements MapperInterface {
     }
 
     function finddAll(){
-        
+
     }
 
     function findById(int $id)
@@ -36,7 +36,7 @@ class ORMMapper implements MapperInterface {
 
     /**
      * @param string $tableName
-     * @return none
+     * @return void
      */
     public function setTableName(string $tableName) {
         $this->_tableName = $tableName;

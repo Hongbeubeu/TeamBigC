@@ -3,7 +3,7 @@ namespace Core\ORM;
 
 interface DatabaseInterface {
     /**
-     * @return bool
+     * @return void
      */
     function connect();
 
@@ -14,20 +14,18 @@ interface DatabaseInterface {
 
     /**
      * @param string $tableName
-     * @param array $columns
-     * @param array $values
+     * @param array $params
      * @return mixed
      */
-    function insert(string $tableName, array $columns, array $values);
+    function insert(string $tableName, array $params);
 
     /**
      * @param string $tableName
      * @param array $conditions
-     * @param array $columns
-     * @param array $values
+     * @param array $params
      * @return mixed
      */
-    function update(string $tableName, array $columns, array $values, array $conditions);
+    function update(string $tableName, array $params, array $conditions);
 
     /**
      * @param string $tableName
