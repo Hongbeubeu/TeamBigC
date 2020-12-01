@@ -18,6 +18,7 @@ $request_url = !empty($_GET['url']) ? '/'. $_GET['url'] : '/';
 $method_url = !empty($_SERVER['REQUEST_METHOD']) ? $_SERVER['REQUEST_METHOD'] : 'GET';
 
 require(PATH_ROOT . DS . 'Config' . DS . 'core.php');
+require(PATH_ROOT . DS . 'Config' . DS . 'db.php');
 
 //Map URL with method
 $router->map($request_url, $method_url);
