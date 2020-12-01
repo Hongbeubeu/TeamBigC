@@ -3,16 +3,28 @@
 class Database
 {
     //Instance of class Database to connect database
-    private static $dbConnection = null;
+    private static $instance = null;
+    private $conn;
+    //Connect database input
+    private $host = '35.192.204.170';
+    private $user = 'letuan';
+    private $password = 'Technology@123';
+    private $dbname = 'social_network';
 
     private function __construct() {
+        $this->conn = new PDO("mysql:host={$this->host};
+        dbname={$this->dbname}", $this->user, $this->password,
+        array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'"));
     }
 
-    public static function getConnection() {
-        if(is_null(self::$dbConnection)) {
-            self::$dbConnection = new PDO("mysql:host=localhost;dbname=todo_php", 'root', 'root');
+    public static function getInstance() {
+        if(!self::$instance) {
+            self::$instance = new Database();
         }
-        return self::$dbConnection;
+        return self::$instance;
+    }
+
+    public function getConnection() {
+        return $this->conn;
     }
 }
-?>
