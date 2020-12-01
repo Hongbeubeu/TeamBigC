@@ -89,9 +89,9 @@ class DB{
 				$rows = $stmt->fetchAll(PDO::FETCH_CLASS,'MareiObj');
 				$collection= [];
 				$collection = new MareiCollection;
-				$x=0;
+				$counter=0;
 				foreach ($rows as $key => $row) {
-					$collection->offsetSet($x++,$row);
+					$collection->offsetSet($counter++,$row);
 				}
 
 				return $collection;
@@ -107,11 +107,11 @@ class DB{
 	public function exec()
 	{
 		//assimble query
-			$this->sql .= $this->where;
-			$this->getSQL = $this->sql;
-			$stmt = $this->dbh->prepare($this->sql);
-			$stmt->execute($this->bindValues);
-			return $stmt->rowCount();
+		$this->sql .= $this->where;
+		$this->getSQL = $this->sql;
+		$stmt = $this->dbh->prepare($this->sql);
+		$stmt->execute($this->bindValues);
+		return $stmt->rowCount();
 	}
 
 	private function resetQuery()
@@ -146,12 +146,12 @@ class DB{
 			}elseif (is_array($id)) {
 				$arr = $id;
 				$count_arr = count($arr);
-				$x = 0;
+				$counter = 0;
 
 				foreach ($arr as  $param) {
-					if ($x == 0) {
+					if ($counter == 0) {
 						$this->where .= " WHERE ";
-						$x++;
+						$counter++;
 					}else{
 						if ($this->isOrWhere) {
 							$this->where .= " Or ";
@@ -159,7 +159,7 @@ class DB{
 							$this->where .= " AND ";
 						}
 						
-						$x++;
+						$counter++;
 					}
 					$count_param = count($param);
 
@@ -209,15 +209,15 @@ class DB{
 	{
 		$this->resetQuery();
 		$set ='';
-		$x = 1;
+		$counter = 1;
 
 		foreach ($fields as $column => $field) {
 			$set .= "`$column` = ?";
 			$this->bindValues[] = $field;
-			if ( $x < count($fields) ) {
+			if ( $counter < count($fields) ) {
 				$set .= ", ";
 			}
-			$x++;
+			$counter++;
 		}
 
 		$this->sql = "UPDATE `{$table_name}` SET $set";
@@ -231,12 +231,12 @@ class DB{
 			}elseif (is_array($id)) {
 				$arr = $id;
 				$count_arr = count($arr);
-				$x = 0;
+				$counter = 0;
 
 				foreach ($arr as  $param) {
-					if ($x == 0) {
+					if ($counter == 0) {
 						$this->where .= " WHERE ";
-						$x++;
+						$counter++;
 					}else{
 						if ($this->isOrWhere) {
 							$this->where .= " Or ";
@@ -244,7 +244,7 @@ class DB{
 							$this->where .= " AND ";
 						}
 						
-						$x++;
+						$counter++;
 					}
 					$count_param = count($param);
 
@@ -285,25 +285,28 @@ class DB{
 			$stmt->execute($this->bindValues);
 			return $stmt->rowCount();
 		}// end if there is an ID or Array
-		// $this->getSQL = "<b>Attention:</b> This Query will update all rows in the table, luckily it didn't execute yet!, use exec() method to execute the following query :<br>". $this->sql;
-		// $this->getSQL = $this->sql;
 		return $this;
 	}
-
+	/**
+	 * Insert data to $table_name
+	 * @param $table_name name of the table which the data will be added
+	 * @param $fields array of data will be added
+	 * @return $lastIDInserted
+	 */
 	public function insert( $table_name, $fields = [] )
 	{
 		$this->resetQuery();
 
 		$keys = implode('`, `', array_keys($fields));
 		$values = '';
-		$x=1;
+		$counter=1;
 		foreach ($fields as $field => $value) {
 			$values .='?';
 			$this->bindValues[] =  $value;
-			if ($x < count($fields)) {
+			if ($counter < count($fields)) {
 				$values .=', ';
 			}
-			$x++;
+			$counter++;
 		}
  
 		$this->sql = "INSERT INTO `{$table_name}` (`{$keys}`) VALUES ({$values})";
@@ -313,8 +316,8 @@ class DB{
 		$this->lastIDInserted = $this->dbh->lastInsertId();
 
 		return $this->lastIDInserted;
-	}//End insert function
-
+	}
+	
 	public function lastId()
 	{
 		return $this->lastIDInserted;
@@ -352,11 +355,9 @@ class DB{
 
 		$this->isOrWhere= false;
 
-		// call_user_method_array('where_orWhere', $this, func_get_args());
-		//Call to undefined function call_user_method_array()
-		//echo print_r(func_num_args());
 		$num_args = func_num_args();
 		$args = func_get_args();
+
 		if ($num_args == 1) {
 			if (is_numeric($args[0])) {
 				$this->where .= "`id` = ?";
@@ -364,20 +365,20 @@ class DB{
 			}elseif (is_array($args[0])) {
 				$arr = $args[0];
 				$count_arr = count($arr);
-				$x = 0;
+				$counter = 0;
 
-				foreach ($arr as  $param) {
-					if ($x == 0) {
-						$x++;
+				foreach ($arr as $param) {
+					if ($counter == 0) {
+						$counter++;
 					}else{
 						if ($this->isOrWhere) {
 							$this->where .= " Or ";
 						}else{
 							$this->where .= " AND ";
 						}
-						
-						$x++;
+						$counter++;
 					}
+
 					$count_param = count($param);
 					if ($count_param == 1) {
 						$this->where .= "`id` = ?";
@@ -387,7 +388,7 @@ class DB{
 						$operatorFound = false;
 
 						foreach ($operators as $operator) {
-							if ( strpos($param[0], $operator) !== false ) {
+							if (strpos($param[0], $operator) !== false) {
 								$operatorFound = true;
 								break;
 							}
@@ -411,7 +412,7 @@ class DB{
 			$operators = explode(',', "=,>,<,>=,>=,<>");
 			$operatorFound = false;
 			foreach ($operators as $operator) {
-				if ( strpos($args[0], $operator) !== false ) {
+				if (strpos($args[0], $operator) !== false ) {
 					$operatorFound = true;
 					break;
 				}
@@ -443,7 +444,6 @@ class DB{
 			$this->where .= " OR ";
 		}
 		$this->isOrWhere= true;
-		// call_user_method_array ( 'where_orWhere' , $this ,  func_get_args() );
 
 		$num_args = func_num_args();
 		$args = func_get_args();
@@ -454,20 +454,20 @@ class DB{
 			}elseif (is_array($args[0])) {
 				$arr = $args[0];
 				$count_arr = count($arr);
-				$x = 0;
+				$counter = 0;
 
 				foreach ($arr as  $param) {
-					if ($x == 0) {
-						$x++;
+					if ($counter == 0) {
+						$counter++;
 					}else{
 						if ($this->isOrWhere) {
 							$this->where .= " Or ";
 						}else{
 							$this->where .= " AND ";
 						}
-						
-						$x++;
+						$counter++;
 					}
+
 					$count_param = count($param);
 					if ($count_param == 1) {
 						$this->where .= "`id` = ?";
@@ -524,11 +524,6 @@ class DB{
 		return $this;
 	}
 
-	// private function where_orWhere()
-	// {
-
-	// }
-
 	public function get()
 	{
 		$this->assimbleQuery();
@@ -541,14 +536,14 @@ class DB{
 		$rows = $stmt->fetchAll(PDO::FETCH_CLASS,'MareiObj');
 		$collection= [];
 		$collection = new MareiCollection;
-		$x=0;
+		$counter = 0;
 		foreach ($rows as $key => $row) {
-			$collection->offsetSet($x++,$row);
+			$collection->offsetSet($counter++,$row);
 		}
 
 		return $collection;
 	}
-	// Quick get
+
 	public function QGet()
 	{
 		$this->assimbleQuery();
@@ -561,10 +556,9 @@ class DB{
 		return $stmt->fetchAll();
 	}
 
-
 	private function assimbleQuery()
 	{
-		if ( $this->columns !== null ) {
+		if ($this->columns !== null) {
 			$select = $this->columns;
 		}else{
 			$select = "*";
@@ -628,13 +622,11 @@ class DB{
 		if ($this->where !== null) {
 			$countSQL .= $this->where;
 		}
-		// Start assimble Query
 
+		// Start assimble Query
 		$stmt = $this->dbh->prepare($countSQL);
 		$stmt->execute($this->bindValues);
 		$totalRows = $stmt->fetch(PDO::FETCH_NUM)[0];
-		// echo $totalRows;
-
 		$offset = ($page-1)*$limit;
 		// Refresh Pagination Array
 		$this->pagination['currentPage'] = $page;
@@ -666,9 +658,9 @@ class DB{
 		$rows = $stmt->fetchAll(PDO::FETCH_CLASS,'MareiObj');
 		$collection= [];
 		$collection = new MareiCollection;
-		$x=0;
+		$counter = 0;
 		foreach ($rows as $key => $row) {
-			$collection->offsetSet($x++,$row);
+			$collection->offsetSet($counter++,$row);
 		}
 
 		return $collection;
@@ -709,7 +701,6 @@ class DB{
 		$stmt = $this->dbh->prepare($countSQL);
 		$stmt->execute($this->bindValues);
 		$totalRows = $stmt->fetch(PDO::FETCH_NUM)[0];
-		// echo $totalRows;
 
 		$offset = ($page-1)*$limit;
 		// Refresh Pagination Array
@@ -760,8 +751,6 @@ class DB{
 	{
 		return $this->rowCount;
 	}
-
-
 }
 // End Marei DB Class
 
@@ -789,68 +778,68 @@ class MareiObj{
 //Start Marei collection class
 class MareiCollection implements ArrayAccess{
 
-       public function offsetSet($offset, $value) {
-               $this->$offset = $value;
-       }
+	public function offsetSet($offset, $value) {
+			$this->$offset = $value;
+	}
 
-       public function toJSON()
-       {
-           return json_encode($this->toArray(), JSON_NUMERIC_CHECK);
-       }
+	public function toJSON()
+	{
+		return json_encode($this->toArray(), JSON_NUMERIC_CHECK);
+	}
 
-       public function toArray()
-       {
-        // return (array) get_object_vars($this);
-        $array = [];
-        foreach ($this as  $mareiObj) {
-          $array[] = (array) $mareiObj;
-        }
-           return $array;
-       }
+	public function toArray()
+	{
+	// return (array) get_object_vars($this);
+	$array = [];
+	foreach ($this as  $mareiObj) {
+		$array[] = (array) $mareiObj;
+	}
+		return $array;
+	}
 
-       public function list($field)
-       {
-	       	$list = [];
-	       	foreach ($this as  $item) {
-	       	  $list[] = $item->{$field};
-	       	}
-	       	return $list;
-       }
+	public function list($field)
+	{
+		$list = [];
+		foreach ($this as  $item) {
+			$list[] = $item->{$field};
+		}
+		return $list;
+	}
 
-       public function first($offset=0)
-       {
-           return isset($this->$offset) ? $this->$offset : null;
-       }
+	public function first($offset=0)
+	{
+		return isset($this->$offset) ? $this->$offset : null;
+	}
 
-       public function last($offset=null)
-       {
-           $offset = count($this->toArray())-1;
-           return isset($this->$offset) ? $this->$offset : null;
-       }
+	public function last($offset=null)
+	{
+		$offset = count($this->toArray())-1;
+		return isset($this->$offset) ? $this->$offset : null;
+	}
 
-       public function offsetExists($offset) {
-           return isset($this->$offset);
-       }
+	public function offsetExists($offset) {
+		return isset($this->$offset);
+	}
 
-       public function offsetUnset($offset) {
-           unset($this->$offset);
-       }
+	public function offsetUnset($offset) {
+		unset($this->$offset);
+	}
 
-       public function offsetGet($offset) {
-           return isset($this->$offset) ? $this->$offset : null;
-       }
+	public function offsetGet($offset) {
+		return isset($this->$offset) ? $this->$offset : null;
+	}
 
 
-      public function item($key) {
-          return isset($this->$key) ? $this->$key : null;
-      }
+	public function item($key) {
+		return isset($this->$key) ? $this->$key : null;
+	}
 
-      public function __toString() {
-          header("Content-Type: application/json;charset=utf-8");
-          // return json_encode(get_object_vars($this));
-          return  $this->toJSON();
+	public function __toString() {
+		header("Content-Type: application/json;charset=utf-8");
+		// return json_encode(get_object_vars($this));
+		return  $this->toJSON();
 
-      }
+	}
 
 }
 // End Marei Collection Class
