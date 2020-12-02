@@ -1,6 +1,6 @@
 <?php
 namespace Core;
-class Controller
+class BaseController
 {
     var $vars = [];
     var $layout = "default";

@@ -1,19 +1,21 @@
 <?php
 namespace Application\Controllers;
 
-use Core\Controller;
+use Core\BaseController;
 use Core\Model;
-use Core\ORM;
+use Core\Route;
 use Application\Models\Task;
-use Core\ORM\MysqlAdapter;
+use Core\ORM\QueryBuilder;
 
-class TestController extends Controller
+class TestController extends BaseController
 {
-    function index()
-    {
-        $testConnection = new MysqlAdapter();
-        $testConnection->connect();
-        $params = array("item_name" => "build framework");
+    function index() {
+        $db = QueryBuilder::getInstance();
+        //$db->delete('items', [['id', '<', 3]]);
+        $rows = $db->table('items')->get();
+        foreach ($rows as $row) {
+            echo "$row->item_name <br>";
+        }
         echo "success";
     }
 }

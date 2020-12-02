@@ -1,25 +1,12 @@
 <?php
-//====================== Marei DB Class V 1.0 ======================
-$db_config = [
-	//current development environment
-	"env" => "development",
-	//Localhost
-	"development" => [
-						"host" => "localhost",
-						"database" => "test",
-						"username" => "root",
-						"password" => ""
-					 ],
-	//Server
-	"production"  => [
-						"host" => "",
-						"database" => "",
-						"username" => "",
-						"password" => ""
-					 ]
-];
+namespace Core\ORM;
 
-class DB{
+use PDO;
+use Exception;
+use Core\ORM\MappedCollection;
+use Core\ORM\Core\ORM\MappedObject;
+
+class QueryBuilder{
 	private static $instance = null;
 	private $dbh = null, 
 	$table,
@@ -35,22 +22,34 @@ class DB{
 	$limit, 
 	$orderBy, 
 	$lastIDInserted = 0;
+	
+	//Initial values for pagination array
+	private $pagination = [
+		'previousPage' => null,
+		'currentPage'  => 1,
+		'nextPage'     => null,
+		'lastPage'     => null, 
+		'totalRows'    => null
+	];
 
-	// Initial values for pagination array
-	private $pagination = ['previousPage' => null,'currentPage' => 1,'nextPage' => null,'lastPage' => null, 'totalRows' => null];
+	//Constructor
+	private function __construct() {
 
-	private function __construct()
-	{
+		/**
+		 * Get configuration to database
+		 */
 		global $db_config;
-
 		if ($db_config['env'] == "development") {
 			$config = $db_config['development'];
-		}elseif ($db_config['env'] == "production") {
+		} elseif ($db_config['env'] == "production") {
 			$config = $db_config['production'];
 		}else{
 			die("Environment must be either 'development' or 'production'.");
 		}
 
+		/**
+		 * Connect to database using PDO
+		 */
 		try {
 			$this->dbh = new PDO("mysql:host=".$config['host'].";dbname=".$config['database'].";charset=utf8", $config['username'], $config['password'] );
 			$this->dbh->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
@@ -58,44 +57,55 @@ class DB{
 		} catch (Exception $e) {
 			die("Error establishing a database connection.");
 		}
-
 	}
 
-	public static function getInstance()
-	{
+	/**
+	 * Get instance of this class
+	 * using to get connection to database
+	 * @return $instance instance of this class
+	 */
+	public static function getInstance() {
 		if (!self::$instance) {
-			self::$instance = new DB();
+			self::$instance = new QueryBuilder();
 		}
 		return self::$instance;
 	}
-	public function query($query, $args = [], $quick = false)
-	{
+
+	/**
+	 * Query database
+	 * @param $query query string
+	 * @param $args agrument binding to param in query string
+	 * @param $quick select type of return of query
+	 * @return $stmt->fetchAll() | $collection
+	 */
+	public function query($query, $args = [], $quick = false) {
 		$this->resetQuery();
 		$query = trim($query);
 		$this->getSQL = $query;
 		$this->bindValues = $args;
 
+		//Case developer need to return an object which database return
 		if ($quick == true) {
 			$stmt = $this->dbh->prepare($query);
 			$stmt->execute($this->bindValues);
 			$this->rowCount = $stmt->rowCount();
 			return $stmt->fetchAll();
+		
+		//Case developer need to return a collection
 		}else{
 			if (strpos( strtoupper($query), "SELECT" ) === 0 ) {
 				$stmt = $this->dbh->prepare($query);
 				$stmt->execute($this->bindValues);
 				$this->rowCount = $stmt->rowCount();
 
-				$rows = $stmt->fetchAll(PDO::FETCH_CLASS,'MareiObj');
+				$rows = $stmt->fetchAll(PDO::FETCH_CLASS,'Core\ORM\MappedObject');
 				$collection= [];
-				$collection = new MareiCollection;
+				$collection = new MappedCollection;
 				$counter=0;
 				foreach ($rows as $key => $row) {
 					$collection->offsetSet($counter++,$row);
 				}
-
 				return $collection;
-
 			}else{
 				$this->getSQL = $query;
 				$stmt = $this->dbh->prepare($query);
@@ -104,8 +114,12 @@ class DB{
 			}
 		}
 	}
-	public function exec()
-	{
+
+	/**
+	 * Run query
+	 * @return number of row
+	 */
+	public function exec() {
 		//assimble query
 		$this->sql .= $this->where;
 		$this->getSQL = $this->sql;
@@ -114,8 +128,11 @@ class DB{
 		return $stmt->rowCount();
 	}
 
-	private function resetQuery()
-	{
+	/**
+	 * Reset all attribute of object
+	 * @return void
+	 */
+	private function resetQuery() {
 		$this->table = null;
 		$this->columns = null;
 		$this->sql = null;
@@ -131,8 +148,13 @@ class DB{
 		$this->lastIDInserted = 0;
 	}
 
-	public function delete($table_name, $id=null)
-	{
+	/**
+	 * Execute delete query
+	 * @param $table_name name of table 
+	 * @param $id id of row will be deleted
+	 * @return $this
+	 */
+	public function delete($table_name, $id=null) {
 		$this->resetQuery();
 
 		$this->sql = "DELETE FROM `{$table_name}`";
@@ -199,14 +221,17 @@ class DB{
 			$stmt = $this->dbh->prepare($this->sql);
 			$stmt->execute($this->bindValues);
 			return $stmt->rowCount();
-		}// end if there is an ID or Array
-		// $this->getSQL = "<b>Attention:</b> This Query will update all rows in the table, luckily it didn't execute yet!, use exec() method to execute the following query :<br>". $this->sql;
-		// $this->getSQL = $this->sql;
+		}
 		return $this;
 	}
 
-	public function update($table_name, $fields = [], $id=null)
-	{
+	/**
+	 * Execute update query
+	 * @param $table_name name of table
+	 * @param $fields array of data will be added
+	 * @param $id id of row will be updated
+	 */
+	public function update($table_name, $fields = [], $id=null) {
 		$this->resetQuery();
 		$set ='';
 		$counter = 1;
@@ -230,10 +255,9 @@ class DB{
 			// if there is an Array
 			}elseif (is_array($id)) {
 				$arr = $id;
-				$count_arr = count($arr);
 				$counter = 0;
 
-				foreach ($arr as  $param) {
+				foreach ($arr as $param) {
 					if ($counter == 0) {
 						$this->where .= " WHERE ";
 						$counter++;
@@ -287,16 +311,15 @@ class DB{
 		}// end if there is an ID or Array
 		return $this;
 	}
+
 	/**
 	 * Insert data to $table_name
 	 * @param $table_name name of the table which the data will be added
 	 * @param $fields array of data will be added
 	 * @return $lastIDInserted
 	 */
-	public function insert( $table_name, $fields = [] )
-	{
+	public function insert($table_name, $fields = []) {
 		$this->resetQuery();
-
 		$keys = implode('`, `', array_keys($fields));
 		$values = '';
 		$counter=1;
@@ -314,38 +337,30 @@ class DB{
 		$stmt = $this->dbh->prepare($this->sql);
 		$stmt->execute($this->bindValues);
 		$this->lastIDInserted = $this->dbh->lastInsertId();
-
 		return $this->lastIDInserted;
 	}
 	
-	public function lastId()
-	{
+	public function getLastIDInserted() {
 		return $this->lastIDInserted;
 	}
 
-	public function table($table_name)
-	{
+	public function table($table_name) {
 		$this->resetQuery();
 		$this->table = $table_name;
 		return $this;
 	}
 
-	public function select($columns)
-	{
+	public function select($columns) {
 		$columns = explode(',', $columns);
 		foreach ($columns as $key => $column) {
 			$columns[$key] = trim($column);
 		}
-		
 		$columns = implode('`, `', $columns);
-		
-
 		$this->columns = "`{$columns}`";
 		return $this;
 	}
 
-	public function where()
-	{
+	public function where() {
 		if ($this->whereCount == 0) {
 			$this->where .= " WHERE ";
 			$this->whereCount+=1;
@@ -435,8 +450,7 @@ class DB{
 		return $this;
 	}
 
-	public function orWhere()
-	{
+	public function orWhere() {
 		if ($this->whereCount == 0) {
 			$this->where .= " WHERE ";
 			$this->whereCount+=1;
@@ -524,8 +538,7 @@ class DB{
 		return $this;
 	}
 
-	public function get()
-	{
+	public function get() {
 		$this->assimbleQuery();
 		$this->getSQL = $this->sql;
 
@@ -533,19 +546,17 @@ class DB{
 		$stmt->execute($this->bindValues);
 		$this->rowCount = $stmt->rowCount();
 
-		$rows = $stmt->fetchAll(PDO::FETCH_CLASS,'MareiObj');
+		$rows = $stmt->fetchAll(PDO::FETCH_CLASS,'Core\ORM\MappedObject');
 		$collection= [];
-		$collection = new MareiCollection;
+		$collection = new MappedCollection;
 		$counter = 0;
 		foreach ($rows as $key => $row) {
 			$collection->offsetSet($counter++,$row);
 		}
-
 		return $collection;
 	}
 
-	public function QGet()
-	{
+	public function QGet() {
 		$this->assimbleQuery();
 		$this->getSQL = $this->sql;
 
@@ -556,8 +567,7 @@ class DB{
 		return $stmt->fetchAll();
 	}
 
-	private function assimbleQuery()
-	{
+	private function assimbleQuery() {
 		if ($this->columns !== null) {
 			$select = $this->columns;
 		}else{
@@ -579,8 +589,7 @@ class DB{
 		}
 	}
 
-	public function limit($limit, $offset=null)
-	{
+	public function limit($limit, $offset=null) {
 		if ($offset ==null ) {
 			$this->limit = " LIMIT {$limit}";
 		}else{
@@ -596,8 +605,7 @@ class DB{
 	 * @param  string $order      it determins in which order you wanna view your results whether 'ASC' or 'DESC'.
 	 * @return object             it returns DB object
 	 */
-	public function orderBy($field_name, $order = 'ASC')
-	{
+	public function orderBy($field_name, $order = 'ASC') {
 		$field_name = trim($field_name);
 
 		$order =  trim(strtoupper($order));
@@ -615,8 +623,7 @@ class DB{
 		return $this;
 	}
 
-	public function paginate($page, $limit)
-	{
+	public function paginate($page, $limit) {
 		// Start assimble Query
 		$countSQL = "SELECT COUNT(*) FROM `$this->table`";
 		if ($this->where !== null) {
@@ -655,9 +662,9 @@ class DB{
 		$this->rowCount = $stmt->rowCount();
 
 
-		$rows = $stmt->fetchAll(PDO::FETCH_CLASS,'MareiObj');
+		$rows = $stmt->fetchAll(PDO::FETCH_CLASS,'Core\ORM\MappedObject');
 		$collection= [];
-		$collection = new MareiCollection;
+		$collection = new MappedCollection;
 		$counter = 0;
 		foreach ($rows as $key => $row) {
 			$collection->offsetSet($counter++,$row);
@@ -666,8 +673,7 @@ class DB{
 		return $collection;
 	}
 
-	public function count()
-	{
+	public function count() {
 		// Start assimble Query
 		$countSQL = "SELECT COUNT(*) FROM `$this->table`";
 
@@ -689,8 +695,7 @@ class DB{
 	}
 
 
-	public function QPaginate($page, $limit)
-	{
+	public function QPaginate($page, $limit) {
 		// Start assimble Query
 		$countSQL = "SELECT COUNT(*) FROM `$this->table`";
 		if ($this->where !== null) {
@@ -752,94 +757,3 @@ class DB{
 		return $this->rowCount;
 	}
 }
-// End Marei DB Class
-
-//Start Marei Object Class
-class MareiObj{
-
-    public function toJSON()
-    {
-        return json_encode($this, JSON_NUMERIC_CHECK);
-    }
-
-    public function toArray()
-    {
-        return (array) $this;
-    }
-
-    public function __toString() {
-        header("Content-Type: application/json;charset=utf-8");
-        return json_encode($this, JSON_NUMERIC_CHECK);
-    }
-    
-}
-// End Marei Object Class
-
-//Start Marei collection class
-class MareiCollection implements ArrayAccess{
-
-	public function offsetSet($offset, $value) {
-			$this->$offset = $value;
-	}
-
-	public function toJSON()
-	{
-		return json_encode($this->toArray(), JSON_NUMERIC_CHECK);
-	}
-
-	public function toArray()
-	{
-	// return (array) get_object_vars($this);
-	$array = [];
-	foreach ($this as  $mareiObj) {
-		$array[] = (array) $mareiObj;
-	}
-		return $array;
-	}
-
-	public function list($field)
-	{
-		$list = [];
-		foreach ($this as  $item) {
-			$list[] = $item->{$field};
-		}
-		return $list;
-	}
-
-	public function first($offset=0)
-	{
-		return isset($this->$offset) ? $this->$offset : null;
-	}
-
-	public function last($offset=null)
-	{
-		$offset = count($this->toArray())-1;
-		return isset($this->$offset) ? $this->$offset : null;
-	}
-
-	public function offsetExists($offset) {
-		return isset($this->$offset);
-	}
-
-	public function offsetUnset($offset) {
-		unset($this->$offset);
-	}
-
-	public function offsetGet($offset) {
-		return isset($this->$offset) ? $this->$offset : null;
-	}
-
-
-	public function item($key) {
-		return isset($this->$key) ? $this->$key : null;
-	}
-
-	public function __toString() {
-		header("Content-Type: application/json;charset=utf-8");
-		// return json_encode(get_object_vars($this));
-		return  $this->toJSON();
-
-	}
-
-}
-// End Marei Collection Class

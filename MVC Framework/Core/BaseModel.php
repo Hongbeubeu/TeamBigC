@@ -1,6 +1,5 @@
 <?php
 namespace Core;
-class Model
-{
+class BaseModel {
 
 }
