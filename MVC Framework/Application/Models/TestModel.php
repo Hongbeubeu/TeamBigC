@@ -3,7 +3,7 @@ namespace Application\Models;
 
 use Core\BaseModel;
 
-class Test extends BaseModel
+class TestModel extends BaseModel
 {
     public $table = "items";
    
