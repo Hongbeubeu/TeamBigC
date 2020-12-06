@@ -16,9 +16,9 @@ class QueryBuilder{
 	$getSQL,
 	$where,
 	$orWhere, 
-	$whereCount=0, 
+	$whereCount = 0, 
 	$isOrWhere = false,
-	$rowCount=0, 
+	$rowCount = 0, 
 	$limit, 
 	$orderBy, 
 	$lastIDInserted = 0;
@@ -567,6 +567,10 @@ class QueryBuilder{
 		return $stmt->fetchAll();
 	}
 
+	/**
+	 * get query string
+	 * $return sqlString
+	 */
 	private function assimbleQuery() {
 		if ($this->columns !== null) {
 			$select = $this->columns;
@@ -589,6 +593,12 @@ class QueryBuilder{
 		}
 	}
 
+	/**
+	 * limit of query
+	 * @param $limit limit
+	 * @param $offset first item of list for pagination
+	 * @return $this
+	 */
 	public function limit($limit, $offset=null) {
 		if ($offset ==null ) {
 			$this->limit = " LIMIT {$limit}";

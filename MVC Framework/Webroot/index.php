@@ -3,12 +3,13 @@ define('PATH_ROOT', str_replace("\Webroot", "",__DIR__));
 define('DS', DIRECTORY_SEPARATOR);
 
 //Autoload class
-spl_autoload_register(function (string $class_name){
+spl_autoload_register(function (string $class_name) {
     include_once PATH_ROOT . DS . $class_name . '.php';
 });
 
 //Load class Route
 $router = new Core\Route();
+//khi sql_autoload tìm thư mục theo namespace -> root/core/route.php
 include_once PATH_ROOT . DS . 'Routes' . DS . 'web.php';
 
 //Get current URL of web app

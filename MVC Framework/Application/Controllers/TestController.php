@@ -4,18 +4,13 @@ namespace Application\Controllers;
 use Core\BaseController;
 use Core\Model;
 use Core\Route;
-use Application\Models\Task;
-use Core\ORM\QueryBuilder;
+use Application\Models\Test;
 
 class TestController extends BaseController
 {
     function index() {
-        $db = QueryBuilder::getInstance();
-        //$db->delete('items', [['id', '<', 3]]);
-        $rows = $db->table('items')->get();
-        foreach ($rows as $row) {
-            echo "$row->item_name <br>";
-        }
-        echo "success";
+        $testModel = new Test();
+        $rowss = $testModel->getAllItems();
+        var_dump($rowss);        
     }
 }

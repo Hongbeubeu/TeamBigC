@@ -1,5 +1,12 @@
 <?php
 namespace Core;
-class BaseModel {
 
+use Core\ORM\QueryBuilder;
+
+class BaseModel {
+    protected $dbo;
+    function __construct()
+    {
+        $this->dbo = QueryBuilder::getInstance();
+    }
 }
