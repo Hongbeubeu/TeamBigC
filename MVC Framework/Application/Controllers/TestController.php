@@ -12,7 +12,9 @@ class TestController extends BaseController
         $testModel = new TestModel();
         $rowss = $testModel->getAllItems();
         $this->set($rowss);
-        $this->render("defult");
+        $this->render("header");
+        $this->render("default");
+        $this->render("footer");
     }
 
     function error() {
