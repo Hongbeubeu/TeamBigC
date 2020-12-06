@@ -1,30 +1,36 @@
 <?php
 namespace Core;
+
+use Exception;
+
 class BaseController
 {
     var $vars = [];
     var $layout = "default";
 
-    function set($d)
+    function set($data)
     {
-        $this->vars = array_merge($this->vars, $d);
+        $this->vars = array_merge($this->vars, $data);
     }
 
     function render($filename)
     {
-        extract($this->vars);
         ob_start();
-        require(PATH_ROOT . DS . "Application" . DS . "Views" . DS . ucfirst(str_replace('Controller', '', get_class($this))) . '/' . $filename . '.php');
-        $content_for_layout = ob_get_clean();
-
-        if ($this->layout == false)
+        extract($this->vars);
+        if (file_exists(PATH_ROOT . DS . "Application" . DS . "Views" . DS . "Layouts" . DS . $filename . '.php'))
         {
-            $content_for_layout;
+            require(PATH_ROOT . DS . "Application" . DS . "Views" . DS . "Layouts" . DS . $filename . '.php');
         }
         else
         {
-            require(PATH_ROOT . DS . "Views" . DS . "Layouts" . DS . $this->layout . '.php');
+            $href = 'http://mvctestbed/error';
+            echo "sai con me may file name roi thang ngu <br>";
+            echo "<a href = {$href}> link </a>";
         }
+
+        //$content = ob_get_contents();
+        //ob_end_clean();
+        //return $content;
     }
 
     private function secure_input($data)

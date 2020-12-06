@@ -11,6 +11,11 @@ class TestController extends BaseController
     function index() {
         $testModel = new TestModel();
         $rowss = $testModel->getAllItems();
-        var_dump($rowss);   
+        $this->set($rowss);
+        $this->render("defult");
+    }
+
+    function error() {
+        $this->render("error");
     }
 }
