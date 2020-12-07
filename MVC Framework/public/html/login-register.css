@@ -1,0 +1,158 @@
+body,
+html,
+main {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+}
+
+.leftpane {
+    width: 50%;
+    height: 100%;
+    float: left;
+    background-color: #EFF7F6;
+    border-collapse: collapse;
+}
+
+.rightpane {
+    width: 50%;
+    height: 100%;
+    position: relative;
+    float: right;
+    background-position: center;
+    background-color: #E4F1FC;
+    background-image: url('background.jpg');
+    background-repeat: no-repeat;
+    border-collapse: collapse;
+}
+
+.content {
+    padding-left: 30%;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 50%;
+    padding-top: 10%
+}
+
+h1 {
+    margin-bottom: 80px;
+    font-size: 45px;
+}
+
+.under-h1 {
+    margin-left: 30px
+}
+
+.btn {
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    background-color: white;
+    text-align: center;
+    background-size: 15%;
+    font-size: 16px;
+    width: 270px;
+    padding: 10px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+img {
+    width: 25px;
+    float: left;
+}
+
+.divider1,
+.divider2 {
+    display: inline-block;
+    border-bottom: black 1px solid;
+    width: 50px;
+    vertical-align: middle;
+}
+
+.suggestion {
+    display: inline-block;
+    width: 150px;
+    font-size: 10px;
+    text-align: center;
+}
+
+.divider1 {
+    margin-left: 5px;
+}
+
+.form-input {
+    margin-top: 20px;
+}
+
+input {
+    border-radius: 8px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    background-size: 15%;
+    font-size: 16px;
+    width: 250px;
+    padding-left: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    cursor: pointer;
+}
+
+.btn-box,
+.btn-box:hover,
+.btn-box:active {
+    border-radius: 8px;
+    margin-bottom: 10px;
+    margin-top: 30px;
+    text-decoration: none;
+    background-size: 15%;
+    font-size: 16px;
+    width: 270px;
+    padding-left: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    cursor: pointer;
+    background-color: #4AA7EF;
+    color: white
+}
+
+.btn-box:hover {
+    background-color: #0a4f85;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.btn-box:active {
+    transform: translateY(4px);
+}
+
+#logged {
+    width: 20px;
+}
+
+label+a {
+    margin-left: 20px;
+}
+
+.cbx {
+    margin-top: 10px;
+    margin-bottom: 30px
+}
+
+#dontaccount {
+    color: grey;
+    text-decoration: none;
+    margin-left: 5px;
+}
+
+#signup {
+    margin-left: 30px;
+}
+
+#login {
+    margin-left: 80px;
+}
