@@ -15,7 +15,7 @@
                 <div class="content">
                     <h1>Together Forever</h1>
                     <div class="under-h1">
-                        <button class="btn"><img src="/public/image/icons8-google-64.png"/> 
+                        <button class="btn"><img src="/public/image/icons8-google-64.png" />
                             Log in with Gmail
                         </button>
                         <div>
@@ -24,26 +24,25 @@
                             <hr class="divider2">
                         </div>
                         <div class="form-input">
-                            <form action="" method="post">
+                            <form action="/login" method="POST">
                                 <div class="input-box">
-                                    <input type="text" placeholder="Email">
+                                    <input type="text" name = "email" placeholder="Email">
                                 </div>
                                 <div class="input-box">
-                                    <input type="password" placeholder="Password">
+                                    <input type="password" name = "password" placeholder="Password">
                                 </div>
                                 <div class="cbx">
-                                    <input type="checkbox" id="logged" name="logged" value="">
+                                    <input type="checkbox" id="logged" name="logged" value = "logged">
                                     <label for="logged"> Keep me logged in</label>
                                     <a href="#">Forgot password</a>
                                 </div>
 
-                                <button class="btn-box" type="submit">Log in</button>
-
+                                <button class="btn-box" name="submit" type="submit">Log in</button>
                             </form>
                         </div>
                         <div>
                             <a id="dontaccount" href="#">Don't have an account yet ?</a>
-                            <a id="signup" href="register.html">Sign up</a>
+                            <a id="signup" href="/register">Sign up</a>
                         </div>
                         <div>
 

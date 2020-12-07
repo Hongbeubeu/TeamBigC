@@ -26,7 +26,7 @@ main {
     float: right;
     background-position: center;
     background-color: #E4F1FC;
-    background-image: url('background.jpg');
+    background-image: url('/public/image/background.jpg');
     background-repeat: no-repeat;
     border-collapse: collapse;
 }

@@ -17,20 +17,15 @@ class BaseController
     {
         ob_start();
         extract($this->vars);
-        if (file_exists(PATH_ROOT . DS . "Application" . DS . "Views" . DS . "Layouts" . DS . $filename . '.php'))
+        if (file_exists(PATH_ROOT . DS . "Application" . DS . "Views" . DS . $filename . '.php'))
         {
-            require(PATH_ROOT . DS . "Application" . DS . "Views" . DS . "Layouts" . DS . $filename . '.php');
+            require(PATH_ROOT . DS . "Application" . DS . "Views" . DS . $filename . '.php');
+            return;
         }
         else
         {
-            $href = 'http://mvctestbed/error';
-            echo "sai con me may file name roi thang ngu <br>";
-            echo "<a href = {$href}> link </a>";
+            header("location:/error");
         }
-
-        //$content = ob_get_contents();
-        //ob_end_clean();
-        //return $content;
     }
 
     private function secure_input($data)
