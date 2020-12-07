@@ -467,7 +467,6 @@ class QueryBuilder{
 				$this->bindValues[] =  $args[0];
 			}elseif (is_array($args[0])) {
 				$arr = $args[0];
-				$count_arr = count($arr);
 				$counter = 0;
 
 				foreach ($arr as  $param) {
@@ -695,11 +694,8 @@ class QueryBuilder{
 			$countSQL .= $this->limit;
 		}
 		// End assimble Query
-
 		$stmt = $this->dbh->prepare($countSQL);
 		$stmt->execute($this->bindValues);
-
-		$this->getSQL = $countSQL;
 
 		return $stmt->fetch(PDO::FETCH_NUM)[0];
 	}
