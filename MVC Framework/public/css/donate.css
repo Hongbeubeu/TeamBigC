@@ -1,0 +1,218 @@
+.container {
+    width: 70%;
+    margin: auto;
+}
+
+
+/* Định dạng phần form đăng nhập*/
+
+.fomrgroup {
+    width: 50%;
+    margin: auto;
+    display: block;
+    height: 50px;
+}
+
+.fomrgroup input {
+    float: right;
+    width: 70%;
+    height: 25px;
+    margin-right: 20px;
+    line-height: 50px;
+}
+
+.fomrgroup b {
+    font-size: 20px;
+}
+
+
+/* The Modal (background) */
+
+.modal {
+    display: none;
+    /* mặc định được ẩn đi */
+    position: fixed;
+    /* vị trí cố định */
+    z-index: 1;
+    /* Ưu tiên hiển thị trên cùng */
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+
+/* Modal Content */
+
+.modal-content {
+    background-image: linear-gradient(to left, #B3EBF3, #7397FD);
+    margin: auto;
+    border-radius: 20px;
+    border: 1px solid #888;
+    width: 60%;
+    height: 480px;
+}
+
+.toppane {
+    width: 100%;
+    height: 120px;
+    float: top;
+    margin-left: 50px;
+    text-align: left;
+    border-collapse: collapse;
+}
+
+
+/*toppane*/
+
+h2 {
+    margin-top: 30px;
+    color: white;
+}
+
+.avatar {
+    vertical-align: middle;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.title_donate {
+    display: inline-flex;
+}
+
+.title_subtitle * {
+    margin-left: 20px;
+    color: white;
+}
+
+#title {
+    margin-top: 5px;
+}
+
+#subtitle {
+    margin-top: -10px;
+}
+
+
+/*bottompane*/
+
+.bottompane {
+    width: 100%;
+    height: 360px;
+    position: relative;
+    float: bottom;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background-color: #ffffff;
+    border-collapse: collapse;
+}
+
+.bottompane p {
+    margin-left: 50px;
+    padding-top: 10px;
+    margin-bottom: 5px;
+}
+
+.input_text,
+.input_number {
+    width: 300px;
+    border-radius: 10px;
+    margin-left: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    border: 1px solid #888;
+}
+
+
+/*payment method*/
+
+#visa {
+    margin-left: 150px;
+}
+
+#paypal {
+    margin-left: 150px;
+}
+
+.visa,
+.paypal {
+    vertical-align: middle;
+    margin-left: 10px;
+}
+
+.visa {
+    width: 60px;
+    height: 40px;
+}
+
+.paypal {
+    width: 120px;
+    height: 40px;
+}
+
+
+/*info card*/
+
+.info_card {
+    display: inline-flex;
+}
+
+.input_cvv {
+    width: 100px;
+    border-radius: 10px;
+    margin-left: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    border: 1px solid #888;
+}
+
+#btn,
+#btn:active {
+    margin-left: 200px;
+    background-image: linear-gradient(#B3EBF3, #7397FD);
+    border: none;
+    color: white;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+#btn:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+#btn:active {
+    transform: translateY(4px);
+}
+
+
+/* The Close Button */
+
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}

@@ -1,0 +1,220 @@
+body {
+    display: flex;
+    font-family:  Arial, sans-serif;
+    height: 100vh;
+    margin: 0;
+}
+
+
+.navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(209, 232 , 230);
+    min-width: 20%;     
+    height: 100%;
+
+
+}
+.navbar__account-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;    
+    color: rgb(54, 54, 54);
+}
+
+.navbar__donate-button {
+    border: none;
+    color: white;
+    padding: 15px 56px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    background-color: rgb(33,184, 249);
+}
+.navbar__donate-button:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+.navbar__avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-top: 5vh;
+}
+.navbar__name {
+    width: 180px;
+    text-align: center;
+    margin-bottom: 0px;
+}
+.navbar__email {
+    margin-top: 5px;
+    text-align: center  ;
+}
+.navbar__menu-button {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    position: relative;
+}
+.navbar__menu-title {
+    text-decoration: none;
+    margin-left: 1rem;
+    font-size: 1.2em;
+    color: rgb(97, 97, 97);
+    cursor: context-menu;
+
+}
+.navbar__menu-icon {
+    width: 2.5rem;
+}
+
+
+/* NEWFEED=--------- */
+.newfeed {
+    min-width: 50%;
+    background-color: rgb(239, 247, 246);
+    overflow: auto;
+}
+.newfeed::-webkit-scrollbar {
+    display: none;
+  }
+.newfeed__search {
+    display: flex;
+    justify-content: center;
+    margin-top: 4vh;
+}
+.newfeed__search-input {
+    width: 95%;
+    height: 6vh;
+    font-size: 1.2em;
+    background-color:transparent;
+    outline: 0;
+  border-width: 0 0 0.2rem;
+  border-color: rgb(185, 190, 189)
+}
+.newfeed__search-input:focus {
+    border-color: rgb(33, 184, 249)
+}
+
+.newfeed__control {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 95%;
+    margin: 4% 2.5%;
+}
+.newfeed__input {
+    height: 6vh;
+    border: none; 
+    border:solid 1px #ccc;
+    border-radius: 10px;
+    width: 70%;
+    padding: 0.2em 1em;
+}
+.newfeed__input:focus {
+    outline: none;
+    border-color:rgb(33, 184, 249) ;   
+  
+}
+.newfeed__post {
+    width: 90%;
+    margin: 1em 2.5%;
+    background-color: white;
+    padding: 4% 0vw 2vw 5%;
+}
+.newfeed__like-button {
+    float:right;
+}
+.newfeed__share-button {
+    float: right;
+    margin-right: 2em;
+    margin-left: 2em;
+}
+
+
+.newfeed__commnet {
+    width:95%;
+}
+.newfeed__comment-main {
+    display: flex;
+    padding: 1em 0;
+    background-color: #bee9ff;
+    width: 94%;
+    border-radius: 10px;
+    padding-left: 1%;
+    margin: 1em 0;
+}
+.newfeed__comment-content {
+    margin-left: 1em;
+}
+.newfeed__comment-name {
+    font-weight: bold;
+    font-size: 0.9em;
+}
+.newfeed__comment-text {
+    font-size: 0.9em;
+}
+/*SUGGESTION----------- */
+
+.suggestion {
+    min-width: 25%;
+    padding: 2em;
+    background-color: #fdffff;
+}
+.suggestion__donate {
+    min-height: 40vh;
+    display: flex;
+    flex-direction: column ;
+    justify-content: space-around;
+}
+.suggestion__add {
+    min-height: 40vh;
+    display: flex;
+    flex-direction: column ;
+    justify-content: space-around;
+}
+/* dung chung */
+.icon_medium {
+    width: 3vw;
+    height: 3vw;
+}
+.icon_small {
+    width: 2vw;
+    height: 2vw;
+}
+.icon_button {
+    background-color: white;
+}
+.flex-center {
+        display: flex;
+    justify-content: center;
+}
+.avatar {
+    border-radius: 50%;
+}
+.name {
+    margin: 1.2em 0.75em;
+    font-size: 1.1em;
+}
+.identify {
+    display: inline-flex;
+}
+
+/* popup */
+.notification__detail {
+    position: absolute;
+    background-color: rgb(247,254,254);
+    margin-left: 140%;
+    min-width: 200%;
+    padding: 1em;
+}
+.relative {
+    margin-right: 1em
+}
+.notification__content {
+    display: inline-flex;
+}
+#notification {
+    display: none;
+}
