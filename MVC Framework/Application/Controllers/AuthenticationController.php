@@ -20,10 +20,12 @@ class AuthenticationController extends BaseController {
     function register() {
         $formPost = $_POST;
         $this->secure_form($formPost);
+
         $email = $formPost['email'];
         $password = $formPost['password'];
         $confirmPassword = $formPost['confirmpassword'];
         $displayName = $formPost['displayname'];
+
         $userModel = new UserModel();
         if ($userModel->checkEmail($email) == 0) {
             if ($password == $confirmPassword) {
@@ -31,6 +33,7 @@ class AuthenticationController extends BaseController {
                 $params['email'] = $email;
                 $params['password'] = $pass;
                 $userId = $userModel->addNewUser($params);
+
                 $userProfileModel = new UserProfileModel();
                 $profileParams['user_id'] = $userId;
                 $profileParams['display_name'] = $displayName;
