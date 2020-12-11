@@ -19,4 +19,9 @@ class UserModel extends BaseModel
         $params = array_merge($params, $paramsIn);
         return $this->dbo->insert($this->table, $params);
     }
+
+    public function getPasswordByEmail(string $email) {
+        $output = $this->dbo->table($this->table)->where([['email', $email]])->get()->toArray();
+        return $output[0]['password'];
+    }
 }

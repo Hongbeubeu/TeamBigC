@@ -11,10 +11,20 @@ class AuthenticationController extends BaseController {
     function login() {
         $formPost = $_POST;
         $this->secure_form($formPost);
-        echo $formPost['email'] . "<br>";
-        echo $formPost['password'] . "<br>";
-        if (isset($formPost['logged']))
-            echo $formPost['logged'] . "<br>";
+        $email = $formPost['email'];
+        $password = $formPost['password'];
+        $userModel = new UserModel();
+        if ($userModel->checkEmail($email) != 0) {
+            $encriptPassword = md5($password);
+            $hookPassword = $userModel->getPasswordByEmail($email);
+            if ($hookPassword == $encriptPassword) {
+                echo "Login Success!";
+            } else {
+                echo "Nhập mật khẩu sai rồi cưng!!";
+            }
+        } else {
+            echo "Tài khoản đéo tồn tại nhé!!!";
+        }
     }
 
     function register() {

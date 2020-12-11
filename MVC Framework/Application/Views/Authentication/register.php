@@ -16,7 +16,7 @@
                 <div class="content">
                     <h1>Together Forever</h1>
                     <div class="under-h1">
-                        <button class="btn"><img src="/public/image/icons8-google-64.png" />
+                        <button class="btn"><img src="/public/assets/icons8-google-64.png" />
                             Log in with Gmail
                         </button>
                         <div style="align-items: center;">

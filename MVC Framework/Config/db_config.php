@@ -1,7 +1,7 @@
 <?php
 $db_config = [
 	//Current development environment
-    "env" => "development",
+    "env" => "production",
     
 	//Localhost
 	"development" => [
