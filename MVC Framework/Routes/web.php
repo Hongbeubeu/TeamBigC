@@ -3,9 +3,8 @@
 $router->get('/', 'HomeController@login');
 $router->get('/login', 'HomeController@login');
 $router->get('/register', 'HomeController@register');
-$router->get('/error', 'TestController@error');
-$router->get('/test', 'TestController@index');
-$router->get('/newfeed', "HomeController@newfeed");
+$router->get('/newfeed', 'HomeController@newfeed');
+$router->get('/ind', 'HomeController@index');
 
 $router->get('/logout', "AuthenticationController@logout");
 
