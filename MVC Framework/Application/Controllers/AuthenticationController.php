@@ -1,4 +1,5 @@
 <?php
+
 namespace Application\Controllers;
 
 use Core\BaseController;
@@ -7,8 +8,10 @@ use Application\Models\UserModel;
 use Application\Models\UserProfileModel;
 use Core\Route;
 
-class AuthenticationController extends BaseController {
-    function login() {
+class AuthenticationController extends BaseController
+{
+    function login()
+    {
         $formPost = $_POST;
         $this->secure_form($formPost);
         $email = $formPost['email'];
@@ -19,8 +22,8 @@ class AuthenticationController extends BaseController {
             $hookPassword = $userModel->getPasswordByEmail($email);
             if ($hookPassword == $encriptPassword) {
                 $_SESSION['session_id'] = $email;
-                if(isset($formPost['logged'])){
-                    setcookie('session_id', $email, time() + (86400 * 30), "/"); 
+                if (isset($formPost['logged'])) {
+                    setcookie('session_id', $email, time() + (86400 * 30), "/");
                 }
                 header('location:/newfeed');
             } else {
@@ -31,7 +34,8 @@ class AuthenticationController extends BaseController {
         }
     }
 
-    function register() {
+    function register()
+    {
         $formPost = $_POST;
         $this->secure_form($formPost);
 
@@ -60,7 +64,8 @@ class AuthenticationController extends BaseController {
         }
     }
 
-    function logout() {
+    function logout()
+    {
         unset($_SESSION['session_id']);
         header('location:/login');
     }
