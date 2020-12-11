@@ -40,7 +40,7 @@
                                 </div>
 
                                 <div>
-                                    <button class="btn-box" type="submit" id="submit">Register</button>
+                                    <button class="btn-box" type="submit" id="submit" onclick="validateRegister()">Register</button>
                                 </div>
                             </form>
                         </div>
@@ -54,16 +54,6 @@
             <div class="rightpane"></div>
         </div>
     </main>
-    <script>
-        function validateForm() {
-            var x = document.forms["myForm"]["email"].value;
-            if (x == "") {
-                alert("email must be filled out");
-                return false;
-            }
-        }
-        document.getElementById('submit').onclick = validateForm;
-    </script>
 </body>
-
+<script src="/public/js/validate.js"></script>
 </html>

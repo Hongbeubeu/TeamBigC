@@ -37,7 +37,7 @@
                                     <a href="#">Forgot password</a>
                                 </div>
 
-                                <button class="btn-box" name="submit" type="submit">Log in</button>
+                                <button class="btn-box" name="submit" type="submit" onclick="validateLogin()">Log in</button>
                             </form>
                         </div>
                         <div>
@@ -55,5 +55,5 @@
         </div>
     </main>
 </body>
-
+<script src="/public/js/validate.js"></script>
 </html>
