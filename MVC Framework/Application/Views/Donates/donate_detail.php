@@ -22,10 +22,10 @@
                     <div class="toppane">
                         <h2>Checkout</h2>
                         <div class="title_donate">
-                            <img src="/public/assets/avatar-donate.jpg" alt="Avatar" class="avatar">
+                            <img src="/public/assets/avatar.jpg" alt="Avatar" class="avatar">
                             <div class="title_subtitle">
                                 <p id="title">VÌ BỮA ĂN CHO TRẺ MỒ CÔI VIỆT NAM</p>
-                                <p id="subtitle">Fundraiser for Lê Dũng</p>
+                                <p id="subtitle">Fundraiser by Lê Dũng</p>
                             </div>
                         </div>
                     </div>
