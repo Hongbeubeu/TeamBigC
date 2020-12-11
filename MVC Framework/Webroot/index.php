@@ -2,6 +2,9 @@
 define('PATH_ROOT', str_replace("\Webroot", "",__DIR__));
 define('DS', DIRECTORY_SEPARATOR);
 
+//Start session
+session_start();
+
 //Autoload class
 spl_autoload_register(function (string $class_name) {
     include_once PATH_ROOT . DS . $class_name . '.php';

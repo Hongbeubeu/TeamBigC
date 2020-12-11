@@ -18,12 +18,16 @@ class AuthenticationController extends BaseController {
             $encriptPassword = md5($password);
             $hookPassword = $userModel->getPasswordByEmail($email);
             if ($hookPassword == $encriptPassword) {
-                echo "Login Success!";
+                $_SESSION['session_id'] = $email;
+                if(isset($formPost['logged'])){
+                    setcookie('session_id', $email, time() + (86400 * 30), "/"); 
+                }
+                header('location:/newfeed');
             } else {
-                echo "Nhập mật khẩu sai rồi cưng!!";
+                header('location:/login');
             }
         } else {
-            echo "Tài khoản đéo tồn tại nhé!!!";
+            header('location:/login');
         }
     }
 
@@ -54,5 +58,10 @@ class AuthenticationController extends BaseController {
         } else {
             echo "Email da duoc su dung";
         }
+    }
+
+    function logout() {
+        unset($_SESSION['session_id']);
+        header('location:/login');
     }
 }
