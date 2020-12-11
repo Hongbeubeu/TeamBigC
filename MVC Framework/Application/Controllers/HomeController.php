@@ -25,8 +25,7 @@ class HomeController extends BaseController {
 
     function newfeed() {
         if($this->checkLogin()) {
-            echo $_SESSION['session_id'];
-            $this->render( DS . "Feeds" . DS . "testfeed");
+            $this->render( DS . "Feeds" . DS . "newfeeds");
         }
         else
             header('location:/login');
