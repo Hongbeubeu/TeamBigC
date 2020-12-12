@@ -24,4 +24,13 @@ class UserModel extends BaseModel
         $output = $this->dbo->table($this->table)->where([['email', $email]])->get()->toArray();
         return $output[0]['password'];
     }
+
+    public function getUserId(string $email) {
+        $output = $this->dbo->table($this->table)->where([['email', $email]])->get()->toArray();
+        return $output[0]['id'];
+    }
+
+    public function getUserInfo(int $id) {
+        return $this->dbo->table($this->table)->where([['id', $id]])->get()->toArray();
+    }
 }

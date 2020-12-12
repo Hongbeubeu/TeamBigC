@@ -8,7 +8,7 @@ class BaseController
     var $vars = [];
     var $layout = "default";
 
-    function set($data)
+    function setParameter($data)
     {
         $this->vars = array_merge($this->vars, $data);
     }

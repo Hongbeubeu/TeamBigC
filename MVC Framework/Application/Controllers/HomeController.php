@@ -2,6 +2,7 @@
 
 namespace Application\Controllers;
 
+use Application\Models\UserModel;
 use Core\BaseController;
 
 class HomeController extends BaseController
@@ -36,8 +37,10 @@ class HomeController extends BaseController
             header('location:/login');
     }
 
-    function status()
+    function status($id)
     {
+        $var[] = $id;
+        $this->setParameter($var);
         $this->render(DS . "Posts" . DS . "status_post");
     }
 }

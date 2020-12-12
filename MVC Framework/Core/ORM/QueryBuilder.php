@@ -5,6 +5,7 @@ use PDO;
 use Exception;
 use Core\ORM\MappedCollection;
 use Core\ORM\Core\ORM\MappedObject;
+use PDOException;
 
 class QueryBuilder{
 	private static $instance = null;
