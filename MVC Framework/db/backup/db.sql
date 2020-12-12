@@ -142,16 +142,16 @@ DROP TABLE IF EXISTS `Post`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `Post` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` int(10) unsigned DEFAULT NULL,
-  `title` varchar(45) DEFAULT NULL,
-  `content` text,
-  `status` varchar(45) DEFAULT NULL,
+  `user_id` int(10) unsigned NOT NULL,
+  `type` varchar(45) NOT NULL,
+  `caption` text CHARACTER SET utf8mb4,
+  `content` json DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated-at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
-  KEY `user_id` (`user_id`),
+  KEY `Post_ibfk_1` (`user_id`),
   CONSTRAINT `Post_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `User` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -160,6 +160,7 @@ CREATE TABLE `Post` (
 
 LOCK TABLES `Post` WRITE;
 /*!40000 ALTER TABLE `Post` DISABLE KEYS */;
+INSERT INTO `Post` VALUES (5,14,'normal','','[\"14_0_1607796924.jpg\", \"14_1_1607796924.png\"]','2020-12-12 18:15:25','2020-12-12 18:15:25');
 /*!40000 ALTER TABLE `Post` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -209,7 +210,7 @@ CREATE TABLE `User` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -218,6 +219,7 @@ CREATE TABLE `User` (
 
 LOCK TABLES `User` WRITE;
 /*!40000 ALTER TABLE `User` DISABLE KEYS */;
+INSERT INTO `User` VALUES (8,NULL,'81dc9bdb52d04dc20036dbd8313ed055','hong.nv1999@gmail.com','active','2020-12-07 21:18:08','2020-12-07 21:18:08'),(9,NULL,'7c91c9ea4029bfa21f19c5aa50addffa','Quangvuonghy123@gmail.com','active','2020-12-10 15:13:59','2020-12-10 15:13:59'),(10,NULL,'827ccb0eea8a706c4c34a16891f84e7b','hongbeubeu@gmail.com','active','2020-12-11 02:44:31','2020-12-11 02:44:31'),(11,NULL,'827ccb0eea8a706c4c34a16891f84e7b','hong@gmail.com','active','2020-12-11 04:46:09','2020-12-11 04:46:09'),(12,NULL,'1587965fb4d4b5afe8428a4a024feb0d','Quangvu','active','2020-12-11 17:36:09','2020-12-11 17:36:09'),(13,NULL,'d41d8cd98f00b204e9800998ecf8427e','0374288037','active','2020-12-11 17:37:02','2020-12-11 17:37:02'),(14,NULL,'827ccb0eea8a706c4c34a16891f84e7b','kaka@gmail.com','active','2020-12-12 16:57:14','2020-12-12 16:57:14'),(15,NULL,'827ccb0eea8a706c4c34a16891f84e7b','tete@gmail.com','active','2020-12-12 17:58:23','2020-12-12 17:58:23');
 /*!40000 ALTER TABLE `User` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -264,8 +266,7 @@ CREATE TABLE `User_Profile` (
   `picture` varchar(50) DEFAULT NULL,
   `gender` char(1) DEFAULT NULL,
   `about` text,
-  `date_of_birth` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `date_updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `date_of_birth` timestamp NULL DEFAULT NULL,
   `display_name` varchar(45) DEFAULT NULL,
   `education` varchar(50) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -273,7 +274,7 @@ CREATE TABLE `User_Profile` (
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `User_Profile_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `User` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -282,6 +283,7 @@ CREATE TABLE `User_Profile` (
 
 LOCK TABLES `User_Profile` WRITE;
 /*!40000 ALTER TABLE `User_Profile` DISABLE KEYS */;
+INSERT INTO `User_Profile` VALUES (15,8,NULL,NULL,NULL,NULL,'hongbeubeu',NULL,'2020-12-07 21:18:08','2020-12-07 21:18:08'),(16,10,NULL,NULL,NULL,NULL,'hongbeu',NULL,'2020-12-11 02:44:31','2020-12-11 02:44:31'),(17,11,NULL,NULL,NULL,NULL,'hong',NULL,'2020-12-11 04:46:10','2020-12-11 04:46:10'),(18,12,NULL,NULL,NULL,NULL,'1008',NULL,'2020-12-11 17:36:09','2020-12-11 17:36:09'),(19,13,NULL,NULL,NULL,NULL,'',NULL,'2020-12-11 17:37:02','2020-12-11 17:37:02'),(20,14,NULL,NULL,NULL,NULL,'kaka',NULL,'2020-12-12 16:57:14','2020-12-12 16:57:14'),(21,15,NULL,NULL,NULL,NULL,'tete',NULL,'2020-12-12 17:58:23','2020-12-12 17:58:23');
 /*!40000 ALTER TABLE `User_Profile` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -294,4 +296,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-07 15:44:15
+-- Dump completed on 2020-12-13  1:19:47
