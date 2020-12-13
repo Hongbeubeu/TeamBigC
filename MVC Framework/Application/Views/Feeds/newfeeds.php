@@ -11,22 +11,7 @@
 </head>
 
 <body>
-    <p><?php
-    var_dump($this->vars);
-        foreach ($this->vars as $key => $arr) {
-            foreach($arr as $k => $item) {
-                if($k != 'content') {
-                    echo $item . "<br>";
-                } else {
-                    $array = json_decode($item, true);
-                    foreach ($array as $it) {
-                        echo $it . "<br>";
-                    }
-                }
-            }
-        }
-
-        ?></p>
+    
     <div class="navbar">
         <div class="navbar__account-info">
             <img class="navbar__avatar" src="/public/assets/avatar.jpg"></img>
@@ -92,6 +77,10 @@
             <a href="#"><img src="/public/assets/video-call.png" class="icon-button icon_medium" /> </a>
         </div>
         <div class="newfeed__main">
+        <?php
+            foreach ($this->vars as $key => $arr) {
+                $image = json_decode($arr['content'], true);
+        ?>          
             <div class="newfeed__post">
                 <div class="newfeed__header">
                     <div class="newfeed__identify identify" src="#">
@@ -102,8 +91,9 @@
                     <a href="#" class="newfeed__like-button"><img src="/public/assets/heart.png" class="icon_medium icon_heart" /> </a>
                 </div>
                 <div class="newfeed__content">
-                    <p>Hôm nay tôi buồn quá</p>
-                    <img style="height: 40vh; width: 95%" src="/public/assets/post-image.jpg" />
+                    <p><?php echo $arr['caption'] ?></p>
+
+                    <img style="height: 100%; width: 100%" src="/public/uploads/<?php echo $image[0]  ?>"  />
                 </div>
                 <div class="newfeed__comment">
                     <div class="newfeed__comment-main">
@@ -119,6 +109,9 @@
                     <input class="newfeed__comment-input newfeed__input" type="text" placeholder="Write your comment" />
                 </div>
             </div>
+            <?php
+            }
+        ?>
             <div class="newfeed__post">
                 <div class="newfeed__header">
                     <div class="newfeed__identify identify" src="#">
