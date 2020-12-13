@@ -39,8 +39,11 @@ class HomeController extends BaseController
 
     function status($id)
     {
-        $var[] = $id;
-        $this->setParameter($var);
+        $data = [
+            'id' => $id
+        ];
+
+        $this->setParameter($data);
         $this->render(DS . "Posts" . DS . "status_post");
     }
 }

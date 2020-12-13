@@ -19,7 +19,7 @@
                 <input type="file" name="fileToUpload[]" multiple="multiple" />
                 <br>
                 <br>
-                <input type="hidden" name="userId" value="<?php echo $this->vars[0]; ?>" />
+                <input type="hidden" name="userId" value="<?= $id ?>" />
                 <input type="submit" name="submit" value="Post" />
             </form>
         </div>

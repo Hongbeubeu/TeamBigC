@@ -6,7 +6,6 @@ use Exception;
 class BaseController
 {
     var $vars = [];
-    var $layout = "default";
 
     function setParameter($data)
     {
