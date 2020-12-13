@@ -6,17 +6,18 @@
     <title>Newfeeds</title>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link href="/public/css/style.css" rel="stylesheet" type="text/css">
+    <link href="/public/css/newfeeds.css" rel="stylesheet" type="text/css">
 
 </head>
 
 <body>
-    
+
     <div class="navbar">
         <div class="navbar__account-info">
             <img class="navbar__avatar" src="/public/assets/avatar.jpg"></img>
             <p class="navbar__name">Lê Anh Dũng</p>
             <p class="navbar__email">dunglebeovaic@gmail.com</p>
+            <a href="./logout">Log out</a>
         </div>
         <button class="navbar__donate-button">Donate</button>
         <div class="navbar__menu">
@@ -77,23 +78,59 @@
             <a href="#"><img src="/public/assets/video-call.png" class="icon-button icon_medium" /> </a>
         </div>
         <div class="newfeed__main">
-        <?php
+            <?php
             foreach ($this->vars as $key => $arr) {
                 $image = json_decode($arr['content'], true);
-        ?>          
+        ?>
             <div class="newfeed__post">
                 <div class="newfeed__header">
                     <div class="newfeed__identify identify" src="#">
                         <img class="avatar icon_medium" src="/public/assets/avatar.jpg" />
                         <p class="name" style="display: inline;"> Tuan Le Minh</p>
                     </div>
-                    <a href="#" class="newfeed__share-button"><img src="/public/assets/share.png" class="icon_medium" /> </a>
-                    <a href="#" class="newfeed__like-button"><img src="/public/assets/heart.png" class="icon_medium icon_heart" /> </a>
+                    <a href="#" class="newfeed__share-button"><img src="/public/assets/share.png" class="icon_medium" />
+                    </a>
+                    <a href="#" class="newfeed__like-button"><img src="/public/assets/heart.png"
+                            class="icon_medium icon_heart" /> </a>
                 </div>
                 <div class="newfeed__content">
                     <p><?php echo $arr['caption'] ?></p>
+                    <?php 
+                    $numberImage = count($image);
+                    if ($numberImage == 1) {
+                        ?>
+                    <img style="height: 100%; width: 100%" src="/public/uploads/<?php echo $image[0]?>" />
+                    <?php
+                    }
+                    if ($numberImage > 1) {
+                        ?>
+                    <div>
+                        <div class="slideshow-container">
+                            <!-- Full-width images with number and caption text -->
+                               <?php foreach ($image as $key=>$value) : ?> 
+                                <div class="mySlides mySlides<?php echo $arr['id']?> fade ">
+                                <img src="/public/uploads/<?php echo $value?>" style="width:100%">
+                                </div>
+                                <?php endforeach ?>
+                         
+                            <a class="prev" onclick="plusSlides(-1, $arr['id'])">&#10094;</a>
+                            <a class="next" onclick="plusSlides(1, $arr['id'])">&#10095;</a>
+                        </div>
+                        <br>
 
-                    <img style="height: 100%; width: 100%" src="/public/uploads/<?php echo $image[0]  ?>"  />
+                        <!-- The dots/circles -->
+                        <div style="text-align:center">
+                        <?php foreach ($image as $key=>$value) : ?> 
+                    
+                                 <span class="dot dot<?php echo $arr['id']?>" onclick="currentSlide(<?php echo $value?>, <?php echo $arr['id']?>)"></span>
+                
+                                <?php endforeach ?>
+                        </div>
+                    </div>
+                    <?php  
+                    }
+                    ?>
+
                 </div>
                 <div class="newfeed__comment">
                     <div class="newfeed__comment-main">
@@ -118,12 +155,13 @@
                         <img class="avatar icon_medium" src="/public/assets/avatar.jpg" />
                         <p class="name" style="display: inline;"> Tuan Le Minh</p>
                     </div>
-                    <a href="#" class="newfeed__share-button"><img src="/public/assets/share.png" class="icon_medium" /> </a>
-                    <a href="#" class="newfeed__like-button"><img src="/public/assets/heart.png" class="icon_medium icon_heart" /> </a>
+                    <a href="#" class="newfeed__share-button"><img src="/public/assets/share.png" class="icon_medium" />
+                    </a>
+                    <a href="#" class="newfeed__like-button"><img src="/public/assets/heart.png"
+                            class="icon_medium icon_heart" /> </a>
                 </div>
                 <div class="newfeed__content">
                     <p>Hôm nay tôi buồn quá</p>
-                    <img style="height: 40vh; width: 95%" src="/public/assets/post-image.jpg" />
                 </div>
                 <div class="newfeed__comment">
                     <div class="newfeed__comment-main">

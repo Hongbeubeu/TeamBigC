@@ -9,6 +9,8 @@ main {
 .container {
     width: 100%;
     height: 100%;
+    font-family:  Arial, sans-serif;
+
 }
 
 .leftpane {
@@ -42,6 +44,7 @@ main {
 h1 {
     margin-bottom: 80px;
     font-size: 45px;
+    color: rgba(0, 0, 0, 0.6)
 }
 
 .under-h1 {
@@ -49,7 +52,6 @@ h1 {
 }
 
 .btn {
-    border-radius: 8px;
     text-align: center;
     text-decoration: none;
     background-color: white;
@@ -58,8 +60,9 @@ h1 {
     font-size: 16px;
     width: 270px;
     padding: 10px;
-    cursor: pointer;
     margin-bottom: 20px;
+    border: 1px solid #ccc;
+
 }
 
 img {
@@ -91,7 +94,6 @@ img {
 }
 
 input {
-    border-radius: 8px;
     margin-bottom: 10px;
     text-decoration: none;
     background-size: 15%;
@@ -100,13 +102,12 @@ input {
     padding-left: 15px;
     padding-top: 10px;
     padding-bottom: 10px;
-    cursor: pointer;
+    border: 1px solid #ccc;
 }
 
 .btn-box,
 .btn-box:hover,
 .btn-box:active {
-    border-radius: 8px;
     margin-bottom: 10px;
     margin-top: 30px;
     text-decoration: none;
@@ -118,7 +119,9 @@ input {
     padding-bottom: 10px;
     cursor: pointer;
     background-color: #4AA7EF;
-    color: white
+    color: white;
+    border: 1px solid #ccc;
+
 }
 
 .btn-box:hover {
