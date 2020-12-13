@@ -49,4 +49,9 @@ class HomeController extends BaseController
         $this->setParameter($data);
         $this->render(DS . "Posts" . DS . "status_post");
     }
+
+    function ajax()
+    {
+        $this->render(DS . "Layouts" . DS . "ajax_example");
+    }
 }
