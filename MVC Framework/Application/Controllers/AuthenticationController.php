@@ -3,10 +3,8 @@
 namespace Application\Controllers;
 
 use Core\BaseController;
-use Core\Model;
 use Application\Models\UserModel;
 use Application\Models\UserProfileModel;
-use Core\Route;
 
 class AuthenticationController extends BaseController
 {
@@ -26,7 +24,7 @@ class AuthenticationController extends BaseController
                     setcookie('session_id', $email, time() + (86400 * 30), "/");
                 }
                 $id = $userModel->getUserId($email);
-                header('location:/status/'. $id);
+                header('location:/status/' . $id);
             } else {
                 header('location:/login');
             }

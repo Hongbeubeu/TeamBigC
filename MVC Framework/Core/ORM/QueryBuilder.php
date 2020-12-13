@@ -541,7 +541,6 @@ class QueryBuilder{
 	public function get() {
 		$this->assimbleQuery();
 		$this->getSQL = $this->sql;
-
 		$stmt = $this->dbh->prepare($this->sql);
 		$stmt->execute($this->bindValues);
 		$this->rowCount = $stmt->rowCount();

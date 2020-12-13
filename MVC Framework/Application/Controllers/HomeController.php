@@ -2,6 +2,7 @@
 
 namespace Application\Controllers;
 
+use Application\Models\PostModel;
 use Application\Models\UserModel;
 use Core\BaseController;
 
@@ -32,6 +33,9 @@ class HomeController extends BaseController
     function newfeed()
     {
         if ($this->checkLogin()) {
+            $postModel = new PostModel();
+            $posts = $postModel->getPosts(14);
+            $this->setParameter($posts);
             $this->render(DS . "Feeds" . DS . "newfeeds");
         } else
             header('location:/login');
@@ -42,7 +46,6 @@ class HomeController extends BaseController
         $data = [
             'id' => $id
         ];
-
         $this->setParameter($data);
         $this->render(DS . "Posts" . DS . "status_post");
     }
