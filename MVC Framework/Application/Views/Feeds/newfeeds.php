@@ -179,8 +179,6 @@
         </div>
     </div>
     <div class="suggestion">
-        <button id="myBtn">Open Modal</button>
-
         <div class="suggestion__donate">
             <p>SUGGESTION DONATE</p>
             <div class="newfeed__identify identify" src="#">
