@@ -108,22 +108,20 @@
                         <div class="slideshow-container">
                             <!-- Full-width images with number and caption text -->
                                <?php foreach ($image as $key=>$value) : ?> 
-                                <div class="mySlides mySlides<?php echo $arr['id']?> fade ">
+                                <div class="mySlides  index<?php echo $key?> mySlides<?php echo $arr['id']?> fade">
                                 <img src="/public/uploads/<?php echo $value?>" style="width:100%">
                                 </div>
                                 <?php endforeach ?>
                          
-                            <a class="prev" onclick="plusSlides(-1, $arr['id'])">&#10094;</a>
-                            <a class="next" onclick="plusSlides(1, $arr['id'])">&#10095;</a>
+                            <a class="prev" onclick="plusSlides(-1,<?php echo $arr['id']?>)">&#10094;</a>
+                            <a class="next" onclick="plusSlides(1, <?php echo $arr['id']?>)">&#10095;</a>
                         </div>
                         <br>
 
                         <!-- The dots/circles -->
                         <div style="text-align:center">
                         <?php foreach ($image as $key=>$value) : ?> 
-                    
-                                 <span class="dot dot<?php echo $arr['id']?>" onclick="currentSlide(<?php echo $value?>, <?php echo $arr['id']?>)"></span>
-                
+                                 <span class="dot dot<?php echo $arr['id']?>" onclick="currentSlide(<?php echo $key+1?>, <?php echo $arr['id']?>)"></span>
                                 <?php endforeach ?>
                         </div>
                     </div>
