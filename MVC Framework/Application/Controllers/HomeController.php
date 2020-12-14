@@ -49,4 +49,9 @@ class HomeController extends BaseController
         $this->setParameter($data);
         $this->render(DS . "Posts" . DS . "status_post");
     }
+
+    function profile($id) 
+    {
+        $this->render(DS . "Feeds" . DS . "profile");
+    }
 }

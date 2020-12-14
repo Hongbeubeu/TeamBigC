@@ -24,7 +24,7 @@ class AuthenticationController extends BaseController
                     setcookie('session_id', $email, time() + (86400 * 30), "/");
                 }
                 $id = $userModel->getUserId($email);
-                header('location:/status/' . $id);
+                header('location:/profile/' . $id);
             } else {
                 header('location:/login');
             }
