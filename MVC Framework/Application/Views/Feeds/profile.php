@@ -212,6 +212,6 @@
         </div>
     </div>
 </body>
-<script src="/public/js/handle_modal.js"></script>
+<script src="/public/js/handle_button.js"></script>
 
 </html>

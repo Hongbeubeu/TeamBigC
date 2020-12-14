@@ -57,6 +57,7 @@ class AuthenticationController extends BaseController
                 $profileParams['user_id'] = $userId;
                 $profileParams['display_name'] = $displayName;
                 $userProfileModel->setProfileInformation($profileParams);
+                header('location:/profile/' . $userId);
             } else {
                 //password unmatch
                 header('location:/register');
