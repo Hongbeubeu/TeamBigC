@@ -19,12 +19,10 @@ class AuthenticationController extends BaseController
             $encriptPassword = md5($password);
             $hookPassword = $userModel->getPasswordByEmail($email);
             if ($hookPassword == $encriptPassword) {
+                $id = $userModel->getUserId($email);
                 $session_id = md5($email);
                 $_SESSION['session_id'] = $session_id;
-                if (isset($formPost['logged'])) {
-                    setcookie('session_id', $session_id, time() + (86400 * 30), "/");
-                }
-                $id = $userModel->getUserId($email);
+                $_SESSION['user_id'] = $id;
                 header('location:/profile/' . $id);
             } else {
                 header('location:/login');
@@ -72,6 +70,8 @@ class AuthenticationController extends BaseController
     function logout()
     {
         unset($_SESSION['session_id']);
+        unset($_SESSION['user_id']);
+        session_destroy();
         header('location:/login');
     }
 }

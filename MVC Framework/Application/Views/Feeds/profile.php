@@ -7,7 +7,6 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link href="/public/css/profile.css" rel="stylesheet" type="text/css">
-
 </head>
 
 <body>
@@ -64,7 +63,7 @@
             </div>
             <div class="navbar__menu-button">
                 <img class="navbar__menu-icon" src="/public/assets/icons8-logout-rounded-left-64.png" />
-                <a href="login.html" class="navbar__menu-title">Logout</a>
+                <a href="/logout" class="navbar__menu-title">Logout</a>
             </div>
 
         </div>
@@ -79,9 +78,9 @@
                 <hr>
                 <div class="background_image_change_image">
                     <button>
-                    <img src="/public/assets/icons8-camera-50.png" />
-                    <p>Change Photo</p>
-                </button>
+                        <img src="/public/assets/icons8-camera-50.png" />
+                        <p>Change Photo</p>
+                    </button>
                 </div>
             </div>
             <div class="btn-group" style="width:100%">

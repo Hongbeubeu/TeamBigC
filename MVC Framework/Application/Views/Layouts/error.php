@@ -1,2 +1,2 @@
 <?php
-echo "404-notfounduu";
+echo "404-notfound";

@@ -30,13 +30,15 @@ class BaseController
     public function checkLogin()
     {
         if (!isset($_SESSION['session_id'])) {
-            if (!isset($_COOKIE['session_id']))
-                return false;
-            else
-            {
-                $_SESSION['session_id'] = $_COOKIE['session_id'];
-                return true;
-            }
+            return false;
+        }
+        return true;
+    }
+
+    public function checkRememberMe()
+    {
+        if (!isset($_COOKIE['session_id']) || !isset($_COOKIE['user_id'])) {
+            return false;
         }
         return true;
     }

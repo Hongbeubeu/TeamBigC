@@ -12,13 +12,13 @@ class HomeController extends BaseController
     {
         if ($this->checkLogin() == true) {
             header('location:/newfeed');
-        } else
-            $this->render(DS . "Authentication" . DS . "login");
+        }
+        $this->render(DS . "Authentications" . DS . "login");
     }
 
     function register()
     {
-        $this->render(DS . "Authentication" . DS . "register");
+        $this->render(DS . "Authentications" . DS . "register");
     }
 
     function newfeed()
@@ -49,7 +49,12 @@ class HomeController extends BaseController
     {
         if (!$this->checkLogin())
             header('location:/login');
-        else
-            $this->render(DS . "Feeds" . DS . "profile");
+        else {
+            if ($id != $_SESSION['user_id'])
+                header('location:/profile/' . $_SESSION['user_id']);
+            else {
+                $this->render(DS . "Feeds" . DS . "profile");
+            }
+        }
     }
 }
