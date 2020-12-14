@@ -10,8 +10,6 @@ function openPopup() {
 
 var slideIndex = 1;
 
-showSlides(slideIndex, 5);
-
 // Next/previous controls
 function plusSlides(n, id) {
   showSlides(slideIndex += n, id);
@@ -22,14 +20,14 @@ function currentSlide(n, id) {
   showSlides(slideIndex = n,id);
 }
 
-function showSlides(n, id = 6) {
-        var i;
+function showSlides(n, id) {
+          var i;
         var slides = document.getElementsByClassName(`mySlides${id}`);
         var dots = document.getElementsByClassName(`dot${id}`);
         if (n > slides.length) {slideIndex = 1}
         if (n < 1) {slideIndex = slides.length}
         for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";
+            slides[i].setAttribute("style","display: none !important");
         }
         for (i = 0; i < dots.length; i++) {
             dots[i].className = dots[i].className.replace(" active", "");
