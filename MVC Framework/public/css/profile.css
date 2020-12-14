@@ -105,13 +105,15 @@ body {
     display: flex;
     margin-left: 15%;
 }
-.background_image_search img{
-    width:30px;
-	height:30px;
-	margin-top:20px
+
+.background_image_search img {
+    width: 30px;
+    height: 30px;
+    margin-top: 20px
 }
-.background_image_search input{
-	margin-top:15px
+
+.background_image_search input {
+    margin-top: 15px
 }
 
 .background_image_change_image button {
@@ -127,13 +129,18 @@ body {
     width: 200px;
 }
 
+.background_image_change_image button:hover {
+    background-color: rgb(141, 140, 140);
+    opacity: 1;
+}
+
 .background_image hr {
     width: 70%;
     color: white;
 }
 
 ::placeholder {
-    color: white;
+    color: grey;
     opacity: 1;
     /* Firefox */
 }
