@@ -164,7 +164,7 @@
                     <p>Hôm nay tôi buồn quá</p>
                 </div>
                 <div class="newfeed__comment">
-                    <div class="newfeed__comment-main">
+                    <div class="newfeed__comment-main" id="cmt_form">
                         <div class="newfeed__identify identify" src="#">
                             <img class="avatar icon_small" src="/public/assets/avatar.jpg" />
                         </div>
@@ -174,7 +174,8 @@
                             <span class="newfeed__comment-text"> Mình đăng ảnh đẹp quá</span>
                         </div>
                     </div>
-                    <input class="newfeed__comment-input newfeed__input" type="text" placeholder="Write your comment" />
+                    <input class="newfeed__comment-input newfeed__input" id="comment" type="text" placeholder="Write your comment" />
+                    <button name="submit" onclick="addComment(document.getElementById('comment').value)"> Send </button>
                 </div>
             </div>
         </div>
@@ -215,5 +216,6 @@
     </div>
 </body>
 <script src="/public/js/handler.js"></script>
+<script src="/public/js/ajax_endpoint.js"></script>
 
 </html>
