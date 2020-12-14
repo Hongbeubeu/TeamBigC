@@ -97,7 +97,6 @@
                 <input class="newfeed__search-input" placeholder="Search" type="search" />
                  </div> -->
                 <div class="newfeed__control">
-                    <!-- <input class="newfeed__input_mind" type="text" placeholder="What do you mind ?" /> -->
                     <textarea class="newfeed__input_mind" placeholder="What do you mind ?" name="Text1" cols="40" rows="5"></textarea>
                     <div class="btn_select">
                         <button>Add Photo</button>
@@ -168,35 +167,35 @@
                 <div class="about_pane_title">
                     <p>About</p>
                     <img class="about_pane_title_img" src="../assets/icons8-edit-50.png" />
-                    <a href="#">Edit</a>
+                    <a href="#" id="myBtn" onclick="openModalBox()">Edit</a>
                 </div>
                 <hr>
                 <div class="infoUser">
                     <p>Display Name: </p>
-                    <p class="data_info" contenteditable="true">Lê Anh Dũng</p>
-                    <img class="about_pane_title_img" src="../assets/icons8-edit-24.png" onclick="showButton()" />
+                    <p class="data_info">Lê Anh Dũng</p>
+
                 </div>
                 <div class="infoUser">
                     <p>Gender: </p>
-                    <p class="data_info" contenteditable="true">Nam</p>
-                    <img class="about_pane_title_img" src="../assets/icons8-edit-24.png" onclick="showButton()" />
+                    <p class="data_info">Nam</p>
+
                 </div>
                 <div class="infoUser">
                     <p>Date of Birth: </p>
-                    <p class="data_info" contenteditable="true">28-08-1999</p>
-                    <img class="about_pane_title_img" src="../assets/icons8-edit-24.png" onclick="showButton()" />
+                    <p class="data_info">28-08-1999</p>
+
                 </div>
                 <div class="infoUser">
                     <p>Education: </p>
-                    <p class="data_info" contenteditable="true">Trường đại học Bách Khoa</p>
-                    <img class="about_pane_title_img" src="../assets/icons8-edit-24.png" onclick="showButton()" />
+                    <p class="data_info">Trường đại học Bách Khoa</p>
+
                 </div>
                 <div class="infoUser">
                     <p>Description: </p>
-                    <p class="data_info" contenteditable="true">Thích chơi game, ăn uống, ngủ,...</p>
-                    <img class="about_pane_title_img" src="../assets/icons8-edit-24.png" onclick="showButton()" />
+                    <p class="data_info">Thích chơi game, ăn uống, ngủ,...</p>
+
                 </div>
-                <button id="btn_update_info">Update Information</button>
+
                 <hr>
                 <div class="follow">
                     <div class="follower">
@@ -209,10 +208,74 @@
                         <p>Following</p>
                     </div>
                 </div>
+
+            </div>
+        </div>
+        <div class="container">
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <div class="toppane">
+                        <h2>Update your profile</h2>
+                        <div class="title_donate">
+                            <img src="../images/updateinfo.png" alt="ImageCover" class="image_cover">
+                            <p>Let's update your profile...</p>
+                        </div>
+                    </div>
+                    <div class="bottompane">
+                        <form action="" method="post">
+                            <div class="info_user">
+                                <div>
+                                    <p>Display Name</p>
+                                    <input class="input_text" type="text" placeholder="Display name" />
+                                </div>
+                                <div>
+                                    <p>Gender</p>
+                                    <div id="select_choose">
+                                        <div>
+                                            <input type="radio" name="my-input" id="male" checked>
+                                            <label for="male">Male</label>
+                                        </div>
+                                        <div>
+                                            <input type="radio" name="my-input" id="female">
+                                            <label for="female">Female</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="info_user">
+                                <div>
+                                    <p>Date of Birth</p>
+                                    <input class="input_text" type="text" />
+                                </div>
+                                <div>
+                                    <p>Education</p>
+                                    <input class="input_text" type="text" />
+                                </div>
+                            </div>
+                            <div id="info_user_description">
+                                <div>
+                                    <p>Description</p>
+                                    <textarea class="input_text" placeholder="What do you mind ?" name="Text1" cols="40" rows="4"></textarea>
+                                </div>
+                                <div id="select_btn">
+                                    <button href="">Cancel</button>
+                                    <button id="update_btn">Update Profile</button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </body>
-<script src="../js/handle_button.js"></script>
+<script src="../js/handle_modal.js"></script>
+<script src="../js/handler.js"></script>
 
 </html>

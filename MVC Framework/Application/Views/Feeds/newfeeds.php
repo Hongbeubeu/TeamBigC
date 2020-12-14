@@ -72,7 +72,7 @@
             <input class="newfeed__search-input" placeholder="Search" type="search" />
         </div>
         <div class="newfeed__control">
-            <input class="newfeed__input" type="text" placeholder="What do you mind ?" />
+            <input class="newfeed__input" id="newfeed__status" type="text" placeholder="What do you mind ?" />
             <a href="#"><img src="/public/assets/add-image.png" class="icon-button icon_medium" /> </a>
             <a href="#"><img src="/public/assets/stickers.png" class="icon-button icon_medium" /> </a>
             <a href="#"><img src="/public/assets/video-call.png" class="icon-button icon_medium" /> </a>
@@ -107,12 +107,12 @@
                     <div>
                         <div class="slideshow-container">
                             <!-- Full-width images with number and caption text -->
-                               <?php foreach ($image as $key=>$value) : ?> 
-                                <div class="mySlides  index<?php echo $key?> mySlides<?php echo $arr['id']?> fade">
+                            <?php foreach ($image as $key=>$value) : ?>
+                            <div class="mySlides  index<?php echo $key?> mySlides<?php echo $arr['id']?> fade">
                                 <img src="/public/uploads/<?php echo $value?>" style="width:100%">
-                                </div>
-                                <?php endforeach ?>
-                         
+                            </div>
+                            <?php endforeach ?>
+
                             <a class="prev" onclick="plusSlides(-1,<?php echo $arr['id']?>)">&#10094;</a>
                             <a class="next" onclick="plusSlides(1, <?php echo $arr['id']?>)">&#10095;</a>
                         </div>
@@ -120,9 +120,10 @@
 
                         <!-- The dots/circles -->
                         <div style="text-align:center">
-                        <?php foreach ($image as $key=>$value) : ?> 
-                                 <span class="dot dot<?php echo $arr['id']?>" onclick="currentSlide(<?php echo $key+1?>, <?php echo $arr['id']?>)"></span>
-                                <?php endforeach ?>
+                            <?php foreach ($image as $key=>$value) : ?>
+                            <span class="dot dot<?php echo $arr['id']?>"
+                                onclick="currentSlide(<?php echo $key+1?>, <?php echo $arr['id']?>)"></span>
+                            <?php endforeach ?>
                         </div>
                     </div>
                     <?php  
@@ -211,6 +212,29 @@
         </div>
 
     </div>
+    <div class="newfeed__modal" id="myModal">
+        <div class="newfeed__modal-content">
+            <span class="close">&times;</span>
+            <h3 class="newfeed__modal-header">Create post</h3>
+            <hr>
+            <form action="#" id="post-form">
+                <input class="newfeed__modal-input" type="text" placeholder="What do you mind" />
+                <br>
+                <br>
+                <div class="image-upload">
+                    <label for="file-input">
+                        <img class="icon_small" src="/public/assets/add-image.png" />
+                    </label>
+
+                    <input id="file-input" type="file" />
+                </div>
+                <br>
+                <br>
+                <input class="newfeed__modal-button" id="modal_button" type="submit" value="Post" />
+            </form>
+        </div>
+    </div>
+
 </body>
 <script src="/public/js/handler.js"></script>
 
