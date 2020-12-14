@@ -54,4 +54,10 @@ class HomeController extends BaseController
     {
         $this->render(DS . "Layouts" . DS . "ajax_example");
     }
+    
+    function profile($id) 
+    {
+        $this->render(DS . "Feeds" . DS . "profile");
+
+    }
 }
