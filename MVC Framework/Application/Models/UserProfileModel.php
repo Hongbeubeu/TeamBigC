@@ -1,4 +1,5 @@
 <?php
+
 namespace Application\Models;
 
 use Core\BaseModel;
@@ -6,12 +7,18 @@ use Core\BaseModel;
 class UserProfileModel extends BaseModel
 {
     public $table = "User_Profile";
-   
-    public function setProfileInformation(array $paramsIn) {
+
+    public function setProfileInformation(array $paramsIn)
+    {
         $timestamp = date("Y-m-d H:i:s");
         $params['created_at'] = $timestamp;
         $params['updated_at'] = $timestamp;
         $params = array_merge($params, $paramsIn);
         return $this->dbo->insert($this->table, $params);
+    }
+
+    public function getProfileInformation($user_id)
+    {
+        return $this->dbo->table($this->table)->where([['user_id', $user_id]])->get()->toArray();
     }
 }

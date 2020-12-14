@@ -5,6 +5,7 @@ $router->get('/login', 'HomeController@login');
 $router->get('/register', 'HomeController@register');
 $router->get('/newfeed', 'HomeController@newfeed');
 $router->get('/status/{id}', 'HomeController@status');
+$router->get('/profile', 'HomeController@profile');
 
 $router->get('/logout', "AuthenticationController@logout");
 

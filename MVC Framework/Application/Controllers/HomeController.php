@@ -4,6 +4,7 @@ namespace Application\Controllers;
 
 use Application\Models\PostModel;
 use Application\Models\UserModel;
+use Application\Models\UserProfileModel;
 use Core\BaseController;
 
 class HomeController extends BaseController
@@ -48,5 +49,20 @@ class HomeController extends BaseController
         ];
         $this->setParameter($data);
         $this->render(DS . "Posts" . DS . "status_post");
+    }
+    function profile(){
+        {
+            if ($this->checkLogin()) {
+                $userModel = new UserModel();
+                $email = $_SESSION['session_id'];
+                $userId = $userModel->getUserId($email);
+                $userProfileModel =  new UserProfileModel();
+                $userInfo = $userProfileModel->getProfileInformation($userId);
+                $this->setParameter($userInfo);
+                $this->render(DS . "Profile" . DS . "profile");
+            } else
+                header('location:/login');
+        }
+       
     }
 }
