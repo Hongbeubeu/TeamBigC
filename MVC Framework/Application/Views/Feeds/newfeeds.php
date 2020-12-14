@@ -171,7 +171,7 @@
                         <div class=newfeed__comment-content>
                             <span class="newfeed__comment-name" style="display: inline;"> Tuan Le Minh</span>
                             </br>
-                            <span class="newfeed__comment-text"> Mình đăng ảnh đẹp quá</span>
+                            <span class="newfeed__comment-text"> Mình đăng ảnh đẹp quá  </span>
                         </div>
                     </div>
                     <input class="newfeed__comment-input newfeed__input" id="comment" type="text" placeholder="Write your comment" />
