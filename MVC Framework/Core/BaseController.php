@@ -27,6 +27,20 @@ class BaseController
         }
     }
 
+    public function checkLogin()
+    {
+        if (!isset($_SESSION['session_id'])) {
+            if (!isset($_COOKIE['session_id']))
+                return false;
+            else
+            {
+                $_SESSION['session_id'] = $_COOKIE['session_id'];
+                return true;
+            }
+        }
+        return true;
+    }
+
     private function secure_input($data)
     {
         $data = trim($data);

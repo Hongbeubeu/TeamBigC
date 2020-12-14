@@ -19,9 +19,10 @@ class AuthenticationController extends BaseController
             $encriptPassword = md5($password);
             $hookPassword = $userModel->getPasswordByEmail($email);
             if ($hookPassword == $encriptPassword) {
-                $_SESSION['session_id'] = $email;
+                $session_id = md5($email);
+                $_SESSION['session_id'] = $session_id;
                 if (isset($formPost['logged'])) {
-                    setcookie('session_id', $email, time() + (86400 * 30), "/");
+                    setcookie('session_id', $session_id, time() + (86400 * 30), "/");
                 }
                 $id = $userModel->getUserId($email);
                 header('location:/profile/' . $id);
@@ -36,14 +37,17 @@ class AuthenticationController extends BaseController
     function register()
     {
         $formPost = $_POST;
+        //filter input 
         $this->secure_form($formPost);
 
+        //get input from form
         $email = $formPost['email'];
         $password = $formPost['password'];
         $confirmPassword = $formPost['confirmpassword'];
         $displayName = $formPost['displayname'];
 
         $userModel = new UserModel();
+        //check validable email
         if ($userModel->checkEmail($email) == 0) {
             if ($password == $confirmPassword) {
                 $pass = md5($password);
@@ -56,10 +60,12 @@ class AuthenticationController extends BaseController
                 $profileParams['display_name'] = $displayName;
                 $userProfileModel->setProfileInformation($profileParams);
             } else {
-                echo "pass khong khop";
+                //password unmatch
+                header('location:/register');
             }
         } else {
-            echo "Email da duoc su dung";
+            //email already exist in system
+            header('location:/register');
         }
     }
 

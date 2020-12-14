@@ -8,15 +8,6 @@ use Core\BaseController;
 
 class HomeController extends BaseController
 {
-
-    private function checkLogin()
-    {
-        if (!isset($_SESSION['session_id'])) {
-            return false;
-        }
-        return true;
-    }
-
     function login()
     {
         if ($this->checkLogin() == true) {
@@ -43,15 +34,22 @@ class HomeController extends BaseController
 
     function status($id)
     {
-        $data = [
-            'id' => $id
-        ];
-        $this->setParameter($data);
-        $this->render(DS . "Posts" . DS . "status_post");
+        if (!$this->checkLogin())
+            header('location:/login');
+        else {
+            $data = [
+                'id' => $id
+            ];
+            $this->setParameter($data);
+            $this->render(DS . "Posts" . DS . "status_post");
+        }
     }
 
-    function profile($id) 
+    function profile($id)
     {
-        $this->render(DS . "Feeds" . DS . "profile");
+        if (!$this->checkLogin())
+            header('location:/login');
+        else
+            $this->render(DS . "Feeds" . DS . "profile");
     }
 }
