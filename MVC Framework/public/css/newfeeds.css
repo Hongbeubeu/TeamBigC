@@ -208,6 +208,7 @@ body {
     margin-left: 140%;
     min-width: 200%;
     padding: 1em;
+    z-index: 2;
 }
 .relative {
     margin-right: 1em
