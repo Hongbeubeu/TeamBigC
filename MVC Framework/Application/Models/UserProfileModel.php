@@ -31,12 +31,12 @@ class UserProfileModel extends BaseModel
     {
         return $this->dbo->table($this->table)->where([['user_id', $user_id]])->get()->toArray();
     }
-    public function updateInformation(array $paramsIn, $paramsQuery)
+    public function updateInformation(array $paramsIn)
     {
         $timestamp = date("Y-m-d H:i:s");
-        $params['created_at'] = $timestamp;
         $params['updated_at'] = $timestamp;
         $params = array_merge($params, $paramsIn);
-        return $this->dbo->updateProfile($this->table, $params, $paramsQuery);
+        $userId = $_SESSION['user_id'];
+        return $this->dbo->update($this->table, $params)->where([['user_id', $userId]])->exec();
     }
 }

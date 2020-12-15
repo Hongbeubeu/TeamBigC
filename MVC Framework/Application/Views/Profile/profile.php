@@ -21,7 +21,7 @@
             <p class="navbar__email"><?php echo $_SESSION['session_id'] ?></p>
         </div>
         <form action="/profile/updateAvt" method="post" enctype="multipart/form-data">
-          <input type="file" name="photo" id="fileSelect">
+          <input type="file" name="fileToUpload" id="fileSelect">
           <input type="submit" name="submit" value="Upload file">
          </form>
         <button class="navbar__donate-button">Donate</button>
