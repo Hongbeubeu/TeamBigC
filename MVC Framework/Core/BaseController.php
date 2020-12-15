@@ -6,15 +6,28 @@ use Exception;
 class BaseController
 {
     var $vars = [];
+    var $errors = [];
+    var $userBaseInfo;
 
-    function setParameter($data)
+    public function setParameter($data)
     {
         $this->vars = array_merge($this->vars, $data);
+    }
+
+    public function setUserBaseInfo($userBaseInfo) 
+    {
+        $this->userBaseInfo = $userBaseInfo;
+    }
+
+    public function setError($error)
+    {
+        $this->errors[] = $error;
     }
 
     function render($filename)
     {
         ob_start();
+        extract($this->errors);
         extract($this->vars);
         if (file_exists(PATH_ROOT . DS . "Application" . DS . "Views" . DS . $filename . '.php'))
         {
@@ -25,6 +38,14 @@ class BaseController
         {
             header("location:/error");
         }
+    }
+
+    public function checkLogin()
+    {
+        if (!isset($_SESSION['session_id'])) {
+            return false;
+        }
+        return true;
     }
 
     private function secure_input($data)

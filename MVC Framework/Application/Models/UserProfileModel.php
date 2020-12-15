@@ -14,7 +14,17 @@ class UserProfileModel extends BaseModel
         $params['created_at'] = $timestamp;
         $params['updated_at'] = $timestamp;
         $params = array_merge($params, $paramsIn);
-        return $this->dbo->insert($this->table, $params);
+        return $this->dbo
+                    ->insert($this->table, $params);
+    }
+
+    public function getUserBaseInformation($userId) {
+        return $this->dbo
+                    ->table($this->table)
+                    ->select('picture, display_name')
+                    ->where([['user_id', $userId]])
+                    ->get()
+                    ->toArray();
     }
 
     public function getProfileInformation($user_id)

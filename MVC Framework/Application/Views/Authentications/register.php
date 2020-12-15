@@ -2,10 +2,11 @@
 <html>
 
 <head>
-    <title>Đăng nhập</title>
+    <title>Đăng ký</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/public/css/login-register.css" rel="stylesheet" type="text/css" />
+    
 </head>
 
 <body>
@@ -18,37 +19,37 @@
                         <button class="btn"><img src="/public/assets/icons8-google-64.png" />
                             Log in with Gmail
                         </button>
-                        <div>
+                        <div style="align-items: center;">
                             <hr class="divider1">
-                            <p class="suggestion">OR LOGIN WITH EMAIL</p>
+                            <p class="suggestion">OR REGISTER WITH EMAIL</p>
                             <hr class="divider2">
                         </div>
+                        <?php if(!empty($this->errors)) echo '<p>' . $this->errors[0] . '</p>' ?>
                         <div class="form-input">
-                            <form action="/login" method="POST">
+                            <form action="/register" method="POST" id="myForm">
                                 <div class="input-box">
-                                    <input type="text" name = "email" placeholder="Email">
+                                    <input type="text" name="email" placeholder="Email" id="email" required>
                                 </div>
                                 <div class="input-box">
-                                    <input type="password" name = "password" placeholder="Password">
+                                    <input type="password" name="password" placeholder="Password">
                                 </div>
-                                <div class="cbx">
-                                    <input type="checkbox" id="logged" name="logged" value = "logged">
-                                    <label for="logged"> Keep me logged in</label>
-                                    <a href="#">Forgot password</a>
+                                <div class="input-box">
+                                    <input type="password" name="confirmpassword" placeholder="Confirm Password">
+                                </div>
+                                <div class="input-box">
+                                    <input type="text" name="displayname" placeholder="Display Name">
                                 </div>
 
-                                <button class="btn-box" name="submit" type="submit" onclick="validateLogin()">Log in</button>
+                                <div>
+                                    <button class="btn-box" type="submit" id="submit" onclick="validateRegister()">Register</button>
+                                </div>
                             </form>
                         </div>
                         <div>
-                            <a id="dontaccount" href="#">Don't have an account yet ?</a>
-                            <a id="signup" href="/register">Sign up</a>
-                        </div>
-                        <div>
-
+                            <a id="dontaccount" href="#">Do have an account ?</a>
+                            <a id="login" href="/login">Login</a>
                         </div>
                     </div>
-
                 </div>
             </div>
             <div class="rightpane"></div>
