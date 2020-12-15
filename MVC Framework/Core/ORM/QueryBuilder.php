@@ -312,6 +312,87 @@ class QueryBuilder{
 		}// end if there is an ID or Array
 		return $this;
 	}
+	public function updateProfile($table_name, $fields = [], $id) {
+		$this->resetQuery();
+		$set ='';
+		$counter = 1;
+
+		foreach ($fields as $column => $field) {
+			$set .= "`$column` = ?";
+			$this->bindValues[] = $field;
+			if ( $counter < count($fields) ) {
+				$set .= ", ";
+			}
+			$counter++;
+		}
+
+		$this->sql = "UPDATE `{$table_name}` SET $set";
+		
+		if (isset($id)) {
+			// if there is an ID
+			if (is_numeric($id)) {
+				$this->sql .= " WHERE `user_id` = ?";
+				$this->bindValues[] = $id;
+			// if there is an Array
+			}elseif (is_array($id)) {
+				$arr = $id;
+				$counter = 0;
+
+				foreach ($arr as $param) {
+					if ($counter == 0) {
+						$this->where .= " WHERE ";
+						$counter++;
+					}else{
+						if ($this->isOrWhere) {
+							$this->where .= " Or ";
+						}else{
+							$this->where .= " AND ";
+						}
+						
+						$counter++;
+					}
+					$count_param = count($param);
+
+					if ($count_param == 1) {
+						$this->where .= "`id` = ?";
+						$this->bindValues[] =  $param[0];
+					}elseif ($count_param == 2) {
+						$operators = explode(',', "=,>,<,>=,>=,<>");
+						$operatorFound = false;
+
+						foreach ($operators as $operator) {
+							if ( strpos($param[0], $operator) !== false ) {
+								$operatorFound = true;
+								break;
+							}
+						}
+
+						if ($operatorFound) {
+							$this->where .= $param[0]." ?";
+						}else{
+							$this->where .= "`".trim($param[0])."` = ?";
+						}
+
+						$this->bindValues[] =  $param[1];
+					}elseif ($count_param == 3) {
+						$this->where .= "`".trim($param[0]). "` ". $param[1]. " ?";
+						$this->bindValues[] =  $param[2];
+					}
+
+				}
+				//end foreach
+			}
+			// end if there is an Array
+			$this->sql .= $this->where;
+
+			$this->getSQL = $this->sql;
+			$stmt = $this->dbh->prepare($this->sql);
+			$stmt->execute($this->bindValues);
+			return $stmt->rowCount();
+		}// end if there is an ID or Array
+		return $this;
+	}
+
 
 	/**
 	 * Insert data to $table_name

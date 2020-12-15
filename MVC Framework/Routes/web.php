@@ -12,3 +12,4 @@ $router->get('/logout', "AuthenticationController@logout");
 $router->post('/login', "AuthenticationController@login");
 $router->post('/register', "AuthenticationController@register");
 $router->post('/status', 'PostController@status');
+$router->post('/profile', 'ProfileController@update');

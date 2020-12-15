@@ -230,7 +230,7 @@
                             <div class="info_user">
                                 <div>
                                     <p>Display Name</p>
-                                    <input class="input_text" type="text" placeholder="Display name" />
+                                    <input class="input_text" type="text" name="display_name" placeholder="Display name" />
                                 </div>
                                 <div>
                                     <p>Gender</p>
@@ -250,11 +250,11 @@
                             <div class="info_user">
                                 <div>
                                     <p>Date of Birth</p>
-                                    <input class="input_text" type="text" />
+                                    <input class="input_text" type="text" name="birthday"/>
                                 </div>
                                 <div>
                                     <p>Education</p>
-                                    <input class="input_text" type="text" />
+                                    <input class="input_text" type="text" name="education" />
                                 </div>
                             </div>
                             <div id="info_user_description">
@@ -263,7 +263,7 @@
                                     <textarea class="input_text" placeholder="What do you mind ?" name="Text1" cols="40" rows="4"></textarea>
                                 </div>
                                 <div id="select_btn">
-                                    <button href="">Cancel</button>
+                                    <button onclick="document.getElementById('myModal').style.display='none'">Cancel</button>
                                     <button id="update_btn">Update Profile</button>
                                 </div>
                             </div>
