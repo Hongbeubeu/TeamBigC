@@ -13,7 +13,7 @@ class UserProfileModel extends BaseModel
         $params['updated_at'] = $timestamp;
         $params = array_merge($params, $paramsIn);
         return $this->dbo
-                    ->insert($this->table, $params);
+                        ->insert($this->table, $params);
     }
 
     public function getUserBaseInformation($userId) {
