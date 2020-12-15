@@ -6,10 +6,22 @@ use Exception;
 class BaseController
 {
     var $vars = [];
+    var $errors;
+    var $userBaseInfo;
 
     function setParameter($data)
     {
         $this->vars = array_merge($this->vars, $data);
+    }
+
+    function setUserBaseInfo($userBaseInfo) 
+    {
+        $this->userBaseInfo = $userBaseInfo;
+    }
+
+    function serError($error)
+    {
+        $this->error = $error;
     }
 
     function render($filename)
@@ -30,14 +42,6 @@ class BaseController
     public function checkLogin()
     {
         if (!isset($_SESSION['session_id'])) {
-            return false;
-        }
-        return true;
-    }
-
-    public function checkRememberMe()
-    {
-        if (!isset($_COOKIE['session_id']) || !isset($_COOKIE['user_id'])) {
             return false;
         }
         return true;

@@ -4,6 +4,7 @@ namespace Application\Controllers;
 
 use Application\Models\PostModel;
 use Application\Models\UserModel;
+use Application\Models\UserProfileModel;
 use Core\BaseController;
 
 class HomeController extends BaseController
@@ -25,24 +26,14 @@ class HomeController extends BaseController
     {
         if ($this->checkLogin()) {
             $postModel = new PostModel();
-            $posts = $postModel->getPosts(14);
+            $userProfileModel = new UserProfileModel();
+            $userBaseInfo = $userProfileModel->getUserBaseInformation($_SESSION['user_id']);
+            $this->setUserBaseInfo($userBaseInfo);
+            $posts = $postModel->getPosts($_SESSION['user_id']);
             $this->setParameter($posts);
             $this->render(DS . "Feeds" . DS . "newfeeds");
         } else
             header('location:/login');
-    }
-
-    function status($id)
-    {
-        if (!$this->checkLogin())
-            header('location:/login');
-        else {
-            $data = [
-                'id' => $id
-            ];
-            $this->setParameter($data);
-            $this->render(DS . "Posts" . DS . "status_post");
-        }
     }
 
     function profile($id)

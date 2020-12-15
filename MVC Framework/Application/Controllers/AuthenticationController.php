@@ -20,10 +20,10 @@ class AuthenticationController extends BaseController
             $hookPassword = $userModel->getPasswordByEmail($email);
             if ($hookPassword == $encriptPassword) {
                 $id = $userModel->getUserId($email);
-                $session_id = md5($email);
+                $session_id = $email;
                 $_SESSION['session_id'] = $session_id;
                 $_SESSION['user_id'] = $id;
-                header('location:/profile/' . $id);
+                header('location:/newfeed');
             } else {
                 header('location:/login');
             }
@@ -55,9 +55,13 @@ class AuthenticationController extends BaseController
 
                 $userProfileModel = new UserProfileModel();
                 $profileParams['user_id'] = $userId;
+                $profileParams['picture'] = '/public/assets/default.jpg';
                 $profileParams['display_name'] = $displayName;
                 $userProfileModel->setProfileInformation($profileParams);
-                header('location:/profile/' . $userId);
+                $session_id = $email;
+                $_SESSION['session_id'] = $session_id;
+                $_SESSION['user_id'] = $userId;
+                header('location:/newfeed');
             } else {
                 //password unmatch
                 header('location:/register');
