@@ -58,7 +58,7 @@
             </div>
             <div class="navbar__menu-button">
                 <img class="navbar__menu-icon" src="/public/assets/profile.png" />
-                <a href="/profile/1" class="navbar__menu-title">Profile</a>
+                <a href="/profile/update" class="navbar__menu-title">Profile</a>
             </div>
             <div class="navbar__menu-button">
                 <img class="navbar__menu-icon" src="/public/assets/settings.png" />

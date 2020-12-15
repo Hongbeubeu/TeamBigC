@@ -312,7 +312,7 @@ class QueryBuilder{
 		}// end if there is an ID or Array
 		return $this;
 	}
-	public function updateProfile($table_name, $fields = [], $id) {
+	public function updateProfile($table_name, $fields = [], $id=null) {
 		$this->resetQuery();
 		$set ='';
 		$counter = 1;
@@ -354,7 +354,7 @@ class QueryBuilder{
 					$count_param = count($param);
 
 					if ($count_param == 1) {
-						$this->where .= "`id` = ?";
+						$this->where .= "`user_id` = ?";
 						$this->bindValues[] =  $param[0];
 					}elseif ($count_param == 2) {
 						$operators = explode(',', "=,>,<,>=,>=,<>");

@@ -44,6 +44,10 @@ class HomeController extends BaseController
             if ($id != $_SESSION['user_id'])
                 header('location:/profile/' . $_SESSION['user_id']);
             else {
+                $userProfileModel =  new UserProfileModel();
+                $userId =  $_SESSION['user_id'];
+                $userInfo = $userProfileModel->getProfileInformation($userId);
+                $this->setParameter($userInfo);
                 $this->render(DS . "Profile" . DS . "profile");
             }
         }

@@ -231,7 +231,7 @@
                         </div>
                     </div>
                     <div class="bottompane">
-                        <form action="/profile" method="post">
+                        <form action="/profile/update" method="post">
                             <div class="info_user">
                                 <div>
                                     <p>Display Name</p>
@@ -268,7 +268,7 @@
                                     <textarea class="input_text" placeholder="What do you mind ?" name="description" cols="40" rows="4"></textarea>
                                 </div>
                                 <div id="select_btn">
-                                    <button id="update_btn" onclick="updateProfile()">Update Profile</button>
+                                    <button id="update_btn" >Update Profile</button>
                                 </div>
                             </div>
 
@@ -279,6 +279,7 @@
         </div>
     </div>
 </body>
-<script src="/public/js/profile_handle.js"></script>
+<script src="/public/js/handler.js"></script>
+<script src="/public/js/handle_modal.js"></script>
 
 </html>

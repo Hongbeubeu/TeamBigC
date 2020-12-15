@@ -17,23 +17,29 @@ class ProfileController extends BaseController
         $birthday = $formPost['birthday'];
         $education = $formPost['education'];
         $about = $formPost['description'];
-        // echo $display_name;
-        // echo $gender;
-        // echo $birthday;
-        // echo $education;
-        // echo $about;
-        // echo "true";
-        $userProfileModel = new UserProfileModel();
-        $userModel = new UserModel();
-        $email = $_SESSION['session_id'];
-        $userId = $userModel->getUserId($email);
-        //$queryId['user_id'] = $userId;
-        $profileParams['display_name'] = $display_name;
-        $profileParams['gender'] = $gender;
-        $profileParams['date_of_birth'] = $birthday;
-        $profileParams['education'] = $education;
-        $profileParams['about'] = $about;
-        $userProfileModel->updateInformation($profileParams,$userId);
+        //if ($display_name == "" || $gender == ""|| $birthday ==  "" || $about ==  ""){
+            //$this->render(DS . "Profile" . DS . "profile");   
+        //}
+        //else{
+            $userProfileModel = new UserProfileModel();
+            $userId = $_SESSION['user_id'];
+            $profileParams['display_name'] = $display_name;
+            $profileParams['gender'] = $gender;
+            $profileParams['date_of_birth'] = $birthday;
+            $profileParams['education'] = $education;
+            $profileParams['about'] = $about;
+            $result = $userProfileModel->updateInformation($profileParams,$userId);
+            echo $result;
+            if ($result == 1){
+                header('location:/profile/' . $_SESSION['user_id']);
+                $userInfo = $userProfileModel->getProfileInformation($userId);
+                $this->setParameter($userInfo);
+                $this->render(DS . "Profile" . DS . "profile");
+            }
+            else{
+                echo "update no success";
+            }
+       // }
         
     }
 
