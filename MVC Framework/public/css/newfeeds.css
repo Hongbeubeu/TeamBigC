@@ -155,6 +155,13 @@ body {
 .newfeed__comment-text {
     font-size: 0.9em;
 }
+.newfeed__comment-input {
+    width: 90% !important;
+}
+.newfeed__comment-container {
+    max-height: 40vh;
+    overflow: auto;
+}
 /*SUGGESTION----------- */
 
 .suggestion {
