@@ -38,13 +38,22 @@ class HomeController extends BaseController
 
     function profile($id)
     {
+    
         if (!$this->checkLogin())
             header('location:/login');
         else {
             if ($id != $_SESSION['user_id'])
                 header('location:/profile/' . $_SESSION['user_id']);
             else {
-                $this->render(DS . "Feeds" . DS . "profile");
+                $userProfileModel =  new UserProfileModel();
+                $postModel = new PostModel();
+                $userId =  $_SESSION['user_id'];
+                $userInfo = $userProfileModel->getProfileInformation($userId);
+                $posts = $postModel->getPostsMyselft($_SESSION['user_id']);
+                $this->setParameterPost($posts);
+                //$this->setUserBaseInfo($userBaseInfo);
+                $this->setParameter($userInfo);
+                $this->render(DS . "Profile" . DS . "profile");
             }
         }
     }
