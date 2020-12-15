@@ -119,11 +119,6 @@ body {
     width: 200px;
 }
 
-.background_image_change_image button:hover {
-    background-color: rgb(141, 140, 140);
-    opacity: 1;
-}
-
 .background_image hr {
     width: 70%;
     color: white;
@@ -287,14 +282,39 @@ body {
     padding: 4% 0vw 2vw 5%;
 }
 
+.newfeed__header,
+.newfeed_select_button,
+.newfeed_option_button {
+    display: flex;
+}
+
+.newfeed_option_button {
+    margin-left: 50%;
+    width: auto;
+    height: 50px;
+}
+
+.newfeed_select_button p {
+    margin-left: 10px;
+    margin-top: 15px;
+}
+
+.newfeed_option_button hr {
+    margin-left: 10px;
+}
+
+.icon_select {
+    width: 40px;
+    height: 40px;
+}
+
 .newfeed__like-button {
     float: right;
 }
 
 .newfeed__share-button {
     float: right;
-    margin-right: 2em;
-    margin-left: 2em;
+    margin-left: 10px;
 }
 
 .newfeed__commnet {

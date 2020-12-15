@@ -93,6 +93,9 @@
         </div>
         <div class="under_cover">
             <div class="newfeed">
+                <!-- <div class="newfeed__search">
+                <input class="newfeed__search-input" placeholder="Search" type="search" />
+                 </div> -->
                 <div class="newfeed__control">
                     <textarea class="newfeed__input_mind" placeholder="What do you mind ?" name="Text1" cols="40" rows="5"></textarea>
                     <div class="btn_select">
@@ -107,11 +110,19 @@
                                 <img class="avatar icon_medium" src="../assets/avatar.jpg" />
                                 <p class="name" style="display: inline;"> Tuan Le Minh</p>
                             </div>
+                            <div class="newfeed_option_button">
+                                <div class="newfeed_select_button">
 
-                            <a href="#" class="newfeed__share-button"><img src="../assets/share.png" class="icon_medium" /> </a>
-                            <a href="#" class="newfeed__like-button"><img src="../assets/heart.png" class="icon_medium icon_heart" /> </a>
+                                    <a href="#" onclick="changeIcon()" class="newfeed__like-button"><img src="../assets/heart.png" class="icon_select" id="icon_select_heart" /> </a>
+                                    <p>50</p>
+                                </div>
+                                <hr>
+                                <div class="newfeed_select_button">
 
-
+                                    <a href="#" class="newfeed__share-button"><img src="../assets/share.png" class="icon_select" id="icon_select_share" /> </a>
+                                    <p>100</p>
+                                </div>
+                            </div>
                         </div>
                         <div class="newfeed__content">
                             <p>Hôm nay tôi buồn quá</p>
@@ -227,7 +238,7 @@
                             <div class="info_user">
                                 <div>
                                     <p>Display Name</p>
-                                    <input class="input_text" type="text" name="display_name" placeholder="Display name" />
+                                    <input class="input_text" type="text" placeholder="Display name" />
                                 </div>
                                 <div>
                                     <p>Gender</p>
@@ -247,11 +258,11 @@
                             <div class="info_user">
                                 <div>
                                     <p>Date of Birth</p>
-                                    <input class="input_text" type="text" name="birthday" />
+                                    <input class="input_text" type="text" />
                                 </div>
                                 <div>
                                     <p>Education</p>
-                                    <input class="input_text" type="text" name="education" />
+                                    <input class="input_text" type="text" />
                                 </div>
                             </div>
                             <div id="info_user_description">
@@ -260,7 +271,7 @@
                                     <textarea class="input_text" placeholder="What do you mind ?" name="Text1" cols="40" rows="4"></textarea>
                                 </div>
                                 <div id="select_btn">
-                                    <button onclick="document.getElementById('myModal').style.display='none'">Cancel</button>
+                                    <button href="">Cancel</button>
                                     <button id="update_btn">Update Profile</button>
                                 </div>
                             </div>
@@ -274,5 +285,6 @@
 </body>
 <script src="../js/handle_modal.js"></script>
 <script src="../js/handler.js"></script>
+<script src="../js/handle_heart_share.js"></script>
 
 </html>
