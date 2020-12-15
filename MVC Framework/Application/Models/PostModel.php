@@ -28,10 +28,17 @@ class PostModel extends BaseModel
 
     public function getPosts(int $userId)
     {
-        return $this->dbo
+        $posts = $this->dbo
             ->table($this->table)
-            ->where([['user_id', $userId]])
             ->get()
             ->toArray();
+        $count = count($posts);
+        for($i = 0; $i < $count; $i++) {
+            $userProfile = new UserProfileModel();
+            $user = $userProfile->getUserBaseInformation($posts[$i]['user_id']);
+            $posts[$i]['picture'] = $user[0]['picture'];
+            $posts[$i]['display_name'] = $user[0]['display_name'];
+        }
+        return $posts;
     }
 }

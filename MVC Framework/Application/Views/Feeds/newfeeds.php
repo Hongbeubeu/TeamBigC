@@ -24,7 +24,7 @@
             <h3 class="navbar__menu-title">Menu</h3>
             <div class="navbar__menu-button">
                 <img class="navbar__menu-icon" src="/public/assets/newfeed.png" />
-                <a href="newfeeds" class="navbar__menu-title">Newfeeds</a>
+                <a href="newfeed" class="navbar__menu-title">Newfeeds</a>
             </div>
             <div class="navbar__menu-button">
                 <img class="navbar__menu-icon" src="/public/assets/messages.png" />
@@ -58,7 +58,7 @@
             </div>
             <div class="navbar__menu-button">
                 <img class="navbar__menu-icon" src="/public/assets/profile.png" />
-                <a href="#" class="navbar__menu-title">Profile</a>
+                <a href="/profile/1" class="navbar__menu-title">Profile</a>
             </div>
             <div class="navbar__menu-button">
                 <img class="navbar__menu-icon" src="/public/assets/settings.png" />
@@ -85,8 +85,8 @@
             <div class="newfeed__post">
                 <div class="newfeed__header">
                     <div class="newfeed__identify identify" src="#">
-                        <img class="avatar icon_medium" src="<?php echo $this->userBaseInfo[0]['picture'] ?>" />
-                        <p class="name" style="display: inline;"> <?php echo $this->userBaseInfo[0]['display_name'] ?></p>
+                        <img class="avatar icon_medium" src="<?php echo $arr['picture'] ?>" />
+                        <p class="name" style="display: inline;"> <?php echo $arr['display_name'] ?></p>
                     </div>
                     <a href="#" class="newfeed__share-button"><img src="/public/assets/share.png" class="icon_medium" />
                     </a>
