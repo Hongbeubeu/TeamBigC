@@ -130,7 +130,7 @@ body {
 }
 
 ::placeholder {
-    color: white;
+    color: black;
     opacity: 1;
     /* Firefox */
 }
@@ -207,12 +207,11 @@ body {
 }
 
 .newfeed__control {
+    display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 60%;
-    margin: 1em 2.5%;
-    margin-top: 40px;
-    background-color: white;
+    width: 95%;
+    margin: 4% 2.5%;
 }
 
 .btn_select {
@@ -266,12 +265,12 @@ body {
 }
 
 .newfeed__input {
-    border: none;
-    border: solid 1px #ccc;
-    background-color: rgb(238, 234, 234);
+    height: 6vh;
+    border: none; 
+    border:solid 1px #ccc;
     border-radius: 10px;
-    width: 90%;
-    padding: 0.9em 1em;
+    width: 70%;
+    padding: 0.2em 1em;
 }
 
 .newfeed__input:focus,
@@ -606,3 +605,62 @@ body {
 #notification {
     display: none;
 }
+.newfeed__modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content */
+  .newfeed__modal-content {
+    background-color: #FDFFFF;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%;
+  }
+  .newfeed__modal-header {
+    text-align: center;
+}
+.newfeed__modal-input {
+    width: 100%;
+    height: 20vh;
+    border: none;
+    line-height:20vh;   
+   font-size: 1.5em;
+}
+.newfeed__modal-input::placeholder{
+  top: 0px;
+}
+.newfeed__modal-button {
+    width: 100%;
+    height: 3em;
+    border: none;
+    color: white;
+    padding: 15px 56px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    background-color: rgb(33,184, 249);
+}
+.image-upload>input {
+    display: none;
+  }
+.text {
+    color: #f2f2f2;
+    font-size: 15px;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+  }

@@ -16,14 +16,16 @@
     ?>
     <div class="navbar">
         <div class="navbar__account-info">
-            <img class="navbar__avatar" src=<?php echo $arr['picture']?$arr['picture']: "/public/assets/avatar.jpg" ?>></img>
-            <p class="navbar__name"><?php echo $arr['display_name'] ?></p>
+            <img class="navbar__avatar" src=<?php echo $this->userBaseInfo[0]['picture']? $this->userBaseInfo[0]['picture']: "/public/assets/avatar.jpg" ?>></img>
+            <p class="navbar__name"><?php echo $this->userBaseInfo[0]['display_name'] ?></p>
             <p class="navbar__email"><?php echo $_SESSION['session_id'] ?></p>
         </div>
-        <form action="/profile/updateAvt" method="post" enctype="multipart/form-data">
-          <input type="file" name="photo" id="fileSelect">
-          <input type="submit" name="submit" value="Upload file">
-         </form>
+        <?php if ($_SESSION['user_id'] == $arr['user_id']) echo 
+            '<form action="/profile/updateAvt" method="post" enctype="multipart/form-data">
+            <input type="file" name="photo" id="fileSelect">
+            <input type="submit" name="submit" value="Upload file">
+            </form>' 
+        ?>
         <button class="navbar__donate-button">Donate</button>
         <div class="navbar__menu">
             <h3 class="navbar__menu-title">Menu</h3>
@@ -63,7 +65,7 @@
             </div>
             <div id="navbar_profile" class="navbar__menu-button">
                 <img class="navbar__menu-icon" src="/public/assets/profile.png" />
-                <a href="#" class="navbar__menu-title">Profile</a>
+                <a href="<?php echo "/profile/".$_SESSION['user_id'] ?>" class="navbar__menu-title">Profile</a>
             </div>
             <div class="navbar__menu-button">
                 <img class="navbar__menu-icon" src="/public/assets/settings.png" />
@@ -84,12 +86,12 @@
                     <input class="newfeed__search-input" placeholder="Search" type="text" />
                 </div>
                 <hr>
-                <div class="background_image_change_image">
+                <!-- <div class="background_image_change_image">
                     <button>
                         <img src="/public/assets/icons8-camera-50.png" />
                         <p>Change Photo</p>
                     </button>
-                </div>
+                </div> -->
             </div>
             <div class="btn-group" style="width:100%">
                 <button style="width:25%">News</button>
@@ -100,141 +102,73 @@
         </div>
         <div class="under_cover">
             <div class="newfeed">
-                <!-- <div class="newfeed__search">
-                <input class="newfeed__search-input" placeholder="Search" type="search" />
-                 </div> -->
                 <div class="newfeed__control">
-                    <textarea class="newfeed__input_mind" placeholder="What do you mind ?" name="Text1" cols="40" rows="5"></textarea>
-                    <div class="btn_select">
-                        <button>Add Photo</button>
-                        <button>Post</button>
-                    </div>
+                    <input class="newfeed__input" id="newfeed__status" type="text" placeholder="What do you mind ?" />
+                    <a href="#"><img src="/public/assets/add-image.png" class="icon-button icon_medium" /> </a>
+                    <a href="#"><img src="/public/assets/stickers.png" class="icon-button icon_medium" /> </a>
+                    <a href="#"><img src="/public/assets/video-call.png" class="icon-button icon_medium" /> </a>
                 </div>
-                <div class="newfeed__main">
-                <?php
-                foreach ($this->varsPost as $key => $arrPost) {
-                    $image = json_decode($arrPost['content'], true);
-                ?>
-                    <div class="newfeed__post">
-                        <div class="newfeed__header">
-                            <div class="newfeed__identify identify" src="#">
-                                <img class="avatar icon_medium" src="<?php echo $arrPost['picture'] ?>" />
-                                <p class="name" style="display: inline;"> <?php echo $arrPost['display_name'] ?></p>
-                            </div>
-
-                            <a href="#" class="newfeed__share-button"><img src="/public/assets/share.png" class="icon_medium" /> </a>
-                            <a href="#" class="newfeed__like-button"><img src="/public/assets/heart.png" class="icon_medium icon_heart" /> </a>
-
-
-                        </div>
-                        <div class="newfeed__content">
-                            <p><?php echo $arrPost['caption'] ?></p>
-                            <?php 
-                    if(is_array($image)) {
-                        $numberImage = count($image);
-                        if ($numberImage == 1) {
-                    ?>
-                        <img style="height: 100%; width: 100%" src="/public/uploads/<?php echo $image[0]?>" />
-                        <?php
-                        }
-                        if ($numberImage > 1) {
+                    <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'newfeed_profile.php'); ?>
+                </div>
+                
+                <div class="about_pane">
+                    <div class="about_pane_title">
+                        <p>About</p>
+                        <?php if ($_SESSION['user_id'] == $arr['user_id']) echo 
+                            '<img class="about_pane_title_img" src="/public/assets/icons8-edit-50.png" />
+                            <a id="myBtn" onclick="openModalBox()">Edit</a>' 
                         ?>
-                        <div>
-                            <div class="slideshow-container">
-                                <!-- Full-width images with number and caption text -->
-                                <?php foreach ($image as $key=>$value) : ?>
-                                <div class="mySlides  index<?php echo $key?> mySlides<?php echo $arr['id']?> fade">
-                                    <img src="/public/uploads/<?php echo $value?>" style="width:100%">
-                                </div>
-                                <?php endforeach ?>
+                        <!-- <script language="javascript">
+                            if ($_SESSION['user_id'] == $arr['user_id']){
+                                document.getElementById("myBtn").style.display = 'none'
+                                document.getElementsByName("photo").style.display = 'none'
+                                document.getElementsByName("submit").style.display = 'none'
+                            }
+                        </script> -->
+                    </div>
+                    <hr>
+                        <div class="infoUser">
+                            <p>Display Name: </p>
+                            <p class="data_info"><?php echo $arr['display_name'] ?></p>
 
-                                <a class="prev" onclick="plusSlides(-1,<?php echo $arr['id']?>)">&#10094;</a>
-                                <a class="next" onclick="plusSlides(1, <?php echo $arr['id']?>)">&#10095;</a>
-                            </div>
-                            <br>
-
-                            <!-- The dots/circles -->
-                            <div style="text-align:center">
-                                <?php foreach ($image as $key=>$value) : ?>
-                                <span class="dot dot<?php echo $arr['id']?>"
-                                    onclick="currentSlide(<?php echo $key+1?>, <?php echo $arr['id']?>)"></span>
-                                <?php endforeach ?>
-                            </div>
                         </div>
-                        <?php  
-                        }
-                    }   
-                        ?>
+                        <div class="infoUser">
+                            <p>Gender: </p>
+                            <p class="data_info"><?php echo ($arr['gender'] ? $arr['gender'] : " Null") ?></p>
+
                         </div>
-                        <div class="newfeed__comment">
-                            <div class="newfeed__comment-main">
-                                <div class="newfeed__identify identify" src="#">
-                                    <img class="avatar icon_small" src="/public/assets/avatar.jpg" />
-                                </div>
-                                <div class=newfeed__comment-content>
-                                    <span class="newfeed__comment-name" style="display: inline;"> Tuan Le Minh</span>
-                                    </br>
-                                    <span class="newfeed__comment-text"> Mình đăng ảnh đẹp quá</span>
-                                </div>
-                            </div>
-                            <input class="newfeed__comment-input newfeed__input" type="text" placeholder="Write your comment" />
+                        <div class="infoUser">
+                            <p>Date of Birth: </p>
+                            <p class="data_info"><?php echo ($arr['date_of_birth'] ? $arr['date_of_birth'] : " Null")  ?></p>
+
+                        </div>
+                        <div class="infoUser">
+                            <p>Education: </p>
+                            <p class="data_info"><?php echo ($arr['education'] ? $arr['education'] : " Null")  ?></p>
+
+                        </div>
+                        <div class="infoUser">
+                            <p>Description: </p>
+                            <p class="data_info"><?php echo ($arr['about'] ? $arr['about'] : " Null")  ?></p>
+                        </div>
+                    <hr>
+                    <div class="follow">
+                        <div class="follower">
+                            <p class="data_info">1000</p>
+                            <p>Followers</p>
+                        </div>
+                        <div class="hr"></div>
+                        <div class="following">
+                            <p class="data_info">100</p>
+                            <p>Following</p>
                         </div>
                     </div>
-                <?php
-                    }
-                ?>
-                </div>
-            </div>
-            
-            <div class="about_pane">
-                <div class="about_pane_title">
-                    <p>About</p>
-                    <img class="about_pane_title_img" src="/public/assets/icons8-edit-50.png" />
-                    <a id="myBtn" onclick="openModalBox()">Edit</a>
-                </div>
-                <hr>
-                    <div class="infoUser">
-                        <p>Display Name: </p>
-                        <p class="data_info"><?php echo $arr['display_name'] ?></p>
-
-                    </div>
-                    <div class="infoUser">
-                        <p>Gender: </p>
-                        <p class="data_info"><?php echo ($arr['gender'] ? $arr['gender'] : " Null") ?></p>
-
-                    </div>
-                    <div class="infoUser">
-                        <p>Date of Birth: </p>
-                        <p class="data_info"><?php echo ($arr['date_of_birth'] ? $arr['date_of_birth'] : " Null")  ?></p>
-
-                    </div>
-                    <div class="infoUser">
-                        <p>Education: </p>
-                        <p class="data_info"><?php echo ($arr['education'] ? $arr['education'] : " Null")  ?></p>
-
-                    </div>
-                    <div class="infoUser">
-                        <p>Description: </p>
-                        <p class="data_info"><?php echo ($arr['about'] ? $arr['about'] : " Null")  ?></p>
-                    </div>
-                <hr>
-                <div class="follow">
-                    <div class="follower">
-                        <p class="data_info">1000</p>
-                        <p>Followers</p>
-                    </div>
-                    <div class="hr"></div>
-                    <div class="following">
-                        <p class="data_info">100</p>
-                        <p>Following</p>
-                    </div>
-                </div>
 
             </div>
         </div>
         <div class="container">
             <!-- The Modal -->
-            <div id="myModal" class="modal">
+            <div id="myModalProfile" class="modal">
 
                 <!-- Modal content -->
                 <div class="modal-content">
@@ -295,8 +229,8 @@
         </div>
     </div>
     <?php } ?>
+    <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'new_post_modal.php'); ?>
 </body>
 <script src="/public/js/handler.js"></script>
-<script src="/public/js/handle_modal.js"></script>
 
 </html>

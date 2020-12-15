@@ -6,8 +6,8 @@
             <div class="newfeed__post">
                 <div class="newfeed__header">
                     <div class="newfeed__identify identify" src="#">
-                        <img class="avatar icon_medium" src="<?php echo $arr['picture'] ?>" />
-                        <p class="name" style="display: inline;"> <?php echo $arr['display_name'] ?></p>
+                        <a href="<?php echo "/profile/".$arr['user_id'] ?>"><img class="avatar icon_medium" src="<?php echo $arr['picture'] ?>" /></a>
+                        <a href="<?php echo "/profile/".$arr['user_id'] ?>"><p class="name" style="display: inline;"> <?php echo $arr['display_name'] ?></p></a>
                     </div>
                     <a href="#" class="newfeed__share-button"><img src="/public/assets/share.png" class="icon_medium" />
                     </a>
