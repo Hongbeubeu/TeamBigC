@@ -23,10 +23,11 @@
                             <p class="suggestion">OR LOGIN WITH EMAIL</p>
                             <hr class="divider2">
                         </div>
+                        <?php if(!empty($this->errors)) echo '<p>' . $this->errors[0] . '</p>' ?>
                         <div class="form-input">
                             <form action="/login" method="POST">
                                 <div class="input-box">
-                                    <input type="text" name = "email" placeholder="Email">
+                                    <input type="text" name = "email" placeholder="Email" value="<?php echo !empty($this->vars)?$this->vars['email']:'' ?>">
                                 </div>
                                 <div class="input-box">
                                     <input type="password" name = "password" placeholder="Password">

@@ -48,4 +48,9 @@ class HomeController extends BaseController
             }
         }
     }
+
+    function error() 
+    {
+        $this->render(DS . "Layouts" . DS . "error");
+    }
 }

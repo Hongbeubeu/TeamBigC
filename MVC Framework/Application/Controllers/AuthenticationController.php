@@ -25,10 +25,14 @@ class AuthenticationController extends BaseController
                 $_SESSION['user_id'] = $id;
                 header('location:/newfeed');
             } else {
-                header('location:/login');
+                $this->setError('Nhập mật khẩu hoặc email sai!');
+                $hint['email'] = $email;
+                $this->setParameter($hint);
+                $this->render(DS . "Authentications" . DS . "login");
             }
         } else {
-            header('location:/login');
+            $this->setError('Nhập mật khẩu hoặc email sai!');
+            $this->render(DS . "Authentications" . DS . "login");
         }
     }
 
@@ -64,11 +68,13 @@ class AuthenticationController extends BaseController
                 header('location:/newfeed');
             } else {
                 //password unmatch
-                header('location:/register');
+                $this->setError('Nhập mật khẩu không khớp');
+                $this->render(DS . "Authentications" . DS . "register");
             }
         } else {
             //email already exist in system
-            header('location:/register');
+            $this->setError('Email đã tồn tại');
+            $this->render(DS . "Authentications" . DS . "register");
         }
     }
 

@@ -6,27 +6,28 @@ use Exception;
 class BaseController
 {
     var $vars = [];
-    var $errors;
+    var $errors = [];
     var $userBaseInfo;
 
-    function setParameter($data)
+    public function setParameter($data)
     {
         $this->vars = array_merge($this->vars, $data);
     }
 
-    function setUserBaseInfo($userBaseInfo) 
+    public function setUserBaseInfo($userBaseInfo) 
     {
         $this->userBaseInfo = $userBaseInfo;
     }
 
-    function serError($error)
+    public function setError($error)
     {
-        $this->error = $error;
+        $this->errors[] = $error;
     }
 
     function render($filename)
     {
         ob_start();
+        extract($this->errors);
         extract($this->vars);
         if (file_exists(PATH_ROOT . DS . "Application" . DS . "Views" . DS . $filename . '.php'))
         {

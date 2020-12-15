@@ -24,6 +24,7 @@
                             <p class="suggestion">OR REGISTER WITH EMAIL</p>
                             <hr class="divider2">
                         </div>
+                        <?php if(!empty($this->errors)) echo '<p>' . $this->errors[0] . '</p>' ?>
                         <div class="form-input">
                             <form action="/register" method="POST" id="myForm">
                                 <div class="input-box">
