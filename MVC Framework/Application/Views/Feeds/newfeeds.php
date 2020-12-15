@@ -8,7 +8,7 @@
 </head>
 
 <body>
-<?php include (PATH_ROOT.DS.'Application\Views\Modules\navbar.php'); ?>
+<?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'navbar.php'); ?>
     <div class="newfeed">
         <div class="newfeed__search">
             <input class="newfeed__search-input" placeholder="Search" type="search" />
@@ -19,7 +19,7 @@
             <a href="#"><img src="/public/assets/stickers.png" class="icon-button icon_medium" /> </a>
             <a href="#"><img src="/public/assets/video-call.png" class="icon-button icon_medium" /> </a>
         </div>
-        <?php include (PATH_ROOT.DS.'Application\Views\Modules\newfeed_main.php'); ?>
+        <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'newfeed_main.php'); ?>
     </div>
     <div class="suggestion">
         <div class="suggestion__donate">
@@ -55,7 +55,7 @@
         </div>
 
     </div>
-    <?php include (PATH_ROOT.DS.'Application\Views\Modules\new_post_modal.php'); ?>
+    <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'new_post_modal.php'); ?>
 
 </body>
 <script src="/public/js/handler.js"></script>
