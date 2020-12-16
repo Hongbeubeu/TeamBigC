@@ -19,31 +19,37 @@ class AuthenticationController extends BaseController
             $encriptPassword = md5($password);
             $hookPassword = $userModel->getPasswordByEmail($email);
             if ($hookPassword == $encriptPassword) {
-                $_SESSION['session_id'] = $email;
-                if (isset($formPost['logged'])) {
-                    setcookie('session_id', $email, time() + (86400 * 30), "/");
-                }
                 $id = $userModel->getUserId($email);
-                header('location:/profile/' . $id);
+                $session_id = $email;
+                $_SESSION['session_id'] = $session_id;
+                $_SESSION['user_id'] = $id;
+                header('location:/newfeed');
             } else {
-                header('location:/login');
+                $this->setError('Nhập mật khẩu hoặc email sai!');
+                $hint['email'] = $email;
+                $this->setParameter($hint);
+                $this->render(DS . "Authentications" . DS . "login");
             }
         } else {
-            header('location:/login');
+            $this->setError('Nhập mật khẩu hoặc email sai!');
+            $this->render(DS . "Authentications" . DS . "login");
         }
     }
 
     function register()
     {
         $formPost = $_POST;
+        //filter input 
         $this->secure_form($formPost);
 
+        //get input from form
         $email = $formPost['email'];
         $password = $formPost['password'];
         $confirmPassword = $formPost['confirmpassword'];
         $displayName = $formPost['displayname'];
 
         $userModel = new UserModel();
+        //check validable email
         if ($userModel->checkEmail($email) == 0) {
             if ($password == $confirmPassword) {
                 $pass = md5($password);
@@ -53,19 +59,30 @@ class AuthenticationController extends BaseController
 
                 $userProfileModel = new UserProfileModel();
                 $profileParams['user_id'] = $userId;
+                $profileParams['picture'] = DS .'public' .DS . 'assets' . DS . 'default.jpg';
                 $profileParams['display_name'] = $displayName;
                 $userProfileModel->setProfileInformation($profileParams);
+                $session_id = $email;
+                $_SESSION['session_id'] = $session_id;
+                $_SESSION['user_id'] = $userId;
+                header('location:/newfeed');
             } else {
-                echo "pass khong khop";
+                //password unmatch
+                $this->setError('Nhập mật khẩu không khớp');
+                $this->render(DS . "Authentications" . DS . "register");
             }
         } else {
-            echo "Email da duoc su dung";
+            //email already exist in system
+            $this->setError('Email đã tồn tại');
+            $this->render(DS . "Authentications" . DS . "register");
         }
     }
 
     function logout()
     {
         unset($_SESSION['session_id']);
+        unset($_SESSION['user_id']);
+        session_destroy();
         header('location:/login');
     }
 }

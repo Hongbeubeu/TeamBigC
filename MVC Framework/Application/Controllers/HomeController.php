@@ -4,60 +4,62 @@ namespace Application\Controllers;
 
 use Application\Models\PostModel;
 use Application\Models\UserModel;
+use Application\Models\UserProfileModel;
 use Core\BaseController;
 
 class HomeController extends BaseController
 {
-
-    private function checkLogin()
-    {
-        if (!isset($_SESSION['session_id'])) {
-            return false;
-        }
-        return true;
-    }
-
     function login()
     {
         if ($this->checkLogin() == true) {
             header('location:/newfeed');
-        } else
-            $this->render(DS . "Authentication" . DS . "login");
+        }
+        $this->render(DS . "Authentications" . DS . "login");
     }
 
     function register()
     {
-        $this->render(DS . "Authentication" . DS . "register");
+        $this->render(DS . "Authentications" . DS . "register");
     }
 
     function newfeed()
     {
         if ($this->checkLogin()) {
             $postModel = new PostModel();
-            $posts = $postModel->getPosts(14);
+            $userProfileModel = new UserProfileModel();
+            $userBaseInfo = $userProfileModel->getUserBaseInformation($_SESSION['user_id']);
+            $this->setUserBaseInfo($userBaseInfo);
+            $posts = $postModel->getPosts($_SESSION['user_id']);
             $this->setParameter($posts);
             $this->render(DS . "Feeds" . DS . "newfeeds");
         } else
             header('location:/login');
     }
 
-    function status($id)
+    function profile($id)
     {
-        $data = [
-            'id' => $id
-        ];
-        $this->setParameter($data);
-        $this->render(DS . "Posts" . DS . "status_post");
-    }
-
-    function ajax()
-    {
-        $this->render(DS . "Layouts" . DS . "ajax_example");
-    }
     
-    function profile($id) 
-    {
-        $this->render(DS . "Feeds" . DS . "profile");
+        if (!$this->checkLogin())
+            header('location:/login');
+        else {
+            if ($id != $_SESSION['user_id'])
+                header('location:/profile/' . $_SESSION['user_id']);
+            else {
+                $userProfileModel =  new UserProfileModel();
+                $postModel = new PostModel();
+                $userId =  $_SESSION['user_id'];
+                $userInfo = $userProfileModel->getProfileInformation($userId);
+                $posts = $postModel->getPostsMyselft($_SESSION['user_id']);
+                $this->setParameterPost($posts);
+                //$this->setUserBaseInfo($userBaseInfo);
+                $this->setParameter($userInfo);
+                $this->render(DS . "Profile" . DS . "profile");
+            }
+        }
+    }
 
+    function error() 
+    {
+        $this->render(DS . "Layouts" . DS . "error");
     }
 }

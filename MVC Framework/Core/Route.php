@@ -92,7 +92,7 @@ class Route
             }
         }
         //If the request does not match any of the routes
-        echo '404 - Not found';
+        echo '404 - Not foundd';
     }
 
     /**
