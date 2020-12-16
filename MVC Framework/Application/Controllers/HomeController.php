@@ -62,6 +62,10 @@ class HomeController extends BaseController
     {
         $this->render(DS . "Layouts" . DS . "error");
     }
+    function test()
+    {
+        $this->render(DS . "Modules" . DS . "profilecopy");
+    }
     // function profile(){
     //     {
     //         if ($this->checkLogin()) {

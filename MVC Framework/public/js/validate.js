@@ -16,7 +16,6 @@ function validateLogin() {
             return true;
         }
     }
-
 }
 
 function validateRegister() {

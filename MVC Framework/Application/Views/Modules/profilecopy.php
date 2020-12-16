@@ -6,14 +6,14 @@
     <title>Profile</title>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link href="/pulbic/css/style.css" rel="stylesheet" type="text/css">
+    <link href="/public/css/style.css" rel="stylesheet" type="text/css">
 
 </head>
 
 <body>
     <div class="navbar">
         <div class="navbar__account-info">
-            <img class="navbar__avatar" src="/pulbic/assets/avatar.jpg"></img>
+            <img class="navbar__avatar" src="/public/assets/avatar.jpg"></img>
             <p class="navbar__name">Lê Anh Dũng</p>
             <p class="navbar__email">dunglebeovaic@gmail.com</p>
         </div>
@@ -21,33 +21,33 @@
         <div class="navbar__menu">
             <h3 class="navbar__menu-title">Menu</h3>
             <div class="navbar__menu-button">
-                <img class="navbar__menu-icon" src="/pulbic/assets/newfeed.png" />
+                <img class="navbar__menu-icon" src="/public/assets/newfeed.png" />
                 <a href="#" class="navbar__menu-title">Newfeeds</a>
             </div>
             <div class="navbar__menu-button">
-                <img class="navbar__menu-icon" src="/pulbic/assets/messages.png" />
+                <img class="navbar__menu-icon" src="/public/assets/messages.png" />
                 <a href="#" class="navbar__menu-title">Messages</a>
             </div>
             <div class="navbar__menu-button">
-                <img class="navbar__menu-icon" src="/pulbic/assets/notification.png" />
+                <img class="navbar__menu-icon" src="/public/assets/notification.png" />
                 <p href="#" class="navbar__menu-title" onclick="openPopup()">Notifications</p>
                 <div class="notification__detail" id="notification">
                     <h4>Notifications</h4>
                     <hr>
                     <div class="notification__content">
-                        <img class="avatar icon_medium relative" src="/pulbic/assets/avatar.jpg">
+                        <img class="avatar icon_medium relative" src="/public/assets/avatar.jpg">
                         <p class="notification__text">Nguyễn Văn Hồng likes your photo</p>
                         </img>
                     </div>
                     <hr>
                     <div class="notification__content">
-                        <img class="avatar icon_medium relative" src="/pulbic/assets/avatar.jpg">
+                        <img class="avatar icon_medium relative" src="/public/assets/avatar.jpg">
                         <p class="notification__text">Nguyễn Văn Hồng likes your photo</p>
                         </img>
                     </div>
                     <hr>
                     <div class="notification__content">
-                        <img class="avatar icon_medium relative" src="/pulbic/assets/avatar.jpg">
+                        <img class="avatar icon_medium relative" src="/public/assets/avatar.jpg">
                         <p class="notification__text">Nguyễn Văn Hồng likes your photo</p>
                         </img>
                     </div>
@@ -55,15 +55,15 @@
 
             </div>
             <div id="navbar_profile" class="navbar__menu-button">
-                <img class="navbar__menu-icon" src="/pulbic/assets/profile.png" />
+                <img class="navbar__menu-icon" src="/public/assets/profile.png" />
                 <a href="#" class="navbar__menu-title">Profile</a>
             </div>
             <div class="navbar__menu-button">
-                <img class="navbar__menu-icon" src="/pulbic/assets/settings.png" />
+                <img class="navbar__menu-icon" src="/public/assets/settings.png" />
                 <a href="#" class="navbar__menu-title">Settings</a>
             </div>
             <div class="navbar__menu-button">
-                <img class="navbar__menu-icon" src="/pulbic/assets/icons8-logout-rounded-left-64.png" />
+                <img class="navbar__menu-icon" src="/public/assets/icons8-logout-rounded-left-64.png" />
                 <a href="login.html" class="navbar__menu-title">Logout</a>
             </div>
 
@@ -73,13 +73,13 @@
         <div class="background">
             <div class="background_image">
                 <div class="background_image_search">
-                    <img src="/pulbic/assets/icons8-search-48.png" />
+                    <img src="/public/assets/icons8-search-48.png" />
                     <input class="newfeed__search-input" placeholder="Search" type="text" />
                 </div>
                 <hr>
                 <div class="background_image_change_image">
                     <button>
-                    <img src="/pulbic/assets/icons8-camera-50.png" />
+                    <img src="/public/assets/icons8-camera-50.png" />
                     <p>Change Photo</p>
                 </button>
                 </div>
@@ -107,31 +107,29 @@
                     <div class="newfeed__post">
                         <div class="newfeed__header">
                             <div class="newfeed__identify identify" src="#">
-                                <img class="avatar icon_medium" src="/pulbic/assets/avatar.jpg" />
+                                <img class="avatar icon_medium" src="/public/assets/avatar.jpg" />
                                 <p class="name" style="display: inline;"> Tuan Le Minh</p>
                             </div>
                             <div class="newfeed_option_button">
                                 <div class="newfeed_select_button">
-
-                                    <a href="#" onclick="changeIcon()" class="newfeed__like-button"><img src="/pulbic/assets/heart.png" class="icon_select" id="icon_select_heart" /> </a>
+                                    <div  class="newfeed__like-button"><img src="/public/assets/icons8-heart-64.png" class="icon_select" id="icon_select_heart" onclick="changeIcon()"/> </div>
                                     <p>50</p>
                                 </div>
                                 <hr>
                                 <div class="newfeed_select_button">
-
-                                    <a href="#" class="newfeed__share-button"><img src="/pulbic/assets/share.png" class="icon_select" id="icon_select_share" /> </a>
+                                    <div class="newfeed__share-button"><img src="/public/assets/share.png" class="icon_select" id="icon_select_share" /> </div>
                                     <p>100</p>
                                 </div>
                             </div>
                         </div>
                         <div class="newfeed__content">
                             <p>Hôm nay tôi buồn quá</p>
-                            <img style="height: 40vh; width: 95%" src="/pulbic/assets/background.jpg" />
+                            <img style="height: 40vh; width: 95%" src="/public/assets/background.jpg" />
                         </div>
                         <div class="newfeed__comment">
                             <div class="newfeed__comment-main">
                                 <div class="newfeed__identify identify" src="#">
-                                    <img class="avatar icon_small" src="/pulbic/assets/avatar.jpg" />
+                                    <img class="avatar icon_small" src="/public/assets/avatar.jpg" />
                                 </div>
                                 <div class=newfeed__comment-content>
                                     <span class="newfeed__comment-name" style="display: inline;"> Tuan Le Minh</span>
@@ -145,20 +143,20 @@
                     <div class="newfeed__post">
                         <div class="newfeed__header">
                             <div class="newfeed__identify identify" src="#">
-                                <img class="avatar icon_medium" src="/pulbic/assets/avatar.jpg" />
+                                <img class="avatar icon_medium" src="/public/assets/avatar.jpg" />
                                 <p class="name" style="display: inline;"> Tuan Le Minh</p>
                             </div>
-                            <a href="#" class="newfeed__share-button"><img src="/pulbic/assets/share.png" class="icon_medium" /> </a>
-                            <a href="#" class="newfeed__like-button"><img src="/pulbic/assets/heart.png" class="icon_medium icon_heart" /> </a>
+                            <a href="#" class="newfeed__share-button"><img src="/public/assets/share.png" class="icon_medium" /> </a>
+                            <a href="#" class="newfeed__like-button"><img src="/public/assets/heart.png" class="icon_medium icon_heart" /> </a>
                         </div>
                         <div class="newfeed__content">
                             <p>Hôm nay tôi buồn quá</p>
-                            <img style="height: 40vh; width: 95%" src="/pulbic/assets/background.jpg" />
+                            <img style="height: 40vh; width: 95%" src="/public/assets/background.jpg" />
                         </div>
                         <div class="newfeed__comment">
                             <div class="newfeed__comment-main">
                                 <div class="newfeed__identify identify" src="#">
-                                    <img class="avatar icon_small" src="/pulbic/assets/avatar.jpg" />
+                                    <img class="avatar icon_small" src="/public/assets/avatar.jpg" />
                                 </div>
                                 <div class=newfeed__comment-content>
                                     <span class="newfeed__comment-name" style="display: inline;"> Tuan Le Minh</span>
@@ -174,7 +172,7 @@
             <div class="about_pane">
                 <div class="about_pane_title">
                     <p>About</p>
-                    <img class="about_pane_title_img" src="/pulbic/assets/icons8-edit-50.png" />
+                    <img class="about_pane_title_img" src="/public/assets/icons8-edit-50.png" />
                     <a href="#" id="myBtn" onclick="openModalBox()">Edit</a>
                 </div>
                 <hr>
@@ -229,7 +227,7 @@
                     <div class="toppane">
                         <h2>Update your profile</h2>
                         <div class="title_donate">
-                            <img src="/pulbic/assets/updateinfo.png" alt="ImageCover" class="image_cover">
+                            <img src="/public/assets/updateinfo.png" alt="ImageCover" class="image_cover">
                             <p>Let's update your profile...</p>
                         </div>
                     </div>
@@ -283,8 +281,8 @@
         </div>
     </div>
 </body>
-<script src="/pulbic/js/handle_modal.js"></script>
-<script src="/pulbic/js/handler.js"></script>
-<script src="/pulbic/js/handle_heart_share.js"></script>
+<script src="/public/js/handle_modal.js"></script>
+<script src="/public/js/handler.js"></script>
+<script src="/public/js/handle_heart_share.js"></script>
 
 </html>

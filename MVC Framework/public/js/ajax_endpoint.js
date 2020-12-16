@@ -1,4 +1,4 @@
-function addComment(str) {
+function addCommentsss(str) {
   if (str.length == 0) {
     return;
   } else {
