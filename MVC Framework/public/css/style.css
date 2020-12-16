@@ -1,0 +1,628 @@
+body {
+    display: flex;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    margin: 0;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(209, 232, 230);
+    min-width: 20%;
+    height: auto;
+}
+
+.navbar__account-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgb(54, 54, 54);
+}
+
+#navbar_profile {
+    background-image: linear-gradient(to left, #82D4E4, #19A0EF);
+}
+
+.navbar__donate-button {
+    border: none;
+    color: white;
+    padding: 15px 56px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    background-color: rgb(33, 184, 249);
+}
+
+.navbar__donate-button:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.navbar__avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-top: 5vh;
+}
+
+.navbar__name {
+    width: 180px;
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+.navbar__email {
+    margin-top: 5px;
+    text-align: center;
+}
+
+.navbar__menu-button {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.navbar__menu-title {
+    text-decoration: none;
+    margin-left: 1rem;
+    font-size: 1.2em;
+    color: rgb(97, 97, 97);
+    cursor: context-menu;
+}
+
+.navbar__menu-icon {
+    width: 2.5rem;
+}
+
+
+/*Right pane*/
+
+.right_pane {
+    width: 100%;
+    background-color: rgb(239, 247, 246);
+    overflow: auto;
+}
+
+.under_cover {
+    display: flex;
+}
+
+.background {
+    width: 100%;
+}
+
+.background_image {
+    background-image: url("../assets/background.jpg");
+    height: 200px;
+    width: 100%;
+    position: relative;
+}
+
+.background_image_search {
+    display: flex;
+    margin-left: 15%;
+}
+
+.background_image_change_image button {
+    background-color: rgb(175, 174, 174);
+    opacity: 0.7;
+    color: white;
+    border: 0px;
+    border-radius: 10px;
+    display: flex;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 200px;
+}
+
+.background_image hr {
+    width: 70%;
+    color: white;
+}
+
+::placeholder {
+    color: white;
+    opacity: 1;
+    /* Firefox */
+}
+
+.newfeed__search-input {
+    display: flex;
+    color: white;
+    justify-content: center;
+    height: 6vh;
+    font-size: 1.2em;
+    background-color: transparent;
+    outline: 0;
+    color: white;
+    border-width: 0 0 0;
+}
+
+.newfeed__search-input:focus {
+    border-color: rgb(33, 184, 249)
+}
+
+.btn-group button {
+    background-color: #FFFFFF;
+    /* Green background */
+    border: 1px solid grey;
+    /* Green border */
+    color: black;
+    /* White text */
+    padding: 10px 24px;
+    /* Some padding */
+    cursor: pointer;
+    /* Pointer/hand icon */
+    float: left;
+    /* Float the buttons side by side */
+}
+
+
+/* Clear floats (clearfix hack) */
+
+.btn-group:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.btn-group button:not(:last-child) {
+    border-right: none;
+    /* Prevent double borders */
+}
+
+
+/* Add a background color on hover */
+
+.btn-group button:hover {
+    background-image: linear-gradient(to top, #82D4E4, #19A0EF);
+    color: white;
+}
+
+.btn-group button:focus {
+    background-image: linear-gradient(to top, #82D4E4, #19A0EF);
+    color: white;
+}
+
+
+/* NEWFEED=--------- */
+
+.newfeed {
+    width: 70%;
+    background-color: rgb(239, 247, 246);
+    overflow: auto;
+}
+
+.newfeed::-webkit-scrollbar {
+    display: none;
+}
+
+.newfeed__control {
+    justify-content: space-between;
+    align-items: center;
+    width: 60%;
+    margin: 1em 2.5%;
+    margin-top: 40px;
+    background-color: white;
+}
+
+.btn_select {
+    display: flex;
+}
+
+.btn_select button {
+    border-radius: 10px;
+    border: 0px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    cursor: pointer;
+}
+
+.btn_select :first-child {
+    margin-left: 20px;
+    background-color: rgb(119, 195, 240)
+}
+
+.btn_select :last-child {
+    margin-left: 60%;
+    background-color: rgb(119, 195, 240);
+}
+
+.btn_select :last-child :hover {
+    background-color: #0a4f85;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.btn_select :last-child:active {
+    transform: translateY(4px);
+}
+
+.newfeed__input_mind {
+    border: none;
+    border: solid 1px #ccc;
+    background-color: rgb(238, 234, 234);
+    border-radius: 10px;
+    width: 90%;
+    height: 100px;
+    padding: 0.2em 1em;
+    margin: 10px;
+}
+
+.newfeed__input {
+    border: none;
+    border: solid 1px #ccc;
+    background-color: rgb(238, 234, 234);
+    border-radius: 10px;
+    width: 90%;
+    padding: 0.9em 1em;
+}
+
+.newfeed__input:focus,
+.newfeed__input_mind:focus {
+    outline: none;
+    border-color: rgb(33, 184, 249);
+}
+
+.newfeed__post {
+    width: 90%;
+    margin: 1em 2.5%;
+    background-color: white;
+    padding: 4% 0vw 2vw 5%;
+}
+
+.newfeed__header,
+.newfeed_select_button,
+.newfeed_option_button {
+    display: flex;
+}
+
+.newfeed_option_button {
+    margin-left: 50%;
+    width: auto;
+    height: 50px;
+}
+
+.newfeed_select_button p {
+    margin-left: 10px;
+    margin-top: 15px;
+}
+
+.newfeed_option_button hr {
+    margin-left: 10px;
+}
+
+.icon_select {
+    width: 40px;
+    height: 40px;
+}
+
+.newfeed__like-button {
+    float: right;
+}
+
+.newfeed__share-button {
+    float: right;
+    margin-left: 10px;
+}
+
+.newfeed__commnet {
+    width: 95%;
+}
+
+.newfeed__comment-main {
+    display: flex;
+    padding: 1em 0;
+    background-color: #bee9ff;
+    width: 94%;
+    border-radius: 10px;
+    padding-left: 1%;
+    margin: 1em 0;
+}
+
+.newfeed__comment-content {
+    margin-left: 1em;
+}
+
+.newfeed__comment-name {
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.newfeed__comment-text {
+    font-size: 0.9em;
+}
+
+
+/*About----------- */
+
+.about_pane {
+    width: 25%;
+    height: 35%;
+    background-color: #FFFFFF;
+    margin-top: 40px;
+}
+
+.about_pane_title {
+    display: flex;
+    width: 100%;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.about_pane_title a {
+    margin-top: 15px;
+    font-size: 15px;
+    height: 100%;
+    text-align: center;
+}
+
+.about_pane_title img {
+    height: 40px;
+    width: 40px;
+    margin-top: 5px;
+    margin-left: 45%;
+}
+
+.about_pane hr {
+    margin-block-start: 0.0em;
+    margin-block-end: 0.0em;
+}
+
+.infoUser,
+.follow {
+    display: flex;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.data_info {
+    color: blue;
+}
+
+.follow div {
+    text-align: center;
+}
+
+.follower {
+    margin-left: 5px;
+}
+
+.following {
+    margin-right: 5px;
+}
+
+.hr {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+}
+
+
+/* The Modal (background) */
+
+.container {
+    width: 70%;
+    margin: auto;
+}
+
+
+/* The Modal (background) */
+
+.modal {
+    display: none;
+    /* mặc định được ẩn đi */
+    position: fixed;
+    /* vị trí cố định */
+    z-index: 1;
+    /* Ưu tiên hiển thị trên cùng */
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+
+/* Modal Content */
+
+.modal-content {
+    background-color: #E5FBFC;
+    margin: auto;
+    border-radius: 20px;
+    border: 1px solid #888;
+    width: 60%;
+    height: 480px;
+}
+
+
+/*toppane*/
+
+.toppane {
+    width: 100%;
+    height: 150px;
+    float: top;
+    text-align: left;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.image_cover {
+    width: 70px;
+    height: 70px;
+}
+
+
+/*bottompane*/
+
+.bottompane {
+    width: 100%;
+    height: 360px;
+    position: relative;
+    margin-top: 30px;
+    float: bottom;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background-color: #E5FBFC;
+    border-collapse: collapse;
+}
+
+.info_user {
+    display: flex;
+    margin-left: 60px;
+    flex-direction: row;
+}
+
+.info_user div {
+    flex: 1 1 auto;
+}
+
+#select_choose {
+    flex-direction: row;
+    display: flex;
+}
+
+#select_choose div {
+    flex: 1 1 auto;
+}
+
+.input_text {
+    width: 300px;
+    border-radius: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    border: 1px solid #888;
+}
+
+#info_user_description {
+    margin-left: 60px;
+    display: flex;
+}
+
+#info_user_description div textarea {
+    width: 500px;
+}
+
+#select_btn {
+    bottom: 20px;
+    right: 20px;
+    position: absolute;
+}
+
+#select_btn button,
+#select_btn button:active {
+    background-image: linear-gradient(#a6c5f3, #2b5adb);
+    border: none;
+    color: white;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+#select_btn button:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+#select_btn button:active {
+    transform: translateY(4px);
+}
+
+
+/* The Close Button */
+
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+/* dung chung */
+
+.icon_medium {
+    width: 3vw;
+    height: 3vw;
+}
+
+.icon_small {
+    width: 2vw;
+    height: 2vw;
+}
+
+.icon_button {
+    background-color: white;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+}
+
+.avatar {
+    border-radius: 50%;
+}
+
+.name {
+    margin: 1.2em 0.75em;
+    font-size: 1.1em;
+}
+
+.identify {
+    display: inline-flex;
+}
+
+
+/* popup */
+
+.notification__detail {
+    position: absolute;
+    background-color: rgb(247, 254, 254);
+    margin-left: 140%;
+    min-width: 200%;
+    padding: 1em;
+}
+
+.relative {
+    margin-right: 1em
+}
+
+.notification__content {
+    display: inline-flex;
+}
+
+#notification {
+    display: none;
+}
