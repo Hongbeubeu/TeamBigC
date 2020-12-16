@@ -63,3 +63,41 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+//comment
+
+function callAjax() {
+
+  return true;
+}
+
+function addComment( event, id) {
+  if (event.code === "Enter") {
+  const div = document.createElement('div');
+  const commentInput = document.getElementById(`comment_input__${id}`);
+  const picturePath = document.getElementById('user_picture').getAttribute('src');
+  const name = document.getElementById('user_name').innerHTML;
+  console.log(picturePath, name);
+  div.className = `newfeed__comment-main`;
+  div.innerHTML = `
+  <div class="newfeed__identify identify" src="#">
+      <img class="avatar icon_small" src=${picturePath} />
+  </div>
+  <div class=newfeed__comment-content>
+    <span class="newfeed__comment-name" style="display: inline;">${name}</span>
+      </br>
+      <span class="newfeed__comment-text">${commentInput.value}</span>
+  </div>
+  `;
+    commentInput.value = '';
+  document.getElementById(`comment-container__${id}`).appendChild(div);
+  //call ajax here
+    if (!callAjax()) {
+    div.setAttribute('style', 'filter: grayscale(90%);')
+  }
+
+  }
+
+}
+function test() {
+  console.log("test");
+}

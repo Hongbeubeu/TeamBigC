@@ -1,7 +1,7 @@
 <div class="navbar">
         <div class="navbar__account-info">
-            <img class="navbar__avatar" src="<?php echo $this->userBaseInfo[0]['picture'] ?>"></img>
-            <p class="navbar__name"><?php echo $this->userBaseInfo[0]['display_name'] ?></p>
+            <img class="navbar__avatar" id="user_picture" src="<?php echo $this->userBaseInfo[0]['picture'] ?>"></img>
+            <p class="navbar__name" id="user_name"><?php echo $this->userBaseInfo[0]['display_name'] ?></p>
             <p class="navbar__email"><?php echo $_SESSION['session_id'] ?></p>
             <a href="/logout">Log out</a>
         </div>
