@@ -11,12 +11,19 @@
 </head>
 
 <body>
+    <?php
+        foreach ($this->vars as $key => $arr) {
+    ?>
     <div class="navbar">
         <div class="navbar__account-info">
-            <img class="navbar__avatar" src="/public/assets/avatar.jpg"></img>
-            <p class="navbar__name">Lê Anh Dũng</p>
-            <p class="navbar__email">dunglebeovaic@gmail.com</p>
+            <img class="navbar__avatar" src=<?php echo $arr['picture']?$arr['picture']: "/public/assets/avatar.jpg" ?>></img>
+            <p class="navbar__name"><?php echo $arr['display_name'] ?></p>
+            <p class="navbar__email"><?php echo $_SESSION['session_id'] ?></p>
         </div>
+        <form action="/profile/updateAvt" method="post" enctype="multipart/form-data">
+          <input type="file" name="fileToUpload" id="fileSelect">
+          <input type="submit" name="submit" value="Upload file">
+         </form>
         <button class="navbar__donate-button">Donate</button>
         <div class="navbar__menu">
             <h3 class="navbar__menu-title">Menu</h3>
@@ -104,11 +111,15 @@
                     </div>
                 </div>
                 <div class="newfeed__main">
+                <?php
+                foreach ($this->varsPost as $key => $arrPost) {
+                    $image = json_decode($arrPost['content'], true);
+                ?>
                     <div class="newfeed__post">
                         <div class="newfeed__header">
                             <div class="newfeed__identify identify" src="#">
-                                <img class="avatar icon_medium" src="/public/assets/avatar.jpg" />
-                                <p class="name" style="display: inline;"> Tuan Le Minh</p>
+                                <img class="avatar icon_medium" src="<?php echo $arrPost['picture'] ?>" />
+                                <p class="name" style="display: inline;"> <?php echo $arrPost['display_name'] ?></p>
                             </div>
 
                             <a href="#" class="newfeed__share-button"><img src="/public/assets/share.png" class="icon_medium" /> </a>
@@ -117,8 +128,43 @@
 
                         </div>
                         <div class="newfeed__content">
-                            <p>Hôm nay tôi buồn quá</p>
-                            <img style="height: 40vh; width: 95%" src="/public/assets/background.jpg" />
+                            <p><?php echo $arrPost['caption'] ?></p>
+                            <?php 
+                    if(is_array($image)) {
+                        $numberImage = count($image);
+                        if ($numberImage == 1) {
+                    ?>
+                        <img style="height: 100%; width: 100%" src="/public/uploads/<?php echo $image[0]?>" />
+                        <?php
+                        }
+                        if ($numberImage > 1) {
+                        ?>
+                        <div>
+                            <div class="slideshow-container">
+                                <!-- Full-width images with number and caption text -->
+                                <?php foreach ($image as $key=>$value) : ?>
+                                <div class="mySlides  index<?php echo $key?> mySlides<?php echo $arr['id']?> fade">
+                                    <img src="/public/uploads/<?php echo $value?>" style="width:100%">
+                                </div>
+                                <?php endforeach ?>
+
+                                <a class="prev" onclick="plusSlides(-1,<?php echo $arr['id']?>)">&#10094;</a>
+                                <a class="next" onclick="plusSlides(1, <?php echo $arr['id']?>)">&#10095;</a>
+                            </div>
+                            <br>
+
+                            <!-- The dots/circles -->
+                            <div style="text-align:center">
+                                <?php foreach ($image as $key=>$value) : ?>
+                                <span class="dot dot<?php echo $arr['id']?>"
+                                    onclick="currentSlide(<?php echo $key+1?>, <?php echo $arr['id']?>)"></span>
+                                <?php endforeach ?>
+                            </div>
+                        </div>
+                        <?php  
+                        }
+                    }   
+                        ?>
                         </div>
                         <div class="newfeed__comment">
                             <div class="newfeed__comment-main">
@@ -134,35 +180,12 @@
                             <input class="newfeed__comment-input newfeed__input" type="text" placeholder="Write your comment" />
                         </div>
                     </div>
-                    <div class="newfeed__post">
-                        <div class="newfeed__header">
-                            <div class="newfeed__identify identify" src="#">
-                                <img class="avatar icon_medium" src="/public/assets/avatar.jpg" />
-                                <p class="name" style="display: inline;"> Tuan Le Minh</p>
-                            </div>
-                            <a href="#" class="newfeed__share-button"><img src="/public/assets/share.png" class="icon_medium" /> </a>
-                            <a href="#" class="newfeed__like-button"><img src="/public/assets/heart.png" class="icon_medium icon_heart" /> </a>
-                        </div>
-                        <div class="newfeed__content">
-                            <p>Hôm nay tôi buồn quá</p>
-                            <img style="height: 40vh; width: 95%" src="/public/assets/background.jpg" />
-                        </div>
-                        <div class="newfeed__comment">
-                            <div class="newfeed__comment-main">
-                                <div class="newfeed__identify identify" src="#">
-                                    <img class="avatar icon_small" src="/public/assets/avatar.jpg" />
-                                </div>
-                                <div class=newfeed__comment-content>
-                                    <span class="newfeed__comment-name" style="display: inline;"> Tuan Le Minh</span>
-                                    </br>
-                                    <span class="newfeed__comment-text"> Mình đăng ảnh đẹp quá</span>
-                                </div>
-                            </div>
-                            <input class="newfeed__comment-input newfeed__input" type="text" placeholder="Write your comment" />
-                        </div>
-                    </div>
+                <?php
+                    }
+                ?>
                 </div>
             </div>
+            
             <div class="about_pane">
                 <div class="about_pane_title">
                     <p>About</p>
@@ -170,9 +193,6 @@
                     <a id="myBtn" onclick="openModalBox()">Edit</a>
                 </div>
                 <hr>
-                <?php
-                foreach ($this->vars as $key => $arr) {
-                ?>
                     <div class="infoUser">
                         <p>Display Name: </p>
                         <p class="data_info"><?php echo $arr['display_name'] ?></p>
@@ -196,11 +216,7 @@
                     <div class="infoUser">
                         <p>Description: </p>
                         <p class="data_info"><?php echo ($arr['about'] ? $arr['about'] : " Null")  ?></p>
-
                     </div>
-                <?php
-                }
-                ?>
                 <hr>
                 <div class="follow">
                     <div class="follower">
@@ -278,6 +294,7 @@
             </div>
         </div>
     </div>
+    <?php } ?>
 </body>
 <script src="/public/js/handler.js"></script>
 <script src="/public/js/handle_modal.js"></script>

@@ -393,7 +393,6 @@ class QueryBuilder{
 		return $this;
 	}
 
-
 	/**
 	 * Insert data to $table_name
 	 * @param $table_name name of the table which the data will be added

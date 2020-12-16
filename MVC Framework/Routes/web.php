@@ -13,5 +13,6 @@ $router->post('/login', "AuthenticationController@login");
 $router->post('/register', "AuthenticationController@register");
 $router->post('/status', 'PostController@status');
 $router->post('/profile/update', 'ProfileController@update');
+$router->post('/profile/updateAvt', 'ProfileController@updateAvt');
 
 $router->get('/error', 'HomeController@error');
