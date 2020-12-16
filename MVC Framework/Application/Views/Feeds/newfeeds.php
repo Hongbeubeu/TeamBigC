@@ -11,6 +11,7 @@
 </head>
 
 <body>
+<<<<<<< HEAD
 
     <div class="navbar">
         <div class="navbar__account-info">
@@ -67,6 +68,9 @@
 
         </div>
     </div>
+=======
+<?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'navbar.php'); ?>
+>>>>>>> 45b0ea2fa80cf5ea955df79ae28b2ac16e87bb1a
     <div class="newfeed">
         <div class="newfeed__search">
             <input class="newfeed__search-input" placeholder="Search" type="search" />
@@ -77,6 +81,7 @@
             <a href="#"><img src="/public/assets/stickers.png" class="icon-button icon_medium" /> </a>
             <a href="#"><img src="/public/assets/video-call.png" class="icon-button icon_medium" /> </a>
         </div>
+<<<<<<< HEAD
         <div class="newfeed__main">
             <?php
             foreach ($this->vars as $key => $arr) {
@@ -177,6 +182,9 @@
                 </div>
             </div>
         </div>
+=======
+        <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'newfeed_main.php'); ?>
+>>>>>>> 45b0ea2fa80cf5ea955df79ae28b2ac16e87bb1a
     </div>
     <div class="suggestion">
         <div class="suggestion__donate">
@@ -212,6 +220,7 @@
         </div>
 
     </div>
+<<<<<<< HEAD
     <div class="newfeed__modal" id="myModal">
         <div class="newfeed__modal-content">
             <span class="close">&times;</span>
@@ -234,6 +243,9 @@
             </form>
         </div>
     </div>
+=======
+    <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'new_post_modal.php'); ?>
+>>>>>>> 45b0ea2fa80cf5ea955df79ae28b2ac16e87bb1a
 
 </body>
 <script src="/public/js/handler.js"></script>
