@@ -10,14 +10,14 @@ function showListGroup() {
     // Khi button được click thì đổi sang list group
     btn.onclick = function() {
         for (var i = 0; i < name.length; i++) {
-            avt[i].src = "../images/background.jpg";
+            avt[i].src = "/public/assets/background.jpg";
             name[i].innerHTML = "Donate giúp người dân miền Trung";
 
             education[i].innerHTML = "100K members";
             button_profile[i].innerHTML = "Visit Group";
 
             add_friend[i].innerHTML = "Join Group";
-            icon_add_friend[i].src = "../images/group_man.png";
+            icon_add_friend[i].src = "/public/assets/group_man.png";
         }
     }
 
@@ -35,14 +35,14 @@ function showListPeople() {
     // Khi button được click thì đổi sang list people
     btn2.onclick = function() {
         for (var i = 0; i < name.length; i++) {
-            avt[i].src = "../assets/avatar.jpg";
+            avt[i].src = "/public/assets/avatar.jpg";
             name[i].innerHTML = "Tuan Le Minh";
 
             education[i].innerHTML = "Trường đại học Bách Khoa";
             button_profile[i].innerHTML = "VISIT PROFILE";
 
             add_friend[i].innerHTML = "Add Friend";
-            icon_add_friend[i].src = "../images/icons8-user-32.png";
+            icon_add_friend[i].src = "/public/assets/icons8-user-32.png";
         }
     }
 }
