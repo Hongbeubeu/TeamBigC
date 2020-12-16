@@ -84,12 +84,12 @@
                 </button>
                 </div>
             </div>
-            <div class="btn-group" style="width:100%">
+            <!-- <div class="btn-group" style="width:100%">
                 <button style="width:25%">News</button>
                 <button style="width:25%">Photos</button>
                 <button style="width:25%">Donate Events</button>
                 <button style="width:25%">Friends(10)</button>
-            </div>
+            </div> -->
         </div>
         <div class="under_cover">
             <div class="newfeed">
@@ -110,11 +110,17 @@
                                 <img class="avatar icon_medium" src="../assets/avatar.jpg" />
                                 <p class="name" style="display: inline;"> Tuan Le Minh</p>
                             </div>
-
-                            <a href="#" class="newfeed__share-button"><img src="../assets/share.png" class="icon_medium" /> </a>
-                            <a href="#" class="newfeed__like-button"><img src="../assets/heart.png" class="icon_medium icon_heart" /> </a>
-
-
+                            <div class="newfeed_option_button">
+                                <div class="newfeed_select_button">
+                                    <a href="#" onclick="changeIcon()" class="newfeed__like-button"><img src="../assets/heart.png" class="icon_select" id="icon_select_heart" /> </a>
+                                    <p>50</p>
+                                </div>
+                                <hr>
+                                <div class="newfeed_select_button">
+                                    <a href="#" class="newfeed__share-button"><img src="../assets/share.png" class="icon_select" id="icon_select_share" /> </a>
+                                    <p>100</p>
+                                </div>
+                            </div>
                         </div>
                         <div class="newfeed__content">
                             <p>Hôm nay tôi buồn quá</p>
@@ -221,7 +227,7 @@
                     <div class="toppane">
                         <h2>Update your profile</h2>
                         <div class="title_donate">
-                            <img src="../images/updateinfo.png" alt="ImageCover" class="image_cover">
+                            <img src="../assets/updateinfo.png" alt="ImageCover" class="image_cover">
                             <p>Let's update your profile...</p>
                         </div>
                     </div>
@@ -277,5 +283,6 @@
 </body>
 <script src="../js/handle_modal.js"></script>
 <script src="../js/handler.js"></script>
+<script src="../js/handle_heart_share.js"></script>
 
 </html>

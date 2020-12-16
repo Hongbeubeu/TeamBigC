@@ -1,0 +1,351 @@
+body {
+    display: flex;
+    font-family: Arial, sans-serif;
+    height: 100vh;
+    margin: 0;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(209, 232, 230);
+    min-width: 20%;
+    height: auto;
+}
+
+.navbar__account-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgb(54, 54, 54);
+}
+
+.navbar__donate-button {
+    border: none;
+    color: white;
+    padding: 15px 56px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    background-color: rgb(33, 184, 249);
+}
+
+.navbar__donate-button:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.navbar__avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-top: 5vh;
+}
+
+.navbar__name {
+    width: 180px;
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+.navbar__email {
+    margin-top: 5px;
+    text-align: center;
+}
+
+.navbar__menu-button {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.navbar__menu-title {
+    text-decoration: none;
+    margin-left: 1rem;
+    font-size: 1.2em;
+    color: rgb(97, 97, 97);
+    cursor: context-menu;
+}
+
+.navbar__menu-icon {
+    width: 2.5rem;
+}
+
+
+/*Right pane*/
+
+.right_pane {
+    width: 100%;
+    background-color: rgb(239, 247, 246);
+    overflow: auto;
+}
+
+.title_search,
+.menu_select {
+    display: flex;
+    margin: 10px;
+    position: relative;
+}
+
+.title_search h1 {
+    text-align: center;
+}
+
+.title_search div {
+    margin: auto;
+    display: flex;
+    position: absolute;
+    right: 10px;
+    top: 20px;
+}
+
+.title_search div button {
+    background: #2196F3;
+    color: white;
+    border: 1px solid grey;
+    border-left: none;
+    cursor: pointer;
+}
+
+.title_search div button:hover {
+    background: RoyalBlue;
+}
+
+.title_search div button:active,
+.title_search div button:focus {
+    background: RoyalBlue;
+    outline: none;
+}
+
+.title_search input {
+    padding: 5px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: right;
+    background: #f1f1f1;
+}
+
+
+/* div 2*/
+
+.menu_select button {
+    width: 100px;
+    height: 50px;
+    border-radius: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn {
+    background-color: DodgerBlue;
+    border: none;
+    color: white;
+    padding: 12px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+
+/* Darker background on mouse-over */
+
+.btn:hover {
+    background-color: RoyalBlue;
+}
+
+.btn:active,
+.btn:focus {
+    outline: none;
+}
+
+.btn.group {
+    margin-left: auto;
+}
+
+
+/* list people card*/
+
+.right_pane div {
+    box-sizing: border-box;
+}
+
+
+/* Float four columns side by side */
+
+.column {
+    float: left;
+    width: 23%;
+    padding: 0 5px;
+    margin: 10px;
+}
+
+
+/* Remove extra left and right margins, due to padding */
+
+.row {
+    margin: 0 -5px;
+}
+
+
+/* Clear floats after the columns */
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+/* Responsive columns */
+
+@media screen and (max-width: 600px) {
+    .column {
+        width: 100%;
+        display: block;
+        margin-bottom: 20px;
+    }
+}
+
+
+/* Style the counter cards */
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    text-align: center;
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+
+.add_friend_follow {
+    display: flex;
+    bottom: 0;
+    width: 100%;
+    margin: 0;
+}
+
+.add_friend,
+.following {
+    display: flex;
+    background-color: rgb(233, 232, 232);
+    border-radius: 30px;
+    width: 150px;
+    margin-top: 20px;
+}
+
+.add_friend_follow :hover {
+    background-color: rgb(187, 184, 184);
+}
+
+.add_friend_follow div img {
+    width: 25px;
+    height: 25px;
+}
+
+.add_friend_follow div p {
+    font-size: 13px;
+}
+
+.add_friend img {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.add_friend p {
+    margin-top: 15px;
+    margin-left: 5px;
+}
+
+.following img {
+    margin-top: 10px;
+    margin-left: 25px;
+}
+
+.following p {
+    margin-top: 15px;
+    margin-left: 5px;
+}
+
+
+/* dung chung */
+
+.icon_medium {
+    width: 5vw;
+    height: 5vw;
+    box-shadow: 0 15px 15px 0 rgba(0, 0, 0, 0.2);
+}
+
+.icon_small {
+    width: 2vw;
+    height: 2vw;
+}
+
+.icon_button {
+    background-color: white;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+}
+
+.avatar {
+    border-radius: 50%;
+}
+
+.name {
+    margin: 1.2em 0.75em;
+}
+
+.education {
+    font-size: 0.8em;
+    color: grey;
+}
+
+.button_profile {
+    border-radius: 20px;
+    color: rgb(12, 77, 197);
+    font-size: 0.7em;
+    font-weight: bold;
+    letter-spacing: 3px;
+    padding-right: 20px;
+    border: 0 solid;
+    padding-left: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: rgb(231, 227, 227);
+}
+
+.button_profile:active,
+.button_profile:focus {
+    outline: none;
+}
+
+.identify {
+    display: inline-flex;
+}
+
+
+/* popup */
+
+.notification__detail {
+    position: absolute;
+    background-color: rgb(247, 254, 254);
+    margin-left: 140%;
+    min-width: 200%;
+    padding: 1em;
+}
+
+.relative {
+    margin-right: 1em
+}
+
+.notification__content {
+    display: inline-flex;
+}
+
+#notification {
+    display: none;
+}

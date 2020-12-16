@@ -62,4 +62,19 @@ class HomeController extends BaseController
     {
         $this->render(DS . "Layouts" . DS . "error");
     }
+    // function profile(){
+    //     {
+    //         if ($this->checkLogin()) {
+    //             $userModel = new UserModel();
+    //             $email = $_SESSION['session_id'];
+    //             $userId = $userModel->getUserId($email);
+    //             $userProfileModel =  new UserProfileModel();
+    //             $userInfo = $userProfileModel->getProfileInformation($userId);
+    //             $this->setParameter($userInfo);
+    //             $this->render(DS . "Profile" . DS . "profile");
+    //         } else
+    //             header('location:/login');
+    //     }
+       
+    // }
 }

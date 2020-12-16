@@ -1,10 +1,13 @@
 <!Doctype html>
+
 <html>
+
 <head>
     <title>Newfeeds</title>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link href="/public/css/newfeeds.css" rel="stylesheet" type="text/css">
+
 </head>
 
 <body>
