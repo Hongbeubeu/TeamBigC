@@ -9,10 +9,23 @@
                 <img class="avatar icon_medium" src="<?php echo $arr['picture'] ?>" />
                 <p class="name" style="display: inline;"> <?php echo $arr['display_name'] ?></p>
             </div>
-            <a href="#" class="newfeed__share-button"><img src="/public/assets/share.png" class="icon_medium" />
+            <div class="newfeed_option_button">
+                                <div class="newfeed_select_button">
+                                    <div  class="newfeed__like-button"><img src="/public/assets/icons8-heart-64.png" class="icon_select" id="icon_select_heart" onclick="changeIcon()"/> </div>
+                                    <p><?php echo $arr['like_count'] ?></p>
+                                </div>
+                                <hr>
+                                <div class="newfeed_select_button">
+                                    <div class="newfeed__share-button"><img src="/public/assets/share.png" class="icon_select" id="icon_select_share" /> </div>
+                                    <p>100</p>
+                                </div>
+                            </div>
+            
+            <!-- <a href="#" class="newfeed__share-button"><img src="/public/assets/share.png" class="icon_medium" />
             </a>
-            <div class="newfeed__like-button"><img src="<?php echo $arr['is_liked']?'/public/assets/icons8-heart-64.png':'/public/assets/heart.png' ?>"
-                    class="icon_medium icon_heart" onclick="changeIcon(this, '<?php echo $_SESSION['user_id'] ?>', '<?php echo $arr['id'] ?>')"/> </div>
+            <div class="newfeed__like-button">
+                <img src="<?php echo $arr['is_liked']?'/public/assets/icons8-heart-64.png':'/public/assets/heart.png' ?>" class="icon_medium icon_heart" onclick="changeIcon(this, '<?php echo $_SESSION['user_id'] ?>', '<?php echo $arr['id'] ?>')"/> 
+            </div> -->
         </div>
         <div class="newfeed__content">
             <p><?php echo $arr['caption'] ?></p>
