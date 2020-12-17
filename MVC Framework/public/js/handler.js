@@ -107,6 +107,7 @@ function callAjaxUnLike(user_id, post_id) {
     }
 }
 
+//todo send request with time out 4s
 function addComment(event, user_id, post_id) {
     if (event.code === "Enter") {
         const div = document.createElement('div');
@@ -138,13 +139,19 @@ function test() {
     console.log("test");
 }
 
+//todo send request with time out 4s
 function changeIcon(img, user_id, post_id) {
+    var countLikeId = 'count_like_of_post_' + post_id;
+    var likeCount = document.getElementById(countLikeId);
     // kiem tra xem dang la tim do hay tim trang de doi nguoc lai
     if (img.src.match("/public/assets/heart.png")) {
         img.src = "/public/assets/icons8-heart-64.png";
+        likeCount.innerHTML = parseInt(likeCount.innerHTML) + 1;
+        console.log(likeCount.innerHTML);
         callAjaxLike(user_id, post_id);
     } else {
         img.src = "/public/assets/heart.png";
+        likeCount.innerHTML = (parseInt(likeCount.innerHTML)<=0)?0:(parseInt(likeCount.innerHTML) - 1);
         callAjaxUnLike(user_id, post_id);
     }
 }

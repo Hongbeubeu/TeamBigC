@@ -62,6 +62,5 @@
 
 </body>
 <script src="/public/js/handler.js"></script>
-<script src="/public/js/ajax_endpoint.js"></script>
 
 </html>
