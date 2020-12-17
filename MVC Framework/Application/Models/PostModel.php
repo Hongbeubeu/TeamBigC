@@ -50,7 +50,7 @@ class PostModel extends BaseModel
             }
             $posts[$i]['comments'] = $comments;
             $likePostModel = new LikePostModel();
-            $likeCounts = $likePostModel->countLike($_SESSION['user_id'], $posts[$i]['id']);
+            $likeCounts = $likePostModel->countLike($posts[$i]['id']);
             $posts[$i]['like_count'] = $likeCounts;
             $isLiked = $likePostModel->isLikedByUser($_SESSION['user_id'], $posts[$i]['id']);
             $posts[$i]['is_liked'] = $isLiked;
