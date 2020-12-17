@@ -16,4 +16,8 @@ $router->post('/profile/update', 'ProfileController@update');
 $router->post('/profile/updateAvt', 'ProfileController@updateAvt');
 
 $router->get('/error', 'HomeController@error');
-$router->get('/ajax-comment/{comment}/{postId}/{userId}', 'AjaxEndpoint@comment');
+
+//call Ajax for comment and like/unlike post
+$router->post('/ajax-comment', 'AjaxEndpoint@comment');
+$router->post('/ajax-like', 'AjaxEndpoint@like');
+$router->post('/ajax-unlike', 'AjaxEndpoint@unlike');

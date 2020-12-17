@@ -68,27 +68,52 @@ window.onclick = function (event) {
 }
 //comment
 
-function callAjax(comment, post_id, user_id) {
+function callAjaxComment(comment, post_id, user_id) {
     var xmlhttp = new XMLHttpRequest();
+    var data = "comment=" + comment + "&postId=" + post_id + "&userId=" +user_id; 
+    xmlhttp.open('POST', '/ajax-comment', true);
+    xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xmlhttp.send(data);
     xmlhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             console.log(this.responseText);
         }
     }
-    var url = "/ajax-comment/" + comment + "/" + post_id + "/" + user_id;
-    console.log(url);
-    xmlhttp.open("GET", "/ajax-comment/" + comment + "/" + post_id + "/" + user_id, true);
-    
-    xmlhttp.send();
 }
 
-function addComment(event, post_id, user_id) {
+function callAjaxLike(user_id, post_id) {
+    var xmlhttp = new XMLHttpRequest();
+    var data = "userId=" + user_id + "&postId=" + post_id;
+    xmlhttp.open('POST', '/ajax-like', true);
+    xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xmlhttp.send(data);
+    xmlhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText);
+        }
+    }
+}
+
+function callAjaxUnLike(user_id, post_id) {
+    var xmlhttp = new XMLHttpRequest();
+    var data = "userId=" + user_id + "&postId=" + post_id;
+    xmlhttp.open('POST', '/ajax-unlike', true);
+    xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xmlhttp.send(data);
+    xmlhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText);
+        }
+    }
+}
+
+function addComment(event, user_id, post_id) {
     if (event.code === "Enter") {
         const div = document.createElement('div');
         const commentInput = document.getElementById(`comment_input__${post_id}`);
         if (commentInput.value == '')
             return;
-        callAjax(commentInput.value, post_id, user_id);
+        callAjaxComment(commentInput.value, post_id, user_id);
         const picturePath = document.getElementById('user_picture').getAttribute('src');
         const name = document.getElementById('user_name').innerHTML;
         //console.log(picturePath, name);
@@ -105,11 +130,6 @@ function addComment(event, post_id, user_id) {
   `;
         commentInput.value = '';
         document.getElementById(`comment-container__${post_id}`).appendChild(div);
-        //call ajax here
-        
-        // if (!callAjax(commentInput.value, post_id, user_id)) {
-        //     div.setAttribute('style', 'filter: grayscale(90%);')
-        // }
     }
 
 }
@@ -118,15 +138,13 @@ function test() {
     console.log("test");
 }
 
-function changeIcon(img) {
-    // lay id button
-    //var img = document.getElementById('icon_select_heart');
-
+function changeIcon(img, user_id, post_id) {
     // kiem tra xem dang la tim do hay tim trang de doi nguoc lai
     if (img.src.match("/public/assets/heart.png")) {
         img.src = "/public/assets/icons8-heart-64.png";
+        callAjaxLike(user_id, post_id);
     } else {
-        console.log("else clm");
         img.src = "/public/assets/heart.png";
+        callAjaxUnLike(user_id, post_id);
     }
 }

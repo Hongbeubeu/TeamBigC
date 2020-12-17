@@ -14,4 +14,15 @@ class CommentModel extends BaseModel
         $params = array_merge($params, $paramsIn);
         $this->dbo->insert($this->table, $params);
     }
+
+    public function getCommentsByPostId(int $postId) 
+    {
+        return $this->dbo
+                ->table($this->table)
+                ->select('user_id, post_id, content')
+                ->where([['post_id', $postId]])
+                ->limit(5)
+                ->get()
+                ->toArray();
+    }
 }

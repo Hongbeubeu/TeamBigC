@@ -11,8 +11,8 @@
             </div>
             <a href="#" class="newfeed__share-button"><img src="/public/assets/share.png" class="icon_medium" />
             </a>
-            <div class="newfeed__like-button"><img src="/public/assets/heart.png"
-                    class="icon_medium icon_heart" onclick="changeIcon(this)"/> </div>
+            <div class="newfeed__like-button"><img src="<?php echo $arr['is_liked']?'/public/assets/icons8-heart-64.png':'/public/assets/heart.png' ?>"
+                    class="icon_medium icon_heart" onclick="changeIcon(this, '<?php echo $_SESSION['user_id'] ?>', '<?php echo $arr['id'] ?>')"/> </div>
         </div>
         <div class="newfeed__content">
             <p><?php echo $arr['caption'] ?></p>
@@ -97,7 +97,7 @@
                     </div>
                 </div>
             </div> 
-            <input id="comment_input__<?php echo $arr['id']?>" class="newfeed__comment-input newfeed__input" onkeydown="return addComment(event, '<?php echo $arr['id']?>', '<?php echo $_SESSION['user_id'] ?>')" type="text" placeholder="Write your comment" />
+            <input id="comment_input__<?php echo $arr['id']?>" class="newfeed__comment-input newfeed__input" onkeydown="return addComment(event, '<?php echo $_SESSION['user_id'] ?>', '<?php echo $arr['id']  ?>')" type="text" placeholder="Write your comment" />
         </div>
     </div>
     <?php
