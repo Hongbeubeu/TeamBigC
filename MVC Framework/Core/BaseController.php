@@ -55,7 +55,7 @@ class BaseController
         return true;
     }
 
-    private function secure_input($data)
+    protected function secure_input($data)
     {
         $data = trim($data);
         $data = stripslashes($data);
