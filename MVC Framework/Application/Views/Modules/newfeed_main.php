@@ -1,8 +1,8 @@
 <div class="newfeed__main">
     <?php
-            foreach ($this->vars as $key => $arr) {
-                $image = json_decode($arr['content'], true);
-            ?>
+        foreach ($this->vars as $key => $arr) {
+        $image = json_decode($arr['content'], true);
+    ?>
     <div class="newfeed__post">
         <div class="newfeed__header">
             <div class="newfeed__identify identify" src="#">
@@ -10,35 +10,35 @@
                 <p class="name" style="display: inline;"> <?php echo $arr['display_name'] ?></p>
             </div>
             <div class="newfeed_option_button">
-                                <div class="newfeed_select_button">
-                                    <div  class="newfeed__like-button"><img src="<?php echo $arr['is_liked']?'/public/assets/icons8-heart-64.png':'/public/assets/heart.png' ?>" class="icon_select" id="icon_select_heart" onclick="changeIcon(this, '<?php echo $_SESSION['user_id'] ?>', '<?php echo $arr['id'] ?>')"/> </div>
-                                    <p id="count_like_of_post_<?php echo $arr['id'] ?>"><?php echo $arr['like_count'] ?></p>
-                                </div>
-                                <hr>
-                                <div class="newfeed_select_button">
-                                    <div class="newfeed__share-button"><img src="/public/assets/share.png" class="icon_select" id="icon_select_share" /> </div>
-                                    <p>100</p>
-                                </div>
-                            </div>
-            
-            <!-- <a href="#" class="newfeed__share-button"><img src="/public/assets/share.png" class="icon_medium" />
-            </a>
-            <div class="newfeed__like-button">
-                <img src="<?php echo $arr['is_liked']?'/public/assets/icons8-heart-64.png':'/public/assets/heart.png' ?>" class="icon_medium icon_heart" onclick="changeIcon(this, '<?php echo $_SESSION['user_id'] ?>', '<?php echo $arr['id'] ?>')"/> 
-            </div> -->
+                <div class="newfeed_select_button">
+                    <div class="newfeed__like-button"><img
+                            src="<?php echo $arr['is_liked']?'/public/assets/icons8-heart-64.png':'/public/assets/heart.png' ?>"
+                            class="icon_select" id="icon_select_heart"
+                            onclick="changeIcon(this, '<?php echo $_SESSION['user_id'] ?>', '<?php echo $arr['id'] ?>')" />
+                    </div>
+                    <p id="count_like_of_post_<?php echo $arr['id'] ?>"><?php echo $arr['like_count'] ?></p>
+                </div>
+                <hr>
+                <div class="newfeed_select_button">
+                    <div class="newfeed__share-button"><img src="/public/assets/share.png" class="icon_select"
+                            id="icon_select_share" /> </div>
+                    <p>100</p>
+                </div>
+            </div>
+
         </div>
         <div class="newfeed__content">
             <p><?php echo $arr['caption'] ?></p>
             <?php 
-                    if(is_array($image)) {
-                        $numberImage = count($image);
-                        if ($numberImage == 1) {
-                    ?>
+                if(is_array($image)) {
+                    $numberImage = count($image);
+                    if ($numberImage == 1) {
+            ?>
             <img style="height: 100%; width: 100%" src="/public/uploads/<?php echo $image[0]?>" />
             <?php
-                        }
-                        if ($numberImage > 1) {
-                        ?>
+                    }
+                    if ($numberImage > 1) {
+            ?>
             <div>
                 <div class="slideshow-container">
                     <!-- Full-width images with number and caption text -->
@@ -62,55 +62,34 @@
                 </div>
             </div>
             <?php  
-                        }
-                    }   
-                        ?>
+                    }
+                }   
+            ?>
 
         </div>
         <div class="newfeed__comment">
             <div class="newfeed__comment-container" id="comment-container__<?php echo $arr['id']?>">
+                <?php 
+                foreach($arr['comments'] as $comment)
+                {
+                ?>
                 <div class="newfeed__comment-main">
                     <div class="newfeed__identify identify" src="#">
-                        <img class="avatar icon_small" src="/public/assets/avatar.jpg" />
+                        <img class="avatar icon_small" src="<?php echo $comment['picture'] ?>" />
                     </div>
                     <div class=newfeed__comment-content>
-                        <span class="newfeed__comment-name" style="display: inline;"> Tuan Le Minh</span>
+                        <span class="newfeed__comment-name" style="display: inline;"> <?php echo $comment['display_name'] ?></span>
                         </br>
-                        <span class="newfeed__comment-text"> Mình đăng ảnh đẹp quá</span>
+                        <span class="newfeed__comment-text"><?php echo $comment['content'] ?></span>
                     </div>
                 </div>
-                <div class="newfeed__comment-main">
-                    <div class="newfeed__identify identify" src="#">
-                        <img class="avatar icon_small" src="/public/assets/avatar.jpg" />
-                    </div>
-                    <div class=newfeed__comment-content>
-                        <span class="newfeed__comment-name" style="display: inline;"> Tuan Le Minh</span>
-                        </br>
-                        <span class="newfeed__comment-text"> Mình đăng ảnh đẹp quá</span>
-                    </div>
-                </div>
-                <div class="newfeed__comment-main">
-                    <div class="newfeed__identify identify" src="#">
-                        <img class="avatar icon_small" src="<?php echo $arr['picture'] ?>" />
-                    </div>
-                    <div class=newfeed__comment-content>
-                        <span class="newfeed__comment-name" style="display: inline;"><?php echo $arr['display_name'] ?></span>
-                        </br>
-                        <span class="newfeed__comment-text"> Mình đăng ảnh đẹp quá</span>
-                    </div>
-                </div>
-                <div class="newfeed__comment-main">
-                    <div class="newfeed__identify identify" src="#">
-                        <img class="avatar icon_small" src="/public/assets/avatar.jpg" />
-                    </div>
-                    <div class=newfeed__comment-content>
-                        <span class="newfeed__comment-name" style="display: inline;"> Tuan Le Minh</span>
-                        </br>
-                        <span class="newfeed__comment-text"> Mình đăng ảnh đẹp quá</span>
-                    </div>
-                </div>
-            </div> 
-            <input id="comment_input__<?php echo $arr['id']?>" class="newfeed__comment-input newfeed__input" onkeydown="return addComment(event, '<?php echo $_SESSION['user_id'] ?>', '<?php echo $arr['id']  ?>')" type="text" placeholder="Write your comment" />
+                <?php
+                }
+                ?>
+            </div>
+            <input id="comment_input__<?php echo $arr['id']?>" class="newfeed__comment-input newfeed__input"
+                onkeydown="return addComment(event, '<?php echo $_SESSION['user_id'] ?>', '<?php echo $arr['id']  ?>')"
+                type="text" placeholder="Write your comment" />
         </div>
     </div>
     <?php

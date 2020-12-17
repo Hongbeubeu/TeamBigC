@@ -82,6 +82,8 @@ function callAjaxComment(comment, post_id, user_id) {
 }
 
 function callAjaxLike(user_id, post_id) {
+    var date = new Date();
+    console.log("like:" +date.getTime());
     var xmlhttp = new XMLHttpRequest();
     var data = "userId=" + user_id + "&postId=" + post_id;
     xmlhttp.open('POST', '/ajax-like', true);
@@ -95,6 +97,8 @@ function callAjaxLike(user_id, post_id) {
 }
 
 function callAjaxUnLike(user_id, post_id) {
+    var date = new Date();
+    console.log("unlike:" +date.getTime());
     var xmlhttp = new XMLHttpRequest();
     var data = "userId=" + user_id + "&postId=" + post_id;
     xmlhttp.open('POST', '/ajax-unlike', true);
@@ -155,3 +159,8 @@ function changeIcon(img, user_id, post_id) {
         callAjaxUnLike(user_id, post_id);
     }
 }
+
+// setInterval(function () { 
+//     callAjaxLike(); 
+//     callAjaxUnLike()
+// }, 3000);
