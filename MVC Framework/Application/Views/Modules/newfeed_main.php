@@ -11,7 +11,7 @@
             </div>
             <div class="newfeed_option_button">
                                 <div class="newfeed_select_button">
-                                    <div  class="newfeed__like-button"><img src="/public/assets/icons8-heart-64.png" class="icon_select" id="icon_select_heart" onclick="changeIcon()"/> </div>
+                                    <div  class="newfeed__like-button"><img src="<?php echo $arr['is_liked']?'/public/assets/icons8-heart-64.png':'/public/assets/heart.png' ?>" class="icon_select" id="icon_select_heart" onclick="changeIcon(this, '<?php echo $_SESSION['user_id'] ?>', '<?php echo $arr['id'] ?>')"/> </div>
                                     <p><?php echo $arr['like_count'] ?></p>
                                 </div>
                                 <hr>
