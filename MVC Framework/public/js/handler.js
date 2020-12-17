@@ -47,7 +47,7 @@ var input = document.getElementById("newfeed__status");
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
 var buttonModal = document.getElementById("modal_button");
-console.log(buttonModal)
+//console.log(buttonModal)
 // When the user clicks the button, open the modal 
 input.onclick = function () {
     modal.style.display = "block";
@@ -68,18 +68,30 @@ window.onclick = function (event) {
 }
 //comment
 
-function callAjax() {
-
-    return true;
+function callAjax(comment, post_id, user_id) {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText);
+        }
+    }
+    var url = "/ajax-comment/" + comment + "/" + post_id + "/" + user_id;
+    console.log(url);
+    xmlhttp.open("GET", "/ajax-comment/" + comment + "/" + post_id + "/" + user_id, true);
+    
+    xmlhttp.send();
 }
 
-function addComment(event, id) {
+function addComment(event, post_id, user_id) {
     if (event.code === "Enter") {
         const div = document.createElement('div');
-        const commentInput = document.getElementById(`comment_input__${id}`);
+        const commentInput = document.getElementById(`comment_input__${post_id}`);
+        if (commentInput.value == '')
+            return;
+        callAjax(commentInput.value, post_id, user_id);
         const picturePath = document.getElementById('user_picture').getAttribute('src');
         const name = document.getElementById('user_name').innerHTML;
-        console.log(picturePath, name);
+        //console.log(picturePath, name);
         div.className = `newfeed__comment-main`;
         div.innerHTML = `
   <div class="newfeed__identify identify" src="#">
@@ -92,12 +104,12 @@ function addComment(event, id) {
   </div>
   `;
         commentInput.value = '';
-        document.getElementById(`comment-container__${id}`).appendChild(div);
+        document.getElementById(`comment-container__${post_id}`).appendChild(div);
         //call ajax here
-        if (!callAjax()) {
-            div.setAttribute('style', 'filter: grayscale(90%);')
-        }
-
+        
+        // if (!callAjax(commentInput.value, post_id, user_id)) {
+        //     div.setAttribute('style', 'filter: grayscale(90%);')
+        // }
     }
 
 }

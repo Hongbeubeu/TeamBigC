@@ -97,7 +97,7 @@
                     </div>
                 </div>
             </div> 
-            <input id="comment_input__<?php echo $arr['id']?>" class="newfeed__comment-input newfeed__input" onkeydown="return addComment(event, '<?php echo $arr['id']?>')" type="text" placeholder="Write your comment" />
+            <input id="comment_input__<?php echo $arr['id']?>" class="newfeed__comment-input newfeed__input" onkeydown="return addComment(event, '<?php echo $arr['id']?>', '<?php echo $_SESSION['user_id'] ?>')" type="text" placeholder="Write your comment" />
         </div>
     </div>
     <?php

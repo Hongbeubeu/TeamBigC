@@ -16,3 +16,4 @@ $router->post('/profile/update', 'ProfileController@update');
 $router->post('/profile/updateAvt', 'ProfileController@updateAvt');
 
 $router->get('/error', 'HomeController@error');
+$router->get('/ajax-comment/{comment}/{postId}/{userId}', 'AjaxEndpoint@comment');
