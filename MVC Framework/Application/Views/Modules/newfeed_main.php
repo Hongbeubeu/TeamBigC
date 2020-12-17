@@ -11,8 +11,8 @@
             </div>
             <a href="#" class="newfeed__share-button"><img src="/public/assets/share.png" class="icon_medium" />
             </a>
-            <a href="#" class="newfeed__like-button"><img src="/public/assets/heart.png"
-                    class="icon_medium icon_heart" /> </a>
+            <div class="newfeed__like-button"><img src="/public/assets/heart.png"
+                    class="icon_medium icon_heart" onclick="changeIcon(this)"/> </div>
         </div>
         <div class="newfeed__content">
             <p><?php echo $arr['caption'] ?></p>

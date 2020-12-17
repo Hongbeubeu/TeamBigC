@@ -23,8 +23,12 @@ function showSlides(n, id) {
     var i;
     var slides = document.getElementsByClassName(`mySlides${id}`);
     var dots = document.getElementsByClassName(`dot${id}`);
-    if (n > slides.length) { slideIndex = 1 }
-    if (n < 1) { slideIndex = slides.length }
+    if (n > slides.length) {
+        slideIndex = 1
+    }
+    if (n < 1) {
+        slideIndex = slides.length
+    }
     for (i = 0; i < slides.length; i++) {
         slides[i].setAttribute("style", "display: none !important");
     }
@@ -44,25 +48,25 @@ var input = document.getElementById("newfeed__status");
 var span = document.getElementsByClassName("close")[0];
 var buttonModal = document.getElementById("modal_button");
 console.log(buttonModal)
-    // When the user clicks the button, open the modal 
-// input.onclick = function() {
-//     modal.style.display = "block";
-// }
-// buttonModal.onclick = function() {
-//         modal.style.display = "none";
-//     }
-    // When the user clicks on <span> (x), close the modal
-span.onclick = function() {
+// When the user clicks the button, open the modal 
+input.onclick = function () {
+    modal.style.display = "block";
+}
+buttonModal.onclick = function () {
+    modal.style.display = "none";
+}
+// When the user clicks on <span> (x), close the modal
+span.onclick = function () {
     modal.style.display = "none";
 }
 
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
     }
-    //comment
+}
+//comment
 
 function callAjax() {
 
@@ -100,4 +104,17 @@ function addComment(event, id) {
 
 function test() {
     console.log("test");
+}
+
+function changeIcon(img) {
+    // lay id button
+    //var img = document.getElementById('icon_select_heart');
+
+    // kiem tra xem dang la tim do hay tim trang de doi nguoc lai
+    if (img.src.match("/public/assets/heart.png")) {
+        img.src = "/public/assets/icons8-heart-64.png";
+    } else {
+        console.log("else clm");
+        img.src = "/public/assets/heart.png";
+    }
 }
