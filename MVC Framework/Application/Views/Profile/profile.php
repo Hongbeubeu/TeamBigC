@@ -20,11 +20,10 @@
     ?>
 
     <div class="right_pane">
-
-        <div id="search">
-            <input class="newfeed__search-input" placeholder="Search" type="text" />
-        </div>
         <div class="background">
+        <div id="search__profile">
+         <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'searchbar.php'); ?>
+         </div>
             <div class="background_image">
                 <div class="background_image_change_image">
                     <button>
@@ -41,7 +40,7 @@
             </div>
         </div>
         <div class="under_cover">
-            <div class="newfeed">
+            <div class="newfeed" id="newfeed__profile">
                 <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'newfeed_control.php'); ?>
                 <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'newfeed_main.php'); ?>
             </div>
