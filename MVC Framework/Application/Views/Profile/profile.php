@@ -6,84 +6,26 @@
     <title>Profile</title>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link href="/public/css/profile.css" rel="stylesheet" type="text/css">
+    <link href="/public/css/style.css" rel="stylesheet" type="text/css">
 
 </head>
 
 <body>
+<?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'new_post_modal.php'); ?>
+
+    <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'navbar.php'); ?>
+
     <?php
-        foreach ($this->vars as $key => $arr) {
+        foreach ($this->vars as $key => $arr) { 
     ?>
-    <div class="navbar">
-        <div class="navbar__account-info">
-            <img class="navbar__avatar" src=<?php echo $arr['picture']?$arr['picture']: "/public/assets/avatar.jpg" ?>></img>
-            <p class="navbar__name"><?php echo $arr['display_name'] ?></p>
-            <p class="navbar__email"><?php echo $_SESSION['session_id'] ?></p>
-        </div>
-        <form action="/profile/updateAvt" method="post" enctype="multipart/form-data">
-          <input type="file" name="fileToUpload" id="fileSelect">
-          <input type="submit" name="submit" value="Upload file">
-         </form>
-        <button class="navbar__donate-button">Donate</button>
-        <div class="navbar__menu">
-            <h3 class="navbar__menu-title">Menu</h3>
-            <div class="navbar__menu-button">
-                <img class="navbar__menu-icon" src="/public/assets/newfeed.png" />
-                <a href="/newfeed" class="navbar__menu-title">Newfeeds</a>
-            </div>
-            <div class="navbar__menu-button">
-                <img class="navbar__menu-icon" src="/public/assets/messages.png" />
-                <a href="#" class="navbar__menu-title">Messages</a>
-            </div>
-            <div class="navbar__menu-button">
-                <img class="navbar__menu-icon" src="/public/assets/notification.png" />
-                <p href="#" class="navbar__menu-title" onclick="openPopup()">Notifications</p>
-                <div class="notification__detail" id="notification">
-                    <h4>Notifications</h4>
-                    <hr>
-                    <div class="notification__content">
-                        <img class="avatar icon_medium relative" src="/public/assets/avatar.jpg">
-                        <p class="notification__text">Nguyễn Văn Hồng likes your photo</p>
-                        </img>
-                    </div>
-                    <hr>
-                    <div class="notification__content">
-                        <img class="avatar icon_medium relative" src="/public/assets/avatar.jpg">
-                        <p class="notification__text">Nguyễn Văn Hồng likes your photo</p>
-                        </img>
-                    </div>
-                    <hr>
-                    <div class="notification__content">
-                        <img class="avatar icon_medium relative" src="/public/assets/avatar.jpg">
-                        <p class="notification__text">Nguyễn Văn Hồng likes your photo</p>
-                        </img>
-                    </div>
-                </div>
 
-            </div>
-            <div id="navbar_profile" class="navbar__menu-button">
-                <img class="navbar__menu-icon" src="/public/assets/profile.png" />
-                <a href="#" class="navbar__menu-title">Profile</a>
-            </div>
-            <div class="navbar__menu-button">
-                <img class="navbar__menu-icon" src="/public/assets/settings.png" />
-                <a href="#" class="navbar__menu-title">Settings</a>
-            </div>
-            <div class="navbar__menu-button">
-                <img class="navbar__menu-icon" src="/public/assets/icons8-logout-rounded-left-64.png" />
-                <a href="login.html" class="navbar__menu-title">Logout</a>
-            </div>
-
-        </div>
-    </div>
     <div class="right_pane">
+
+        <div id="search">
+            <input class="newfeed__search-input" placeholder="Search" type="text" />
+        </div>
         <div class="background">
             <div class="background_image">
-                <div class="background_image_search">
-                    <img src="/public/assets/icons8-search-48.png" />
-                    <input class="newfeed__search-input" placeholder="Search" type="text" />
-                </div>
-                <hr>
                 <div class="background_image_change_image">
                     <button>
                         <img src="/public/assets/icons8-camera-50.png" />
@@ -100,123 +42,42 @@
         </div>
         <div class="under_cover">
             <div class="newfeed">
-                <!-- <div class="newfeed__search">
-                <input class="newfeed__search-input" placeholder="Search" type="search" />
-                 </div> -->
-                <div class="newfeed__control">
-                    <textarea class="newfeed__input_mind" placeholder="What do you mind ?" name="Text1" cols="40" rows="5"></textarea>
-                    <div class="btn_select">
-                        <button>Add Photo</button>
-                        <button>Post</button>
-                    </div>
-                </div>
-                <div class="newfeed__main">
-                <?php
-                foreach ($this->varsPost as $key => $arrPost) {
-                    $image = json_decode($arrPost['content'], true);
-                ?>
-                    <div class="newfeed__post">
-                        <div class="newfeed__header">
-                            <div class="newfeed__identify identify" src="#">
-                                <img class="avatar icon_medium" src="<?php echo $arrPost['picture'] ?>" />
-                                <p class="name" style="display: inline;"> <?php echo $arrPost['display_name'] ?></p>
-                            </div>
-
-                            <a href="#" class="newfeed__share-button"><img src="/public/assets/share.png" class="icon_medium" /> </a>
-                            <a href="#" class="newfeed__like-button"><img src="/public/assets/heart.png" class="icon_medium icon_heart" /> </a>
-
-
-                        </div>
-                        <div class="newfeed__content">
-                            <p><?php echo $arrPost['caption'] ?></p>
-                            <?php 
-                    if(is_array($image)) {
-                        $numberImage = count($image);
-                        if ($numberImage == 1) {
-                    ?>
-                        <img style="height: 100%; width: 100%" src="/public/uploads/<?php echo $image[0]?>" />
-                        <?php
-                        }
-                        if ($numberImage > 1) {
-                        ?>
-                        <div>
-                            <div class="slideshow-container">
-                                <!-- Full-width images with number and caption text -->
-                                <?php foreach ($image as $key=>$value) : ?>
-                                <div class="mySlides  index<?php echo $key?> mySlides<?php echo $arr['id']?> fade">
-                                    <img src="/public/uploads/<?php echo $value?>" style="width:100%">
-                                </div>
-                                <?php endforeach ?>
-
-                                <a class="prev" onclick="plusSlides(-1,<?php echo $arr['id']?>)">&#10094;</a>
-                                <a class="next" onclick="plusSlides(1, <?php echo $arr['id']?>)">&#10095;</a>
-                            </div>
-                            <br>
-
-                            <!-- The dots/circles -->
-                            <div style="text-align:center">
-                                <?php foreach ($image as $key=>$value) : ?>
-                                <span class="dot dot<?php echo $arr['id']?>"
-                                    onclick="currentSlide(<?php echo $key+1?>, <?php echo $arr['id']?>)"></span>
-                                <?php endforeach ?>
-                            </div>
-                        </div>
-                        <?php  
-                        }
-                    }   
-                        ?>
-                        </div>
-                        <div class="newfeed__comment">
-                            <div class="newfeed__comment-main">
-                                <div class="newfeed__identify identify" src="#">
-                                    <img class="avatar icon_small" src="/public/assets/avatar.jpg" />
-                                </div>
-                                <div class=newfeed__comment-content>
-                                    <span class="newfeed__comment-name" style="display: inline;"> Tuan Le Minh</span>
-                                    </br>
-                                    <span class="newfeed__comment-text"> Mình đăng ảnh đẹp quá</span>
-                                </div>
-                            </div>
-                            <input class="newfeed__comment-input newfeed__input" type="text" placeholder="Write your comment" />
-                        </div>
-                    </div>
-                <?php
-                    }
-                ?>
-                </div>
+                <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'newfeed_control.php'); ?>
+                <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'newfeed_main.php'); ?>
             </div>
-            
+
             <div class="about_pane">
                 <div class="about_pane_title">
                     <p>About</p>
+                    <span id="btnEditProfile" onclick="onClickEditProfile()">
                     <img class="about_pane_title_img" src="/public/assets/icons8-edit-50.png" />
-                    <a id="myBtn" onclick="openModalBox()">Edit</a>
+                    </span>
                 </div>
                 <hr>
-                    <div class="infoUser">
-                        <p>Display Name: </p>
-                        <p class="data_info"><?php echo $arr['display_name'] ?></p>
+                <div class="infoUser">
+                    <p>Display Name: </p>
+                    <p class="data_info"><?php echo $arr['display_name'] ?></p>
 
-                    </div>
-                    <div class="infoUser">
-                        <p>Gender: </p>
-                        <p class="data_info"><?php echo ($arr['gender'] ? $arr['gender'] : " Null") ?></p>
+                </div>
+                <div class="infoUser">
+                    <p>Gender: </p>
+                    <p class="data_info"><?php echo ($arr['gender'] ? $arr['gender'] : " Null") ?></p>
 
-                    </div>
-                    <div class="infoUser">
-                        <p>Date of Birth: </p>
-                        <p class="data_info"><?php echo ($arr['date_of_birth'] ? $arr['date_of_birth'] : " Null")  ?></p>
+                </div>
+                <div class="infoUser">
+                    <p>Date of Birth: </p>
+                    <p class="data_info"><?php echo ($arr['date_of_birth'] ? $arr['date_of_birth'] : " Null")  ?></p>
 
-                    </div>
-                    <div class="infoUser">
-                        <p>Education: </p>
-                        <p class="data_info"><?php echo ($arr['education'] ? $arr['education'] : " Null")  ?></p>
+                </div>
+                <div class="infoUser">
+                    <p>Education: </p>
+                    <p class="data_info"><?php echo ($arr['education'] ? $arr['education'] : " Null")  ?></p>
 
-                    </div>
-                    <div class="infoUser">
-                        <p>Description: </p>
-                        <p class="data_info"><?php echo ($arr['about'] ? $arr['about'] : " Null")  ?></p>
-                    </div>
+                </div>
+                <div class="infoUser">
+                    <p>Description: </p>
+                    <p class="data_info"><?php echo ($arr['about'] ? $arr['about'] : " Null")  ?></p>
+                </div>
                 <hr>
                 <div class="follow">
                     <div class="follower">
@@ -234,7 +95,7 @@
         </div>
         <div class="container">
             <!-- The Modal -->
-            <div id="myModal" class="modal">
+            <div id="modalEditProfile" class="modal">
 
                 <!-- Modal content -->
                 <div class="modal-content">
@@ -251,7 +112,8 @@
                             <div class="info_user">
                                 <div>
                                     <p>Display Name</p>
-                                    <input class="input_text" type="text" name="display_name" placeholder="Display name" />
+                                    <input class="input_text" type="text" name="display_name"
+                                        placeholder="Display name" />
                                 </div>
                                 <div>
                                     <p>Gender</p>
@@ -261,7 +123,7 @@
                                             <label for="male">Male</label>
                                         </div>
                                         <div>
-                                            <input type="radio" name="my-input" id="female" value="female"> 
+                                            <input type="radio" name="my-input" id="female" value="female">
                                             <label for="female">Female</label>
                                         </div>
                                     </div>
@@ -281,10 +143,11 @@
                             <div id="info_user_description">
                                 <div>
                                     <p>Description</p>
-                                    <textarea class="input_text" placeholder="What do you mind ?" name="description" cols="40" rows="4"></textarea>
+                                    <textarea class="input_text" placeholder="What do you mind ?" name="description"
+                                        cols="40" rows="4"></textarea>
                                 </div>
                                 <div id="select_btn">
-                                    <button id="update_btn" >Update Profile</button>
+                                    <button id="update_btn">Update Profile</button>
                                 </div>
                             </div>
 
@@ -297,6 +160,6 @@
     <?php } ?>
 </body>
 <script src="/public/js/handler.js"></script>
-<script src="/public/js/handle_modal.js"></script>
+<script src="/public/js/handle_heart_share.js"></script>
 
 </html>

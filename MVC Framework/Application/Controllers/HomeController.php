@@ -30,7 +30,7 @@ class HomeController extends BaseController
             $userBaseInfo = $userProfileModel->getUserBaseInformation($_SESSION['user_id']);
             $this->setUserBaseInfo($userBaseInfo);
             $posts = $postModel->getPosts($_SESSION['user_id']);
-            $this->setParameter($posts);
+            $this->setParameterPost($posts);
             $this->render(DS . "Feeds" . DS . "newfeeds");
         } else
             header('location:/login');
@@ -48,10 +48,11 @@ class HomeController extends BaseController
                 $userProfileModel =  new UserProfileModel();
                 $postModel = new PostModel();
                 $userId =  $_SESSION['user_id'];
+                //Get information of another people profile site
+                $userBaseInfo = $userProfileModel->getUserBaseInformation($_SESSION['user_id']);
                 $userInfo = $userProfileModel->getProfileInformation($userId);
-                $posts = $postModel->getPostsMyselft($_SESSION['user_id']);
+                $posts = $postModel->getPosts($_SESSION['user_id']);
                 $this->setParameterPost($posts);
-                //$this->setUserBaseInfo($userBaseInfo);
                 $this->setParameter($userInfo);
                 $this->render(DS . "Profile" . DS . "profile");
             }

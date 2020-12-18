@@ -38,35 +38,42 @@ function showSlides(n, id) {
     slides[slideIndex - 1].style.display = "block";
     dots[slideIndex - 1].className += " active";
 }
-//modal
-// Get the modal
-var modal = document.getElementById("myModal");
 
-// Get the button that opens the modal
-var input = document.getElementById("newfeed__status");
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-var buttonModal = document.getElementById("modal_button");
-//console.log(buttonModal)
-// When the user clicks the button, open the modal 
-input.onclick = function () {
-    modal.style.display = "block";
+function onClickEditProfile() {
+    openModalBox("btnEditProfile", "modalEditProfile");
 }
-buttonModal.onclick = function () {
-    modal.style.display = "none";
-}
-// When the user clicks on <span> (x), close the modal
-span.onclick = function () {
-    modal.style.display = "none";
-}
+function onClickPostInput() {
+    openModalBox("newfeed__status", "modalNewPost");
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function (event) {
-    if (event.target == modal) {
+}
+function openModalBox(buttonId, modalId) {
+    // lấy phần Modal
+    var modal = document.getElementById(modalId);
+
+    // Lấy phần button mở Modal
+    var btn = document.getElementById(buttonId);
+
+    // Lấy phần span đóng Modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // Khi button được click thi mở Modal
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
+
+    // Khi span được click thì đóng Modal
+    span.onclick = function() {
         modal.style.display = "none";
     }
+
+    // Khi click ngoài Modal thì đóng Modal
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
 }
-//comment
+
 
 function callAjaxComment(comment, post_id, user_id) {
     var xmlhttp = new XMLHttpRequest();
@@ -153,7 +160,7 @@ function changeIcon(img, user_id, post_id) {
         likeCount.innerHTML = parseInt(likeCount.innerHTML) + 1;
         console.log(likeCount.innerHTML);
         callAjaxLike(user_id, post_id);
-    } else {
+    } else {                                                                                                                                                      
         img.src = "/public/assets/heart.png";
         likeCount.innerHTML = (parseInt(likeCount.innerHTML)<=0)?0:(parseInt(likeCount.innerHTML) - 1);
         callAjaxUnLike(user_id, post_id);

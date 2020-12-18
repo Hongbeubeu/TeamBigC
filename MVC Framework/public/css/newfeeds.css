@@ -78,6 +78,7 @@ body {
 
 .newfeed {
     min-width: 50%;
+    max-width: 75%;
     background-color: rgb(239, 247, 246);
     overflow: auto;
 }
@@ -513,3 +514,4 @@ body {
 .image-upload>input {
     display: none;
 }
+
