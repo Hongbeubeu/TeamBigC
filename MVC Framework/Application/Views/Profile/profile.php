@@ -32,12 +32,6 @@
                     </button>
                 </div>
             </div>
-            <div class="btn-group" style="width:100%">
-                <button style="width:25%">News</button>
-                <button style="width:25%">Photos</button>
-                <button style="width:25%">Donate Events</button>
-                <button style="width:25%">Friends(10)</button>
-            </div>
         </div>
         <div class="under_cover">
             <div class="newfeed" id="newfeed__profile">
