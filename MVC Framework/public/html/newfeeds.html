@@ -5,7 +5,7 @@
 <head>
     <title>Newfeeds</title>
     <meta charset="utf-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" href="newfeeds.css?<?=time()?>">
 
 </head>
@@ -22,33 +22,33 @@
         <div class="navbar__menu">
             <h3 class="navbar__menu-title">Menu</h3>
             <div class="navbar__menu-button">
-                <img class="navbar__menu-icon" src="assets/newfeed.png"/>
+                <img class="navbar__menu-icon" src="assets/newfeed.png" />
                 <a href="#" class="navbar__menu-title">Newfeeds</a>
             </div>
             <div class="navbar__menu-button">
-                <img class="navbar__menu-icon" src="assets/messages.png"/>
+                <img class="navbar__menu-icon" src="assets/messages.png" />
                 <a href="#" class="navbar__menu-title">Messages</a>
             </div>
             <div class="navbar__menu-button">
-                <img class="navbar__menu-icon" src="assets/notification.png"/>
+                <img class="navbar__menu-icon" src="assets/notification.png" />
                 <p href="#" class="navbar__menu-title" onclick="openPopup()">Notifications</p>
                 <div class="notification__detail" id="notification">
                     <h4>Notifications</h4>
                     <hr>
                     <div class="notification__content">
-                        <img class="avatar icon_medium relative" src="assets/avatar.jpg" >
+                        <img class="avatar icon_medium relative" src="assets/avatar.jpg">
                         <p class="notification__text">Nguyễn Văn Hồng likes your photo</p>
                         </img>
                     </div>
                     <hr>
                     <div class="notification__content">
-                        <img class="avatar icon_medium relative" src="assets/avatar.jpg" >
+                        <img class="avatar icon_medium relative" src="assets/avatar.jpg">
                         <p class="notification__text">Nguyễn Văn Hồng likes your photo</p>
                         </img>
                     </div>
                     <hr>
                     <div class="notification__content">
-                        <img class="avatar icon_medium relative" src="assets/avatar.jpg" >
+                        <img class="avatar icon_medium relative" src="assets/avatar.jpg">
                         <p class="notification__text">Nguyễn Văn Hồng likes your photo</p>
                         </img>
                     </div>
@@ -56,11 +56,11 @@
 
             </div>
             <div class="navbar__menu-button">
-                <img class="navbar__menu-icon" src="assets/profile.png"/>
+                <img class="navbar__menu-icon" src="assets/profile.png" />
                 <a href="#" class="navbar__menu-title">Profile</a>
             </div>
             <div class="navbar__menu-button">
-                <img class="navbar__menu-icon" src="assets/settings.png"/>
+                <img class="navbar__menu-icon" src="assets/settings.png" />
                 <a href="#" class="navbar__menu-title">Settings</a>
             </div>
 
@@ -71,102 +71,112 @@
             <input class="newfeed__search-input" placeholder="Search" type="search" />
         </div>
         <div class="newfeed__control">
-            <input class="newfeed__input" type="text" placeholder="What do you mind ?"/>
+            <input class="newfeed__input" type="text" placeholder="What do you mind ?" />
             <a href="#"><img src="assets/add-image.png" class="icon-button icon_medium" /> </a>
-            <a href="#"><img src="assets/stickers.png" class="icon-button icon_medium"/> </a>
-            <a href="#"><img src="assets/video-call.png" class="icon-button icon_medium"/> </a>
+            <a href="#"><img src="assets/stickers.png" class="icon-button icon_medium" /> </a>
+            <a href="#"><img src="assets/video-call.png" class="icon-button icon_medium" /> </a>
         </div>
-     <div class="newfeed__main">
-        <div class="newfeed__post">
-            <div class="newfeed__header">
-                <div class="newfeed__identify identify" src="#">
-                    <img class="avatar icon_medium" src="assets/avatar.jpg"/> 
-                    <p class="name" style="display: inline;"> Tuan Le Minh</p>
-                </div>
-            <a href="#" class="newfeed__share-button"><img src="assets/share.png" class="icon_medium"/> </a>
-            <a href="#" class="newfeed__like-button"><img src="assets/heart.png" class="icon_medium icon_heart"/> </a>
-            </div>
-            <div class="newfeed__content">
-                <p>Hôm nay tôi buồn quá</p>
-                <img style="height: 40vh; width: 95%"src="assets/background.jpg"/>
-            </div>
-            <div class="newfeed__comment">
-                <div class="newfeed__comment-main">
+        <div class="newfeed__main">
+            <div class="newfeed__post">
+                <div class="newfeed__header">
                     <div class="newfeed__identify identify" src="#">
-                        <img class="avatar icon_small" src="assets/avatar.jpg"/> 
+                        <img class="avatar icon_medium" src="assets/avatar.jpg" />
+                        <p class="name" style="display: inline;"> Tuan Le Minh</p>
                     </div>
-                    <div class=newfeed__comment-content>
-                        <span class="newfeed__comment-name" style="display: inline;"> Tuan Le Minh</span>
-                    </br>
-                        <span class="newfeed__comment-text"> Mình đăng ảnh đẹp quá</span>
+                    <a href="#" class="newfeed__share-button"><img src="assets/share.png" class="icon_medium" /> </a>
+                    <a href="#" class="newfeed__like-button"><img src="assets/heart.png" class="icon_medium icon_heart" /> </a>
+                </div>
+                <div class="newfeed__content">
+                    <p>Hôm nay tôi buồn quá</p>
+                    <img style="height: 40vh; width: 95%" src="assets/background.jpg" />
+                </div>
+                <div class="newfeed__comment">
+                    <div class="newfeed__comment-main">
+                        <div class="newfeed__identify identify" src="#">
+                            <img class="avatar icon_small" src="assets/avatar.jpg" />
+                        </div>
+                        <div class=newfeed__comment-content>
+                            <span class="newfeed__comment-name" style="display: inline;"> Tuan Le Minh</span>
+                            </br>
+                            <span class="newfeed__comment-text"> Mình đăng ảnh đẹp quá</span>
+                        </div>
                     </div>
+                    <input class="newfeed__comment-input newfeed__input" type="text" placeholder="Write your comment" />
                 </div>
-                <input class="newfeed__comment-input newfeed__input" type="text" placeholder="Write your comment"/> 
             </div>
-        </div>
-        <div class="newfeed__post">
-            <div class="newfeed__header">
-                <div class="newfeed__identify identify" src="#">
-                    <img class="avatar icon_medium" src="assets/avatar.jpg"/> 
-                    <p class="name" style="display: inline;"> Tuan Le Minh</p>
-                </div>
-            <a href="#" class="newfeed__share-button"><img src="assets/share.png" class="icon_medium"/> </a>
-            <a href="#" class="newfeed__like-button"><img src="assets/heart.png" class="icon_medium icon_heart"/> </a>
-            </div>
-            <div class="newfeed__content">
-                <p>Hôm nay tôi buồn quá</p>
-                <img style="height: 40vh; width: 95%"src="assets/background.jpg"/>
-            </div>
-            <div class="newfeed__comment">
-                <div class="newfeed__comment-main">
+            <div class="newfeed__post">
+                <div class="newfeed__header">
                     <div class="newfeed__identify identify" src="#">
-                        <img class="avatar icon_small" src="assets/avatar.jpg"/> 
+                        <img class="avatar icon_medium" src="assets/avatar.jpg" />
+                        <p class="name" style="display: inline;"> Tuan Le Minh</p>
                     </div>
-                    <div class=newfeed__comment-content>
-                        <span class="newfeed__comment-name" style="display: inline;"> Tuan Le Minh</span>
-                    </br>
-                        <span class="newfeed__comment-text"> Mình đăng ảnh đẹp quá</span>
-                    </div>
+                    <a href="#" class="newfeed__share-button"><img src="assets/share.png" class="icon_medium" /> </a>
+                    <a href="#" class="newfeed__like-button"><img src="assets/heart.png" class="icon_medium icon_heart" /> </a>
                 </div>
-                <input class="newfeed__comment-input newfeed__input" type="text" placeholder="Write your comment"/> 
+                <div class="newfeed__content">
+                    <p>Hôm nay tôi buồn quá</p>
+                    <img style="height: 40vh; width: 95%" src="assets/background.jpg" />
+                </div>
+                <div class="newfeed__comment">
+                    <div class="newfeed__comment-main">
+                        <div class="newfeed__identify identify" src="#">
+                            <img class="avatar icon_small" src="assets/avatar.jpg" />
+                        </div>
+                        <div class=newfeed__comment-content>
+                            <span class="newfeed__comment-name" style="display: inline;"> Tuan Le Minh</span>
+                            </br>
+                            <span class="newfeed__comment-text"> Mình đăng ảnh đẹp quá</span>
+                        </div>
+                    </div>
+                    <input class="newfeed__comment-input newfeed__input" type="text" placeholder="Write your comment" />
+                </div>
             </div>
-        </div>
         </div>
     </div>
     <div class="suggestion">
         <div class="suggestion__donate">
             <p>SUGGESTION DONATE</p>
             <div class="newfeed__identify identify" src="#">
-                <img class="avatar icon_medium" src="assets/avatar.jpg"/> 
+                <img class="avatar icon_medium" src="assets/avatar.jpg" />
                 <p class="name" style="display: inline;">Hội hảo tâm giúp đỡ miền trung</p>
             </div>
             <div class="newfeed__identify identify" src="#">
-                <img class="avatar icon_medium" src="assets/avatar.jpg"/> 
+                <img class="avatar icon_medium" src="assets/avatar.jpg" />
                 <p class="name" style="display: inline;">Hội hảo tâm giúp đỡ miền trung</p>
             </div>
             <div class="newfeed__identify identify" src="#">
-                <img class="avatar icon_medium" src="assets/avatar.jpg"/> 
+                <img class="avatar icon_medium" src="assets/avatar.jpg" />
                 <p class="name" style="display: inline;">Hội hảo tâm giúp đỡ miền trung</p>
             </div>
-       
+
         </div>
-        <div class="suggestion__add">
-            <p>SUGGESTION ADD</p>
+        <div class="group_attended">
+            <p>GROUPS ATTENDED</p>
             <div class="newfeed__identify identify" src="#">
-                <img class="avatar icon_medium" src="assets/avatar.jpg"/> 
-                <p class="name" style="display: inline;">Nguyễn Văn Hồng</p>
+                <img class="avatar icon_medium" src="/public/assets/avatar.jpg" />
+                <p class="name" style="display: inline;">VÌ BỮA ĂN CỦA TRẺ MỒ CÔI VIỆT NAM</p>
+                <button class="visit_gr_attended">Visit</button>
             </div>
             <div class="newfeed__identify identify" src="#">
-                <img class="avatar icon_medium" src="assets/avatar.jpg"/> 
-                <p class="name" style="display: inline;">Nguyễn Văn Hồng</p>
+                <img class="avatar icon_medium" src="/public/assets/avatar.jpg" />
+                <p class="name" style="display: inline;">Chiến dịch gây quỹ dịp sinh nhật của Anh Quan</p>
+                <button class="visit_gr_attended">Visit</button>
             </div>
-            <div class="newfeed__identify identify" src="#">
-                <img class="avatar icon_medium" src="assets/avatar.jpg"/> 
-                <p class="name" style="display: inline;">Nguyễn Văn Hồng</p>
+            <div id="newfeed__identify_identity_hide">
+                <div class="newfeed__identify identify" src="#">
+                    <img class="avatar icon_medium" src="/public/assets/avatar.jpg" />
+                    <p class="name">Chiến dịch gây quỹ dịp sinh nhật của Linh</p>
+                    <button class="visit_gr_attended">Visit</button>
+                </div>
             </div>
+            <a href="#" onclick="seeMoreGroup()" id="see_more">See more</a>
+
+
         </div>
 
     </div>
 </body>
 <script src="./handler.js"></script>
+<script src="/public/js/handle_see_more_group.js"></script>
+
 </html>

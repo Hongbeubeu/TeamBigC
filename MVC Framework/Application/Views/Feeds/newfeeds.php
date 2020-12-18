@@ -41,20 +41,28 @@
             </div>
 
         </div>
-        <div class="suggestion__add">
-            <p>SUGGESTION ADD</p>
+        <div class="group_attended">
+            <p>GROUPS ATTENDED</p>
             <div class="newfeed__identify identify" src="#">
                 <img class="avatar icon_medium" src="/public/assets/avatar.jpg" />
-                <p class="name" style="display: inline;">Nguyễn Văn Hồng</p>
+                <p class="name" style="display: inline;">VÌ BỮA ĂN CỦA TRẺ MỒ CÔI VIỆT NAM</p>
+                <button class="visit_gr_attended">Visit</button>
             </div>
             <div class="newfeed__identify identify" src="#">
                 <img class="avatar icon_medium" src="/public/assets/avatar.jpg" />
-                <p class="name" style="display: inline;">Nguyễn Văn Hồng</p>
+                <p class="name" style="display: inline;">Chiến dịch gây quỹ dịp sinh nhật của Anh Quan</p>
+                <button class="visit_gr_attended">Visit</button>
             </div>
-            <div class="newfeed__identify identify" src="#">
-                <img class="avatar icon_medium" src="/public/assets/avatar.jpg" />
-                <p class="name" style="display: inline;">Nguyễn Văn Hồng</p>
+            <div id="newfeed__identify_identity_hide">
+                <div class="newfeed__identify identify" src="#">
+                    <img class="avatar icon_medium" src="/public/assets/avatar.jpg" />
+                    <p class="name">Chiến dịch gây quỹ dịp sinh nhật của Linh</p>
+                    <button class="visit_gr_attended">Visit</button>
+                </div>
             </div>
+            <a href="#" onclick="seeMoreGroup()" id="see_more">See more</a>
+            
+
         </div>
 
     </div>
@@ -63,5 +71,5 @@
 </body>
 <script src="/public/js/handler.js"></script>
 <script src="/public/js/ajax_endpoint.js"></script>
-
+<script src="/public/js/handle_see_more_group.js"></script>
 </html>
