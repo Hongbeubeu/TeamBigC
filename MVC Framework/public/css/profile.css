@@ -17,6 +17,7 @@ body {
 
 .background {
     width: 100%;
+    position: relative;
 }
 
 .background_image {
@@ -402,4 +403,14 @@ body {
 }
 ::placeholder  {
     color: black;
+}
+
+#search__profile {
+    position: absolute;
+    z-index: 2;
+    width: 70vw
+
+}
+#newfeed__profile {
+    min-width: 70% !important;
 }
