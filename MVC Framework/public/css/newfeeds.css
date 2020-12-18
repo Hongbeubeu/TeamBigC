@@ -78,6 +78,7 @@ body {
 
 .newfeed {
     min-width: 50%;
+    max-width: 75%;
     background-color: rgb(239, 247, 246);
     overflow: auto;
 }
@@ -163,6 +164,12 @@ body {
     height: 20px;
 }
 
+#edit_post {
+    width: 30px;
+    height: 30px;
+    margin-left: 20px;
+}
+
 .icon_select {
     width: 30px;
     height: 30px;
@@ -220,6 +227,7 @@ body {
     min-width: 25%;
     padding: 2em;
     background-color: #fdffff;
+    overflow: auto;
 }
 
 .suggestion__donate {

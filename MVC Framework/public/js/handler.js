@@ -38,43 +38,56 @@ function showSlides(n, id) {
     slides[slideIndex - 1].style.display = "block";
     dots[slideIndex - 1].className += " active";
 }
-//modal
-// Get the modal
-var modal = document.getElementById("myModal");
 
-// Get the button that opens the modal
-var input = document.getElementById("newfeed__status");
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-var buttonModal = document.getElementById("modal_button");
-//console.log(buttonModal)
-// When the user clicks the button, open the modal 
-input.onclick = function () {
-    modal.style.display = "block";
-}
-buttonModal.onclick = function () {
-    modal.style.display = "none";
-}
-// When the user clicks on <span> (x), close the modal
-span.onclick = function () {
-    modal.style.display = "none";
+function onClickEditProfile() {
+    openModalBox("btnEditProfile", "modalEditProfile");
 }
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function (event) {
-    if (event.target == modal) {
+function openModalEditPost() {
+    openModalBox("edit_post", "edit");
+}
+
+function onClickPostInput() {
+    openModalBox("newfeed__status", "modalNewPost");
+
+}
+
+function openModalBox(buttonId, modalId) {
+    // lấy phần Modal
+    var modal = document.getElementById(modalId);
+
+    // Lấy phần button mở Modal
+    var btn = document.getElementById(buttonId);
+
+    // Lấy phần span đóng Modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // Khi button được click thi mở Modal
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
+
+    // Khi span được click thì đóng Modal
+    span.onclick = function() {
         modal.style.display = "none";
     }
+
+    // Khi click ngoài Modal thì đóng Modal
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
 }
-//comment
+
 
 function callAjaxComment(comment, post_id, user_id) {
     var xmlhttp = new XMLHttpRequest();
-    var data = "comment=" + comment + "&postId=" + post_id + "&userId=" +user_id; 
+    var data = "comment=" + comment + "&postId=" + post_id + "&userId=" + user_id;
     xmlhttp.open('POST', '/ajax-comment', true);
     xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xmlhttp.send(data);
-    xmlhttp.onreadystatechange = function () {
+    xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             console.log(this.responseText);
         }
@@ -82,12 +95,14 @@ function callAjaxComment(comment, post_id, user_id) {
 }
 
 function callAjaxLike(user_id, post_id) {
+    var date = new Date();
+    console.log("like:" + date.getTime());
     var xmlhttp = new XMLHttpRequest();
     var data = "userId=" + user_id + "&postId=" + post_id;
     xmlhttp.open('POST', '/ajax-like', true);
     xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xmlhttp.send(data);
-    xmlhttp.onreadystatechange = function () {
+    xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             console.log(this.responseText);
         }
@@ -95,18 +110,21 @@ function callAjaxLike(user_id, post_id) {
 }
 
 function callAjaxUnLike(user_id, post_id) {
+    var date = new Date();
+    console.log("unlike:" + date.getTime());
     var xmlhttp = new XMLHttpRequest();
     var data = "userId=" + user_id + "&postId=" + post_id;
     xmlhttp.open('POST', '/ajax-unlike', true);
     xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xmlhttp.send(data);
-    xmlhttp.onreadystatechange = function () {
+    xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             console.log(this.responseText);
         }
     }
 }
 
+//todo send request with time out 4s
 function addComment(event, user_id, post_id) {
     if (event.code === "Enter") {
         const div = document.createElement('div');
@@ -138,13 +156,24 @@ function test() {
     console.log("test");
 }
 
+//todo send request with time out 4s
 function changeIcon(img, user_id, post_id) {
+    var countLikeId = 'count_like_of_post_' + post_id;
+    var likeCount = document.getElementById(countLikeId);
     // kiem tra xem dang la tim do hay tim trang de doi nguoc lai
     if (img.src.match("/public/assets/heart.png")) {
         img.src = "/public/assets/icons8-heart-64.png";
+        likeCount.innerHTML = parseInt(likeCount.innerHTML) + 1;
+        console.log(likeCount.innerHTML);
         callAjaxLike(user_id, post_id);
     } else {
         img.src = "/public/assets/heart.png";
+        likeCount.innerHTML = (parseInt(likeCount.innerHTML) <= 0) ? 0 : (parseInt(likeCount.innerHTML) - 1);
         callAjaxUnLike(user_id, post_id);
     }
 }
+
+// setInterval(function () { 
+//     callAjaxLike(); 
+//     callAjaxUnLike()
+// }, 3000);

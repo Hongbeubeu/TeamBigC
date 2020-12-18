@@ -32,6 +32,7 @@ class PostModel extends BaseModel
             ->table($this->table)
             ->select('id, user_id, caption, content')
             ->limit(6)
+            ->orderBy('id', 'DESC')
             ->get()
             ->toArray();
         $count = count($posts);

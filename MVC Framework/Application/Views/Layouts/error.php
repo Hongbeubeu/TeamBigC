@@ -1,15 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
+<!Doctype html>
+
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Error</title>
+    <title>404</title>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="/public/css/404.css" rel="stylesheet" type="text/css">
+
 </head>
 <body>
-<div id="main">
-    	<div class="fof">
-        		<h1>Error 404</h1>
-    	</div>
-</div>
-</body>
+<img src="/public/assets/404.png"/>
+ </body>
 </html>

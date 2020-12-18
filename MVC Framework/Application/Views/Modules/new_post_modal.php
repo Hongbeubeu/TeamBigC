@@ -1,4 +1,4 @@
-<div class="newfeed__modal" id="myModal">
+<div class="newfeed__modal" id="modalNewPost">
         <div class="newfeed__modal-content">
             <span class="close">&times;</span>
             <h3 class="newfeed__modal-header">Create post</h3>
@@ -20,4 +20,4 @@
                 <input class="newfeed__modal-button" id="modal_button" type="submit" value="Post" />
             </form>
         </div>
-    </div>
+</div>
