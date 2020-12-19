@@ -131,7 +131,7 @@ body {
 /* div 2*/
 
 .menu_select button {
-    width: 100px;
+    width: 150px;
     height: 50px;
     border-radius: 20px;
     margin-left: auto;
@@ -175,17 +175,18 @@ body {
 /* Float four columns side by side */
 
 .column {
-    float: left;
-    width: 23%;
     padding: 0 5px;
     margin: 10px;
+    display: block;
 }
 
 
 /* Remove extra left and right margins, due to padding */
 
 .row {
-    margin: 0 -5px;
+    display: flex;
+    overflow: auto;
+    margin-bottom: 50px;
 }
 
 
@@ -215,24 +216,23 @@ body {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     padding: 16px;
     text-align: center;
+    width: 250px;
     background-color: #ffffff;
     border-radius: 10px;
 }
 
 .add_friend_follow {
     display: flex;
-    bottom: 0;
-    width: 100%;
-    margin: 0;
 }
 
-.add_friend,
-.following {
+.following,
+.join_group {
     display: flex;
     background-color: rgb(233, 232, 232);
     border-radius: 30px;
     width: 150px;
     margin-top: 20px;
+    margin-left: 16%;
 }
 
 .add_friend_follow :hover {
@@ -242,28 +242,21 @@ body {
 .add_friend_follow div img {
     width: 25px;
     height: 25px;
+    margin-left: 40px;
 }
 
 .add_friend_follow div p {
     font-size: 13px;
 }
 
-.add_friend img {
-    margin-top: 10px;
-    margin-left: 10px;
-}
-
-.add_friend p {
-    margin-top: 15px;
-    margin-left: 5px;
-}
-
-.following img {
+.following img,
+.join_group img {
     margin-top: 10px;
     margin-left: 25px;
 }
 
-.following p {
+.following p,
+.join_group p {
     margin-top: 15px;
     margin-left: 5px;
 }

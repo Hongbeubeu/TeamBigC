@@ -8,10 +8,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link href="/public/css/search.css" rel="stylesheet" type="text/css">
     <link href="/public/css/newfeeds.css" rel="stylesheet" type="text/css">
-    <script language="JavaScript" type="text/javascript" src="/public/js/handle_modal.js"></script>
     <script language="JavaScript" type="text/javascript" src="/public/js/handler.js"></script>
-    <script language="JavaScript" type="text/javascript" src="/public/js/handle_loadmore.js"></script>
-    <script language="JavaScript" type="text/javascript" src="/public/js/handle_group.js"></script>
+    <script language="JavaScript" type="text/javascript" src="/public/js/handle_join_group.js"></script>
 </head>
 
 <body>
@@ -20,13 +18,29 @@
         <div>
         <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'searchbar.php'); ?>
             <div class="menu_select">
-                <button id="people" class="btn people" onclick="showListPeople()">People</button>
-                <button id="group" class="btn group" onclick="showListGroup()">Group</button>
+                <button class="btn people">People</button>
             </div>
             <div class="row">
-            <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'card_people.php'); ?>
+                <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'card_people.php'); ?>
+                <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'card_people.php'); ?>
+                <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'card_people.php'); ?>
+                <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'card_people.php'); ?>
+                <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'card_people.php'); ?>
+                <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'card_people.php'); ?>
+                <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'card_people.php'); ?>
 
- 
+            </div>
+            <div class="menu_select">
+                <button class="btn group" >Group</button>
+            </div>
+            <div class="row">
+                <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'card_group.php'); ?>
+                <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'card_group.php'); ?>
+                <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'card_group.php'); ?>
+                <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'card_group.php'); ?>
+                <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'card_group.php'); ?>
+                <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'card_group.php'); ?>
+                <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'card_group.php'); ?>
             </div>
 
         </div>
