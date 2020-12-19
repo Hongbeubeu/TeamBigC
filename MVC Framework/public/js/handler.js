@@ -163,6 +163,20 @@ function changeIcon(img, user_id, post_id) {
     }
 }
 
+function onClickFollow(userId) {
+    var divContainer = document.getElementById(`btnFollow_${userId}`);
+    var image = divContainer.childNodes()[0];
+    var content = divContainer.childNodes()[1];
+    content.innerHTML = "Followed";
+    image.setAttribute("src", "/public/assets/checked.png");
+}
+function onClickGrouped(userId) {
+    var divContainer = document.getElementById(`btnGroup_${userId}`);
+    var image = divContainer.childNodes()[0];
+    var content = divContainer.childNodes()[1];
+    content.innerHTML = "Joined";
+    image.setAttribute("src", "/public/assets/checked.png");
+}
 // setInterval(function () { 
 //     callAjaxLike(); 
 //     callAjaxUnLike()
