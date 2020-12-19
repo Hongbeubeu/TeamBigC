@@ -9,7 +9,7 @@
                     <hr>
                     <div class="infoUser">
                         <p>Members: </p>
-                        <p class="data_info">2.5K</p>
+                        <p class="data_info"><?php echo $this->vars[0]['members'] ?></p>
                     </div>
                     <div class="infoUser">
                         <p>Donated:</p>
@@ -25,21 +25,18 @@
                     </div>
                     <div class="infoUser">
                         <p>Description: </p>
-                        <p class="data_info">Thank you for your donation - and help<span id="dots">...</span><span id="more"> This will be our 20th ride this year as a 
-                            team - and we have raised $7.1 Million dollars to date in our now 19 rides. Every penny counts! </span>
-                            <a href="#" onclick="myFunction();return false" id="see_more"> See more</a>
-                        </p>
+                        <p class="data_info"><?php echo $this->vars[0]['description'] ?></p>
                     </div>
                     <hr>
                     <div class="donated">
                         <div>
-                            <p>70.000 </p>
+                            <p><?php echo $this->vars[0]['current_star'] ?> </p>
                             <img src="/public/assets/icons8-star-48.png" />
-                            <p> of 100.000 </p>
+                            <p> of <?php echo $this->vars[0]['target_star'] ?> </p>
                             <img src="/public/assets/icons8-star-48.png" />
                             <p> raised</p>
                         </div>
-                        <progress id="porgress_donated" value="70" max="100"></progress>
+                        <progress id="porgress_donated" value="<?php echo $this->vars[0]['current_star'] ?>" max="<?php echo $this->vars[0]['target_star'] ?>"></progress>
                         <button onclick="openDonateDetail()">Donate</button>
                     </div>
                 </div>
@@ -51,8 +48,8 @@
                         <hr>
                         <div>
                             <div class="info_user_created">
-                                <img id="avt_user_created" src="/public/assets/avatar.jpg" />
-                                <p class="data_info">Lê Anh Dũng</p>
+                                <img id="avt_user_created" src="<?php echo $this->vars[0]['picture'] ?>"  />
+                                <p class="data_info"><?php echo $this->vars[0]['name'] ?></p>
                             </div>
                             <img id="messages_user_created" src="/public/assets/messages.png" />
                         </div>

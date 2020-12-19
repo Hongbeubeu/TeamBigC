@@ -1,10 +1,10 @@
 
         <!-- The Modal -->
         <div id="myModal" class="modal">
-            <!-- Nội dung form đăng nhập -->
+            <!-- Nội dung form tạo group -->
             <div class="modal-content_create_group">
-                <form action="#">
-                    <span class="close">&times;</span>
+            <form action="/create-group" method="POST">
+                    <span class="close" onclick="closeModalBox('myModal')">&times;</span>
                     <div class="toppane_create_group">
                         <h2>Create Group</h2>
                         <div class="title_donate_create_group">
@@ -13,33 +13,32 @@
                         </div>
                     </div>
                     <div class="bottompane_create_group">
-                        <form action="" method="post">
+                        
                             <div class="info_card">
                                 <div>
                                     <p>Name Group</p>
-                                    <input class="input_text" type="text" />
+                                    <input name="groupName" class="input_text" type="text" />
                                 </div>
                             </div>
                             <div class="info_card">
                                 <div>
                                     <p>Slogan Group</p>
-                                    <input class="input_text" type="text" />
+                                    <input name="slogan" class="input_text" type="text" />
                                 </div>
                             </div>
                             <div class="info_card">
                                 <div>
                                     <p>Discription</p>
-                                    <input class="input_text" type="text" />
+                                    <input name="description" class="input_text" type="text" />
                                 </div>
                             </div>
                             <div class="info_card">
                                 <div>
                                     <p>Star Target</p>
-                                    <input class="input_number" type="number" />
+                                    <input name="targetStar" class="input_number" type="number" />
                                 </div>
                             </div>
-                            <button id="btn_create_group" onclick="">Create</button>
-                        </form>
+                            <input type="submit" id="btn_create_group" name="submit" value="Create"/>
                     </div>
 
                 </form>

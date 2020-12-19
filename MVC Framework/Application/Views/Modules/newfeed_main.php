@@ -2,6 +2,7 @@
     <?php
         foreach ($this->varsPost as $key => $list) {
         $image = json_decode($list['content'], true);
+        include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'edit_post.php'); 
     ?>
     <div class="newfeed__post">
         <div class="newfeed__header">
@@ -28,7 +29,7 @@
                     if ($_SESSION['user_id'] == $list['user_id']) {
                 ?>
                 <div class="newfeed_select_button">
-                    <img id="edit_post" onclick="openModalEditPost()" src="/public/assets/icons8-edit-80.png" />
+                    <img id="edit_post" onclick="openModalEditPost('edit_post_<?php echo $list['id']?>' )" src="/public/assets/icons8-edit-80.png" />
                 </div>
                 <?php
                     }
@@ -101,7 +102,8 @@
                 type="text" placeholder="Write your comment" />
         </div>
     </div>
+    
     <?php
-            }
-        ?>
+        }
+    ?>
 </div>

@@ -20,7 +20,6 @@
     </div>
     <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'suggestion.php'); ?>
     <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'new_post_modal.php'); ?>
-    <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'edit_post.php'); ?>
 
 </body>
 <script src="/public/js/handler.js"></script>

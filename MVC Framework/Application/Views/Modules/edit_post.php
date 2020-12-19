@@ -1,25 +1,26 @@
  <!-- The Modal edit post -->
  <div class="container">
-            <div id="edit" class="modal_edit_post">
+            <div id="edit_post_<?php echo $list['id'] ?>" class="modal_edit_post">
                 <!-- Modal content -->
                 <div class="modal-content_edit_post">
-                    <span id="close_edit_post" onclick="closeModalBox('edit')">&times;</span>
+                    <span id="close_edit_post" onclick="closeModalBox('edit_post_<?php echo $list['id'] ?>')">&times;</span>
                     <div class="toppane_edit_post">
                         <h2 style="margin-left:20px;color:black">Edit Post</h2>
                     </div>
                     <div class="bottompane_edit_post">
-                        <form action="" method="post">
+                        <form action="/edit-post" method="POST">
                             <div class="name_user_edit_post">
                                 <div id="avt_edit_post">
-                                    <img src="/public/assets/avatar.jpg" />
-                                    <p class="name">Lê Anh Dũng</p>
+                                    <img src="<?php echo $list['picture'] ?>" />
+                                    <p class="name"><?php echo $list['display_name'] ?></p>
                                 </div>
                                 <div id="body_edit_post">
-                                    <input class="newfeed__input_mind" placeholder="What do you mind ?" type="text"/>
-
+                                    <input name="caption" class="newfeed__input_mind" placeholder="What do you mind ?" type="text" value="<?php echo $list['caption'] ?>"/>
                                 </div>
                             </div>
-                            <button id="save_post">Save</button>
+                            <input type="hidden" name="url" value="<?php  echo $_SERVER['REQUEST_URI'] ?>"/>
+                            <input type="hidden" name="post_id" value="<?php echo $list['id'] ?>"/>
+                            <input type="submit" id="save_post" name="submit" value="Save">
                         </form>
                     </div>
                 </div>

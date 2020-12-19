@@ -11,7 +11,7 @@
                     <label for="file-input">
                         <img class="icon_small" src="/public/assets/add-image.png" />
                     </label>
-
+                    <input type="hidden" name="url" value="<?php echo $_SERVER['REQUEST_URI'] ?>"/>
                     <input id="file-input" name="fileToUpload[]" type="file" multiple="multiple"/>
                     <input type="hidden" name="userId" value="<?php echo $_SESSION['user_id'] ?>" />
                 </div>

@@ -9,7 +9,7 @@
         <?php endif; ?>
     </div>
     <button class="navbar__donate-button" onclick="onClickCreateGroup()">Create Group</button>
-    <div class="navbar__donate-star"> <span >5000 </span> <img style="width: 16px" src="/public/assets/icons8-star-48.png"/>  </div>
+    <div class="navbar__donate-star"> <span ><?php echo $this->userBaseInfo[0]['star'] ?> </span> <img style="width: 16px" src="/public/assets/icons8-star-48.png"/>  </div>
     <div class="navbar__menu">
         <h3 class="navbar__menu-title" style="margin-bottom: 0.5rem">Menu</h3>
         <div class="navbar__menu-button">
@@ -61,9 +61,10 @@
 
     </div>
 </div>
+<?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Groups'.DS.'create_group.php'); ?>
  <!-- The Modal -->
- <div id="myModal" class="modal">
-            <!-- Nội dung form create group -->
+ <!-- <div id="myModal" class="modal">
+            
             <div class="modal-content_create_group">
                 <form action="#">
                     <span class="close" onclick="closeModalBox('myModal')">&times;</span>
@@ -106,4 +107,4 @@
 
                 </form>
             </div>
-        </div>
+        </div> -->

@@ -55,6 +55,7 @@ class AuthenticationController extends BaseController
                 $pass = md5($password);
                 $params['email'] = $email;
                 $params['password'] = $pass;
+                $params['star'] = 100;
                 $userId = $userModel->addNewUser($params);
 
                 $userProfileModel = new UserProfileModel();

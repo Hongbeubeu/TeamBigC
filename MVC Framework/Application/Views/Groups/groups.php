@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link href="/public/css/group.css" rel="stylesheet" type="text/css">
-    <link href="/public/css/newfeeds.css" rel="stylesheet" type="text/css">
+    <link href="/public/css/style.css" rel="stylesheet" type="text/css">
     <link href="/public/css/donate.css" rel="stylesheet" type="text/css">
 </head>
 
@@ -16,8 +16,8 @@
     <div class="right_pane">
         <div class="background_image_title">
             <img src="/public/assets/avatar.jpg" />
-            <p id="name_group">Name Group</p>
-            <p id="slogan_group">Slogan</p>
+            <p id="name_group"><?php echo $this->vars[0]['group_name'] ?></p>
+            <p id="slogan_group"><?php echo $this->vars[0]['slogan'] ?></p>
         </div>
         <div class="under_cover">
             <div class="newfeed">

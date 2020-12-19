@@ -44,4 +44,21 @@ class UserModel extends BaseModel
         else
             return true;
     }
+
+    public function getStar(int $id) {
+        return $this->dbo
+                    ->table($this->table)
+                    ->select('star')
+                    ->where($id)
+                    ->get()
+                    ->toArray();
+    }
+
+    public function donate(int $id, int $amountStar) {
+        $currentStar = $this->getStar($id)[0]['star'];
+        $params['star'] = $currentStar - $amountStar;
+        $timestamp = date("Y-m-d H:i:s");
+        $params['updated_at'] = $timestamp;
+        $this->dbo->update($this->table, $params, $id);
+    }
 }
