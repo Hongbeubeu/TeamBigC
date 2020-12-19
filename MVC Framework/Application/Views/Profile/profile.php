@@ -7,6 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link href="/public/css/style.css" rel="stylesheet" type="text/css">
+    <link href="/public/css/donate.css" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -46,7 +47,9 @@
             </div>
             <div>
                 <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'about_info_user.php'); ?>
+                <div id="suggestion__profile">
                 <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'suggestion.php'); ?>
+                </div>
             </div>
         </div>
         <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'edit_profile.php'); ?>

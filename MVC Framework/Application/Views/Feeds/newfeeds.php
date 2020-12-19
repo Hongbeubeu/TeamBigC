@@ -6,7 +6,8 @@
     <title>Newfeeds</title>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link href="/public/css/newfeeds.css" rel="stylesheet" type="text/css">
+    <link href="/public/css/style.css" rel="stylesheet" type="text/css">
+    <link href="/public/css/donate.css" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -19,6 +20,7 @@
     </div>
     <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'suggestion.php'); ?>
     <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'new_post_modal.php'); ?>
+    <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'edit_post.php'); ?>
 
 </body>
 <script src="/public/js/handler.js"></script>

@@ -56,12 +56,23 @@ function closeModalBox(modalId) {
     modal.style.display = "none";
 }
 
+function onClickCreateGroup() {
+    openModalBox("myModal");
+
+}
+
+function openDonateDetail() {
+    openModalBox("myModal_donate_detail");
+
+}
+
 function openModalBox(modalId) {
+
     // lấy phần Modal
     var modal = document.getElementById(modalId);
 
     modal.style.display = "block";
-    
+
     // Khi click ngoài Modal thì đóng Modal
     window.onclick = function(event) {
         if (event.target == modal) {
@@ -163,6 +174,26 @@ function changeIcon(img, user_id, post_id) {
     }
 }
 
-function OpenUserProfile($id){
+function OpenUserProfile($id) {
     window.open('/profile/' + $id, '_self');
 }
+
+function onClickFollow(userId) {
+    var divContainer = document.getElementById(`btnFollow_${userId}`);
+    var image = divContainer.childNodes()[0];
+    var content = divContainer.childNodes()[1];
+    content.innerHTML = "Followed";
+    image.setAttribute("src", "/public/assets/checked.png");
+}
+
+function onClickGrouped(userId) {
+    var divContainer = document.getElementById(`btnGroup_${userId}`);
+    var image = divContainer.childNodes()[0];
+    var content = divContainer.childNodes()[1];
+    content.innerHTML = "Joined";
+    image.setAttribute("src", "/public/assets/checked.png");
+}
+// setInterval(function () { 
+//     callAjaxLike(); 
+//     callAjaxUnLike()
+// }, 3000);

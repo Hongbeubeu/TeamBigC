@@ -1,24 +1,10 @@
-<!DOCTYPE html>
-<html>
 
-<head>
-    <title>Đăng nhập</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/public/css/donate.css" rel="stylesheet" type="text/css" />
-</head>
-
-<body>
-    <div class="container">
-        <button href="#" id="myBtn" onclick="openModalBox()">
-            Donate
-        </button>
         <!-- The Modal -->
-        <div id="myModal" class="modal">
+        <div id="myModal_donate_detail" class="modal">
             <!-- Nội dung form đăng nhập -->
             <div class="modal-content">
                 <form action="#">
-                    <span class="close">&times;</span>
+                    <span class="close" onclick="closeModalBox('myModal_donate_detail')">&times;</span>
                     <div class="toppane">
                         <h2>Checkout</h2>
                         <div class="title_donate">
@@ -65,7 +51,7 @@
                                 <div>
                                     <p>Cvv code</p>
                                     <input class="input_cvv" type="number" />
-                                    <button id="btn">Donate</button>
+                                    <button id="btn_donated">Donate</button>
                                 </div>
                             </div>
 
@@ -75,8 +61,3 @@
                 </form>
             </div>
         </div>
-    </div>
-</body>
-<script src="/public/js/handle_modal.js"></script>
-
-</html>
