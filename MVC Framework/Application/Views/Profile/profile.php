@@ -53,7 +53,6 @@
             </div>
         </div>
         <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'edit_profile.php'); ?>
-        <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'edit_post.php'); ?>
     </div>
     <?php } ?>
 </body>

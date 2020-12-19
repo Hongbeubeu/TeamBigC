@@ -15,8 +15,7 @@
                                     <p class="name">Lê Anh Dũng</p>
                                 </div>
                                 <div id="body_edit_post">
-                                    <input class="newfeed__input_mind" placeholder="What do you mind ?" type="text"/>
-
+                                    <input class="newfeed__input_mind" placeholder="What do you mind ?" type="text" value="<?php echo $list['caption'] ?>"/>
                                 </div>
                             </div>
                             <button id="save_post">Save</button>

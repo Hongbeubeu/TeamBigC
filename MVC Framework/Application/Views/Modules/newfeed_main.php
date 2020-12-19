@@ -101,7 +101,8 @@
                 type="text" placeholder="Write your comment" />
         </div>
     </div>
+    <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'edit_post.php'); ?>
     <?php
-            }
-        ?>
+        }
+    ?>
 </div>

@@ -43,16 +43,16 @@ class HomeController extends BaseController
         if (!$this->checkLogin())
             header('location:/login');
         else {
-            if ($id != $_SESSION['user_id'])
+            $userModel = new UserModel();
+            if (!$userModel->checkId($id))
                 header('location:/profile/' . $_SESSION['user_id']);
             else {
                 $userProfileModel =  new UserProfileModel();
                 $postModel = new PostModel();
-                $userId =  $_SESSION['user_id'];
                 //Get information of another people profile site
-                $userBaseInfo = $userProfileModel->getUserBaseInformation($_SESSION['user_id']);
-                $userInfo = $userProfileModel->getProfileInformation($userId);
-                $posts = $postModel->getPosts($_SESSION['user_id']);
+                $userBaseInfo = $userProfileModel->getUserBaseInformation($id);
+                $userInfo = $userProfileModel->getProfileInformation($id);
+                $posts = $postModel->getPostsMyselft($id);
                 $this->setParameterPost($posts);
                 $this->setParameter($userInfo);
                 $this->render(DS . "Profile" . DS . "profile");
@@ -68,19 +68,4 @@ class HomeController extends BaseController
     {
         $this->render(DS . "Modules" . DS . "profilecopy");
     }
-    // function profile(){
-    //     {
-    //         if ($this->checkLogin()) {
-    //             $userModel = new UserModel();
-    //             $email = $_SESSION['session_id'];
-    //             $userId = $userModel->getUserId($email);
-    //             $userProfileModel =  new UserProfileModel();
-    //             $userInfo = $userProfileModel->getProfileInformation($userId);
-    //             $this->setParameter($userInfo);
-    //             $this->render(DS . "Profile" . DS . "profile");
-    //         } else
-    //             header('location:/login');
-    //     }
-       
-    // }
 }
