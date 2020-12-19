@@ -47,7 +47,9 @@
             </div>
             <div>
                 <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'about_info_user.php'); ?>
+                <div id="suggestion__profile">
                 <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'suggestion.php'); ?>
+                </div>
             </div>
         </div>
         <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'edit_profile.php'); ?>

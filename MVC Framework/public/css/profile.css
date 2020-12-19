@@ -490,5 +490,8 @@ body {
 }
 
 #newfeed__profile {
-    min-width: 70% !important;
+    min-width: 60% !important;
+}
+#suggestion__profile {
+    max-width: 70% !important;
 }
