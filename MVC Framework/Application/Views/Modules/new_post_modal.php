@@ -1,6 +1,6 @@
 <div class="newfeed__modal" id="modalNewPost">
         <div class="newfeed__modal-content">
-            <span class="close">&times;</span>
+            <span class="close" onclick="closeModalBox('modalNewPost')">&times;</span>
             <h3 class="newfeed__modal-header">Create post</h3>
             <hr>
             <form action="/status" id="post-form" method="POST"  enctype="multipart/form-data">

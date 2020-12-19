@@ -4,7 +4,7 @@
 
                 <!-- Modal content -->
                 <div class="modal-content">
-                    <span class="close">&times;</span>
+                    <span class="close" onclick="closeModalBox('modalEditProfile')">&times;</span>
                     <div class="toppane">
                         <h2>Update your profile</h2>
                         <div class="title_donate">

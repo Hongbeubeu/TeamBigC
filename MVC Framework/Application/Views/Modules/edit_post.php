@@ -3,7 +3,7 @@
             <div id="edit" class="modal_edit_post">
                 <!-- Modal content -->
                 <div class="modal-content_edit_post">
-                    <span id="close_edit_post">&times;</span>
+                    <span id="close_edit_post" onclick="closeModalBox('edit')">&times;</span>
                     <div class="toppane">
                         <h2>Edit Post</h2>
                     </div>
