@@ -12,7 +12,7 @@
                         </div>
                     </div>
                     <div class="bottompane_update_group">
-                        <form action="/profile/update" method="post">
+                        <form action="/update-group" method="POST">
                             <div class="info_user">
                                 <div>
                                     <p>Name Group</p>
@@ -37,7 +37,7 @@
                                     <input class="input_text" type="text" />
                                 </div>
                             </div>
-                            <button id="btn_update_group" onclick="">Update</button>
+                            <input type="submit" id="btn_update_group" onclick="" value="Update">
                         </form>
                     </div>
                 </div>

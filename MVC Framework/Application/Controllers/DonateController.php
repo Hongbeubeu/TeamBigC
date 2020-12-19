@@ -16,7 +16,9 @@ class DonateController extends BaseController
         $this->secure_form($formPost);
         $userModel = new UserModel();
         $currentStar = $userModel->getStar($_SESSION['user_id']);
-        if ($formPost['amount_star'] <= $currentStar){
+        var_dump($currentStar);
+        var_dump($formPost['amount_star']);
+        if ((int)$formPost['amount_star'] <= (int)$currentStar){
             $groupModel = new GroupModel();
             $groupModel->receiveDonation($formPost['amount_star'], $formPost['group_id']);
             $userModel = new UserModel();
