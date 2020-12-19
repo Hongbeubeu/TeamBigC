@@ -55,8 +55,10 @@ class HomeController extends BaseController
                 $postModel = new PostModel();
                 //Get information of mine|another people profile site
                 $userInfo = $userProfileModel->getProfileInformation($id);
+                $userBaseInfo = $userProfileModel->getUserBaseInformation($_SESSION['user_id']);
                 $userBaseInfo[0]['star'] = $userModel->getStar($_SESSION['user_id'])[0]['star'];
                 $posts = $postModel->getPostsMyselft($id);
+                $this->setUserBaseInfo($userBaseInfo);
                 $this->setParameterPost($posts);
                 $this->setParameter($userInfo);
                 $this->render(DS . "Profile" . DS . "profile");
