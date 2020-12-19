@@ -224,6 +224,10 @@ body {
     height: 300px;
 }
 
+.modal-content {
+    width: 60%;
+}
+
 
 /*toppane*/
 
@@ -260,6 +264,10 @@ body {
     border-collapse: collapse;
 }
 
+.bottompane {
+    height: 400px;
+}
+
 .info_user {
     display: flex;
     margin-left: 60px;
@@ -280,7 +288,7 @@ body {
 }
 
 .input_text {
-    width: 300px;
+    width: 80%;
     border-radius: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -333,7 +341,7 @@ body {
 
 .modal-content_edit_post {
     width: 40%;
-    height: 550px;
+    height: 470px;
 }
 
 .bottompane_edit_post {
