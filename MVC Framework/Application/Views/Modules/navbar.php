@@ -9,7 +9,7 @@
         <?php endif; ?>
     </div>
     <button class="navbar__donate-button" onclick="onClickCreateGroup()">Create Group</button>
-    <div class="navbar__donate-star"> <span >5000 </span> <img style="width: 16px" src="/public/assets/icons8-star-48.png"/>  </div>
+    <div class="navbar__donate-star"> <span ><?php echo $this->userBaseInfo[0]['star'] ?> </span> <img style="width: 16px" src="/public/assets/icons8-star-48.png"/>  </div>
     <div class="navbar__menu">
         <h3 class="navbar__menu-title" style="margin-bottom: 0.5rem">Menu</h3>
         <div class="navbar__menu-button">

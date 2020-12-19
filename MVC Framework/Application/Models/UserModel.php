@@ -44,4 +44,13 @@ class UserModel extends BaseModel
         else
             return true;
     }
+
+    public function getStar(int $id) {
+        return $this->dbo
+                    ->table($this->table)
+                    ->select('star')
+                    ->where($id)
+                    ->get()
+                    ->toArray();
+    }
 }

@@ -27,8 +27,10 @@ class HomeController extends BaseController
     {
         if ($this->checkLogin()) {
             $postModel = new PostModel();
+            $userModel = new UserModel();
             $userProfileModel = new UserProfileModel();
             $userBaseInfo = $userProfileModel->getUserBaseInformation($_SESSION['user_id']);
+            $userBaseInfo[0]['star'] = $userModel->getStar($_SESSION['user_id'])[0]['star'];
             $this->setUserBaseInfo($userBaseInfo);
             $posts = $postModel->getPosts($_SESSION['user_id']);
             $this->setParameterPost($posts);
