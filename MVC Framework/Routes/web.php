@@ -26,3 +26,5 @@ $router->post('/ajax-comment', 'AjaxEndpoint@comment');
 $router->post('/ajax-like', 'AjaxEndpoint@like');
 $router->post('/ajax-unlike', 'AjaxEndpoint@unlike');
 
+$router->post('/donate', 'DonateController@donate');
+

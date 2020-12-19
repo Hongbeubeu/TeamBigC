@@ -53,4 +53,12 @@ class UserModel extends BaseModel
                     ->get()
                     ->toArray();
     }
+
+    public function donate(int $id, int $amountStar) {
+        $currentStar = $this->getStar($id)[0]['star'];
+        $params['star'] = $currentStar - $amountStar;
+        $timestamp = date("Y-m-d H:i:s");
+        $params['updated_at'] = $timestamp;
+        $this->dbo->update($this->table, $params, $id);
+    }
 }
