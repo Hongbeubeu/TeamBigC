@@ -57,20 +57,20 @@ function openModalBox(buttonId, modalId) {
     var modal = document.getElementById(modalId);
 
     // Lấy phần button mở Modal
-    var btn = document.getElementById(buttonId);
+    // var btn = document.getElementById(buttonId);
 
-    // Lấy phần span đóng Modal
-    var span = document.getElementsByClassName("close")[0];
+    // // Lấy phần span đóng Modal
+    // var span = document.getElementsByClassName("close")[0];
 
     // Khi button được click thi mở Modal
-    btn.onclick = function() {
-        modal.style.display = "block";
-    }
+    // btn.onclick = function() {
+    modal.style.display = "block";
+    // }
 
-    // Khi span được click thì đóng Modal
-    span.onclick = function() {
-        modal.style.display = "none";
-    }
+    // // Khi span được click thì đóng Modal
+    // span.onclick = function() {
+    //     modal.style.display = "none";
+    // }
 
     // Khi click ngoài Modal thì đóng Modal
     window.onclick = function(event) {
