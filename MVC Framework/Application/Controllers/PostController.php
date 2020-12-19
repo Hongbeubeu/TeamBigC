@@ -7,7 +7,7 @@ use Core\BaseController;
 
 class PostController extends BaseController
 {
-    public function status()
+    public function post()
     {
         if ($_POST['caption'] === '' && !isset($_POST['fileToUpload'])) {
             header('location:/newfeed');
@@ -16,7 +16,7 @@ class PostController extends BaseController
         $target_dir = PATH_ROOT . DS . "public" . DS . "uploads" . DS;
         $caption = "";
         if (isset($_POST['caption']))
-            $caption = $_POST['caption'];
+            $caption = $this->secure_input($_POST['caption']);
         $userId = $_POST['userId'];
 
         $uploadOk = 1;
@@ -73,5 +73,16 @@ class PostController extends BaseController
             header('location:/error');
         }
         header('location:/newfeed');
+    }
+
+    public function editPost()
+    {
+        $caption = $this->secure_input($_POST['caption']);
+        $postModel = new PostModel();
+        $params['caption'] = $caption;
+        $postId = $_POST['post_id'];
+        $url = $_POST['url'];
+        $postModel->updatePost($params, $postId);
+        header('location:' . $url);
     }
 }

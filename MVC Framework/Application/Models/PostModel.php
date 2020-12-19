@@ -52,6 +52,11 @@ class PostModel extends BaseModel
         return $posts;
     }
 
+    public function updatePost(array $params, int $postId)
+    {
+        $this->dbo->update($this->table, $params)->where([['id', $postId]])->exec();
+    }
+
     private function getMoreInformation($posts)
     {
         $count = count($posts);
@@ -77,4 +82,5 @@ class PostModel extends BaseModel
         }
         return $posts;
     }
+    
 }
