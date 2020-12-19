@@ -4,8 +4,8 @@
                 <!-- Modal content -->
                 <div class="modal-content_edit_post">
                     <span id="close_edit_post" onclick="closeModalBox('edit_post_<?php echo $list['id'] ?>')">&times;</span>
-                    <div class="toppane">
-                        <h2>Edit Post</h2>
+                    <div class="toppane_edit_post">
+                        <h2 style="margin-left:20px;color:black">Edit Post</h2>
                     </div>
                     <div class="bottompane_edit_post">
                         <form action="/edit-post" method="POST">

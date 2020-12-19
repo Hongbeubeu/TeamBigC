@@ -29,6 +29,7 @@
     </div>
     <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'new_post_modal.php'); ?>
     <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Donates'.DS.'donate_detail.php'); ?>
+    <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'edit_group.php'); ?>
 </body>
 <script src="/public/js/handler.js"></script>
 <script src="/public/js/handle_read_more.js"></script>

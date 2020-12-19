@@ -2,6 +2,9 @@
                 <div class="about_pane">
                     <div class="about_pane_title">
                         <p>About</p>
+                        <span id="btnEditProfile">
+                            <img onclick="onClickEditGroup()" class="about_pane_title_img" src="/public/assets/icons8-edit-50.png" />
+                        </span>
                     </div>
                     <hr>
                     <div class="infoUser">
