@@ -7,7 +7,6 @@
         <img class="navbar__avatar" id="user_picture" src="<?php echo $this->vars[0]['picture'] ?>"></img>
         <p class="navbar__name" id="user_name"><?php echo $this->vars[0]['display_name'] ?></p>
         <?php endif; ?>
-        <p class="navbar__email"><?php echo $_SESSION['session_id'] ?></p>
     </div>
     <button class="navbar__donate-button">Donate</button>
     <div class="navbar__donate-star"> <span >5000 </span> <img style="width: 16px" src="/public/assets/icons8-star-48.png"/>  </div>

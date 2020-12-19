@@ -5,7 +5,7 @@
     ?>
     <div class="newfeed__post">
         <div class="newfeed__header">
-            <div class="newfeed__identify identify" src="#">
+            <div class="newfeed__identify identify" onclick="OpenUserProfile(<?php echo $list['user_id'] ?>)">
                 <img class="avatar icon_medium" src="<?php echo $list['picture'] ?>" />
                 <p class="name" style="display: inline;"> <?php echo $list['display_name'] ?></p>
             </div>

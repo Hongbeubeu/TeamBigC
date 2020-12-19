@@ -1,6 +1,6 @@
 <?php
 
-$router->get('/', 'HomeController@test');
+$router->get('/', 'HomeController@login');
 $router->get('/login', 'HomeController@login');
 $router->get('/register', 'HomeController@register');
 $router->get('/newfeed', 'HomeController@newfeed');

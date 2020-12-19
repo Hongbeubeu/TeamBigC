@@ -163,7 +163,6 @@ function changeIcon(img, user_id, post_id) {
     }
 }
 
-// setInterval(function () { 
-//     callAjaxLike(); 
-//     callAjaxUnLike()
-// }, 3000);
+function OpenUserProfile($id){
+    window.open('/profile/' + $id, '_self');
+}

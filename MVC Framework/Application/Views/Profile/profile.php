@@ -35,7 +35,13 @@
         </div>
         <div class="under_cover">
             <div class="newfeed" id="newfeed__profile">
+                <?php 
+                    if($arr['user_id'] == $_SESSION['user_id']) { 
+                ?>
                 <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'newfeed_control.php'); ?>
+                <?php
+                    }
+                ?>
                 <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'newfeed_main.php'); ?>
             </div>
             <div>

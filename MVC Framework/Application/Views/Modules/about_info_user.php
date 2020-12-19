@@ -1,14 +1,20 @@
 <div class="about_pane">
-                <div class="about_pane_title">
-                    <p>About</p>
-                    <span id="btnEditProfile">
-                    <img  onclick="onClickEditProfile()" class="about_pane_title_img" src="/public/assets/icons8-edit-50.png" />
-                    </span>
-                </div>
-                <hr>
-                <div class="infoUser">
-                    <p>Display Name: </p>
-                    <p class="data_info"><?php echo $arr['display_name'] ?></p>
+    <div class="about_pane_title">
+        <p>About</p>
+        <?php 
+            if($_SESSION['user_id'] == $arr['user_id']) {
+        ?>
+        <span id="btnEditProfile">
+            <img onclick="onClickEditProfile()" class="about_pane_title_img" src="/public/assets/icons8-edit-50.png" />
+        </span>
+        <?php 
+            }
+        ?>
+    </div>
+    <hr>
+    <div class="infoUser">
+        <p>Display Name: </p>
+        <p class="data_info"><?php echo $arr['display_name'] ?></p>
 
     </div>
     <div class="infoUser">
