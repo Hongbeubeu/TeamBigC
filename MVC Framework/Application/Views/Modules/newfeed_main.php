@@ -24,9 +24,15 @@
                             id="icon_select_share" /> </div>
                     <p>100</p>
                 </div>
+                <?php 
+                    if ($_SESSION['user_id'] == $list['user_id']) {
+                ?>
                 <div class="newfeed_select_button">
-                                    <img id="edit_post" onclick="openModalEditPost()" src="/public/assets/icons8-edit-80.png" />
-                                </div>
+                    <img id="edit_post" onclick="openModalEditPost()" src="/public/assets/icons8-edit-80.png" />
+                </div>
+                <?php
+                    }
+                ?>
             </div>
 
         </div>

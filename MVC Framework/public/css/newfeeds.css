@@ -57,7 +57,7 @@ body {
 .navbar__menu-button {
     display: flex;
     align-items: center;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
     position: relative;
 }
 
