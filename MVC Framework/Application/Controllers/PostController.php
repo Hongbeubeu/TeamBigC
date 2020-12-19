@@ -77,16 +77,14 @@ class PostController extends BaseController
             }
             if($type == 'group'){
                 $postGroupModel = new PostGroupModel();
-               // $groupId = str_replace( DS ."group" . DS, "",$_POST['url']);
                 $arr = explode('/', $_POST['url']);
                 $groupId = end($arr);
-                var_dump($groupId);
                 $postGroupModel->addPostToGroup($postId, $groupId);
             }
         } else {
             header('location:/error');
         }
-        //header('location:' . $_POST['url']);
+        header('location:' . $_POST['url']);
     }
 
     public function editPost()
