@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link href="/public/css/group.css" rel="stylesheet" type="text/css">
-    <link href="/public/css/newfeeds.css" rel="stylesheet" type="text/css">
+    <link href="/public/css/style.css" rel="stylesheet" type="text/css">
     <link href="/public/css/donate.css" rel="stylesheet" type="text/css">
 </head>
 

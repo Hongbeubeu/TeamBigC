@@ -43,8 +43,8 @@ function onClickEditProfile() {
     openModalBox("modalEditProfile");
 }
 
-function openModalEditPost() {
-    openModalBox("edit");
+function openModalEditPost(id) {
+    openModalBox(id);
 }
 
 function onClickPostInput() {
