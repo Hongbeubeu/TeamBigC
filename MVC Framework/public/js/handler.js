@@ -52,6 +52,16 @@ function onClickPostInput() {
 
 }
 
+function onClickCreateGroup() {
+    openModalBox("myBtn", "myModal");
+
+}
+
+function openDonateDetail() {
+    openModalBox("myBtn", "myModal");
+
+}
+
 function openModalBox(buttonId, modalId) {
     // lấy phần Modal
     var modal = document.getElementById(modalId);

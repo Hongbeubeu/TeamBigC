@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Đăng nhập</title>
+    <title>Donate Detail</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/public/css/donate.css" rel="stylesheet" type="text/css" />
@@ -10,7 +10,7 @@
 
 <body>
     <div class="container">
-        <button href="#" id="myBtn" onclick="openModalBox()">
+        <button id="myBtn" onclick="openDonateDetail()">
             Donate
         </button>
         <!-- The Modal -->
@@ -77,6 +77,6 @@
         </div>
     </div>
 </body>
-<script src="/public/js/handle_modal.js"></script>
+<script src="/public/js/handler.js"></script>
 
 </html>
