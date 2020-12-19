@@ -231,15 +231,16 @@ body {
 
 /*toppane*/
 
-.toppane {
+.toppane,
+.toppane_edit_post {
     width: 100%;
     float: top;
-    text-align: left;
     border-collapse: collapse;
     text-align: center;
 }
 
-.toppane h2 {
+.toppane h2,
+.toppane_edit_post h2 {
     margin-left: 20px;
 }
 
@@ -492,6 +493,7 @@ body {
 #newfeed__profile {
     min-width: 60% !important;
 }
+
 #suggestion__profile {
     max-width: 70% !important;
 }
