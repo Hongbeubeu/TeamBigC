@@ -27,6 +27,6 @@ class DonateController extends BaseController
             $this->setError("Số sao ủng hộ cao hơn số sao có trong tài khoản");
         }
 
-        //header('location:/group/' . $formPost['group_id']);
+        header('location:/group/' . $formPost['group_id']);
     }
 }
