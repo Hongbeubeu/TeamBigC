@@ -17,13 +17,11 @@ class UserGroupModel extends BaseModel
         $this->dbo->insert($this->table, $params);
     }
 
-    public function getGroupUsers(int $groupId)
+    public function countGroupUsers(int $groupId)
     {
         return $this->dbo 
                     ->table($this->table)
-                    ->select('user_id')
                     ->where([['group_id', $groupId]])
-                    ->get()
-                    ->toArray();
+                    ->count();
     }
 }

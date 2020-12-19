@@ -6,7 +6,7 @@
                     <hr>
                     <div class="infoUser">
                         <p>Members: </p>
-                        <p class="data_info">2.5K</p>
+                        <p class="data_info"><?php echo $this->vars[0]['members'] ?></p>
                     </div>
                     <div class="infoUser">
                         <p>Donated:</p>

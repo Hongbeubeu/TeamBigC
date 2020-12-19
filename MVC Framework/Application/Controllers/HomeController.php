@@ -5,6 +5,7 @@ namespace Application\Controllers;
 use Application\Models\GroupModel;
 use Application\Models\PostGroupModel;
 use Application\Models\PostModel;
+use Application\Models\UserGroupModel;
 use Application\Models\UserModel;
 use Application\Models\UserProfileModel;
 use Core\BaseController;
@@ -87,6 +88,8 @@ class HomeController extends BaseController
             $ownerGroupInfo = $userProfileModel->getUserBaseInformation($groupInfo[0]['owner_id']);
             $groupInfo[0]['picture'] = $ownerGroupInfo[0]['picture'];
             $groupInfo[0]['name'] = $ownerGroupInfo[0]['display_name'];
+            $userGroupModel = new UserGroupModel();
+            $groupInfo[0]['members'] = $userGroupModel->countGroupUsers($groupId);
             $this->setParameterPost($groupPosts);
             $this->setUserBaseInfo($userBaseInfo);
             $this->setParameter($groupInfo);
