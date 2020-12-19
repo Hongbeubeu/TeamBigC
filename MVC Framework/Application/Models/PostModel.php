@@ -15,14 +15,13 @@ class PostModel extends BaseModel
         $params['user_id'] = $userId;
         $params['type'] = $type;
         $params['caption'] = $caption;
-        var_dump($content);
         if (!empty($content)) {
             $jsonContend = json_encode($content);
             $params['content'] = $jsonContend;
         }
         $params['created_at'] = $timestamp;
         $params['updated_at'] = $timestamp;
-        $this->dbo
+        return $this->dbo
             ->insert($this->table, $params);
     }
 
@@ -37,6 +36,18 @@ class PostModel extends BaseModel
             ->toArray();
         $posts = $this->getMoreInformation($posts);
         return $posts;
+    }
+
+    public function getPost(int $postId)
+    {
+        $post = $this->dbo 
+                    ->table($this->table)
+                    ->select('id, user_id, caption, content')
+                    ->where($postId)
+                    ->get()
+                    ->toArray();
+        $post = $this->getMoreInformation($post);
+        return $post;
     }
 
     public function getPostsMyselft(int $userId)

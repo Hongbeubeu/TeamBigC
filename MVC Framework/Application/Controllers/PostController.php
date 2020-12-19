@@ -2,6 +2,7 @@
 
 namespace Application\Controllers;
 
+use Application\Models\PostGroupModel;
 use Application\Models\PostModel;
 use Core\BaseController;
 
@@ -65,14 +66,27 @@ class PostController extends BaseController
         //insert data to database
         if ($uploadOk) {
             $postModel = new PostModel();
-            if(isset($arrayImage))
-                $postModel->postStatus($userId, "normal", $caption, $arrayImage);
-            else
-                $postModel->postStatus($userId, "normal", $caption);
+            $type = 'normal';
+            if (strlen(strstr($_POST['url'], 'group')))
+                $type = 'group';
+            if(isset($arrayImage)){
+                $postId = $postModel->postStatus($userId, $type, $caption, $arrayImage);                    
+            }
+            else{
+                $postId = $postModel->postStatus($userId, $type, $caption);
+            }
+            if($type == 'group'){
+                $postGroupModel = new PostGroupModel();
+               // $groupId = str_replace( DS ."group" . DS, "",$_POST['url']);
+                $arr = explode('/', $_POST['url']);
+                $groupId = end($arr);
+                var_dump($groupId);
+                $postGroupModel->addPostToGroup($postId, $groupId);
+            }
         } else {
             header('location:/error');
         }
-        header('location:/newfeed');
+        //header('location:' . $_POST['url']);
     }
 
     public function editPost()

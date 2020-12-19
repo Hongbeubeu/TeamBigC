@@ -45,8 +45,8 @@
                         <hr>
                         <div>
                             <div class="info_user_created">
-                                <img id="avt_user_created" src="/public/assets/avatar.jpg" />
-                                <p class="data_info">Lê Anh Dũng</p>
+                                <img id="avt_user_created" src="<?php echo $this->vars[0]['picture'] ?>"  />
+                                <p class="data_info"><?php echo $this->vars[0]['name'] ?></p>
                             </div>
                             <img id="messages_user_created" src="/public/assets/messages.png" />
                         </div>

@@ -3,6 +3,7 @@
 namespace Application\Controllers;
 
 use Application\Models\GroupModel;
+use Application\Models\UserGroupModel;
 use Core\BaseController;
 use Application\Models\UserModel;
 use Application\Models\UserProfileModel;
@@ -20,6 +21,8 @@ class GroupController extends BaseController
         $params['target_star'] = $formPost['targetStar'];
         $groupModel = new GroupModel();
         $groupId = $groupModel->createGroup($params);
+        $userGroupModel = new UserGroupModel();
+        $userGroupModel->addUserToGroup($_SESSION['user_id'], $groupId);
         header('location:/group/' . $groupId);
     }
 }

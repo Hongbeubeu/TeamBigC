@@ -3,6 +3,7 @@
 namespace Application\Controllers;
 
 use Application\Models\GroupModel;
+use Application\Models\PostGroupModel;
 use Application\Models\PostModel;
 use Application\Models\UserModel;
 use Application\Models\UserProfileModel;
@@ -42,7 +43,6 @@ class HomeController extends BaseController
 
     function profile($id)
     {
-    
         if (!$this->checkLogin())
             header('location:/login');
         else {
@@ -52,9 +52,9 @@ class HomeController extends BaseController
             else {
                 $userProfileModel =  new UserProfileModel();
                 $postModel = new PostModel();
-                //Get information of another people profile site
-                // $userBaseInfo = $userProfileModel->getUserBaseInformation($id);
+                //Get information of mine|another people profile site
                 $userInfo = $userProfileModel->getProfileInformation($id);
+                $userBaseInfo[0]['star'] = $userModel->getStar($_SESSION['user_id'])[0]['star'];
                 $posts = $postModel->getPostsMyselft($id);
                 $this->setParameterPost($posts);
                 $this->setParameter($userInfo);
@@ -70,11 +70,24 @@ class HomeController extends BaseController
         else {
             $groupModel = new GroupModel();
             $userProfileModel = new UserProfileModel();
+            $userModel = new UserModel();
             $userBaseInfo = $userProfileModel->getUserBaseInformation($_SESSION['user_id']);
             $groupInfo = $groupModel->getGroupInformation($groupId);
+            $userBaseInfo[0]['star'] = $userModel->getStar($_SESSION['user_id'])[0]['star'];
+            $postGroupModel = new PostGroupModel();
             $postModel = new PostModel();
-            // $groupPosts = $postModel->getGroupPosts($groupId);
-            // $this->setParameterPost($groupPosts);
+            $groupPosts = $postGroupModel->getGroupPosts($groupId);
+            
+            $count = count($groupPosts);
+            for($i = 0; $i < $count; $i++){
+                $groupPosts[$i]['id'] = $groupPosts[$i]['post_id'];
+                $post = $postModel->getPost($groupPosts[$i]['id']);
+                $groupPosts[$i] = $post[0];
+            }
+            $ownerGroupInfo = $userProfileModel->getUserBaseInformation($groupInfo[0]['owner_id']);
+            $groupInfo[0]['picture'] = $ownerGroupInfo[0]['picture'];
+            $groupInfo[0]['name'] = $ownerGroupInfo[0]['display_name'];
+            $this->setParameterPost($groupPosts);
             $this->setUserBaseInfo($userBaseInfo);
             $this->setParameter($groupInfo);
             $this->render(DS . "Groups" . DS . "groups"); 
