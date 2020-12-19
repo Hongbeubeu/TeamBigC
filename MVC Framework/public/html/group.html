@@ -3,10 +3,10 @@
 <html>
 
 <head>
-    <title>Profile</title>
+    <title>Group</title>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link href="../css/profile.css" rel="stylesheet" type="text/css">
+    <link href="../css/group.css" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -70,39 +70,14 @@
         </div>
     </div>
     <div class="right_pane">
-        <div class="background">
-            <div class="background_image">
-                <div class="background_image_search">
-                    <img src="../assets/icons8-search-48.png" />
-                    <input class="newfeed__search-input" placeholder="Search" type="text" />
-                </div>
-                <hr>
-                <div class="background_image_change_image">
-                    <button>
-                    <img src="../assets/icons8-camera-50.png" />
-                    <p>Change Photo</p>
-                </button>
-                </div>
-            </div>
-            <!-- <div class="btn-group" style="width:100%">
-                <button style="width:25%">News</button>
-                <button style="width:25%">Photos</button>
-                <button style="width:25%">Donate Events</button>
-                <button style="width:25%">Friends(10)</button>
-            </div> -->
+        <div class="background_image_title">
+            <img src="../assets/avatar.jpg" />
+            <p id="name_group">Name Group</p>
+            <p id="slogan_group">Slogan</p>
         </div>
         <div class="under_cover">
             <div class="newfeed">
-                <!-- <div class="newfeed__search">
-                <input class="newfeed__search-input" placeholder="Search" type="search" />
-                 </div> -->
-                <div class="newfeed__control">
-                    <textarea class="newfeed__input_mind" placeholder="What do you mind ?" name="Text1" cols="40" rows="5"></textarea>
-                    <div class="btn_select">
-                        <button>Add Photo</button>
-                        <button>Post</button>
-                    </div>
-                </div>
+                <input class="newfeed__input" type="text" placeholder="What do you mind ?" />
                 <div class="newfeed__main">
                     <div class="newfeed__post">
                         <div class="newfeed__header">
@@ -112,16 +87,15 @@
                             </div>
                             <div class="newfeed_option_button">
                                 <div class="newfeed_select_button">
+
                                     <a href="#" onclick="changeIcon()" class="newfeed__like-button"><img src="../assets/heart.png" class="icon_select" id="icon_select_heart" /> </a>
                                     <p>50</p>
                                 </div>
                                 <hr>
                                 <div class="newfeed_select_button">
+
                                     <a href="#" class="newfeed__share-button"><img src="../assets/share.png" class="icon_select" id="icon_select_share" /> </a>
                                     <p>100</p>
-                                </div>
-                                <div class="newfeed_select_button">
-                                    <img id="edit_post" onclick="openModalEditPost()" src="../assets/icons8-edit-80.png" />
                                 </div>
                             </div>
                         </div>
@@ -172,140 +146,61 @@
                     </div>
                 </div>
             </div>
-            <div class="about_pane">
-                <div class="about_pane_title">
-                    <p>About</p>
-                    <img class="about_pane_title_img" src="../assets/icons8-edit-50.png" />
-                    <a href="#" id="myBtn" onclick="openModalBox();return false">Edit</a>
-                </div>
-                <hr>
-                <div class="infoUser">
-                    <p>Display Name: </p>
-                    <p class="data_info">Lê Anh Dũng</p>
-
-                </div>
-                <div class="infoUser">
-                    <p>Gender: </p>
-                    <p class="data_info">Nam</p>
-
-                </div>
-                <div class="infoUser">
-                    <p>Date of Birth: </p>
-                    <p class="data_info">28-08-1999</p>
-
-                </div>
-                <div class="infoUser">
-                    <p>Education: </p>
-                    <p class="data_info">Trường đại học Bách Khoa</p>
-
-                </div>
-                <div class="infoUser">
-                    <p>Description: </p>
-                    <p class="data_info">Thích chơi game, ăn uống, ngủ,...</p>
-
-                </div>
-
-                <hr>
-                <div class="follow">
-                    <div class="follower">
-                        <p class="data_info">1000</p>
-                        <p>Followers</p>
+            <div class="right_sub_pane">
+                <div class="about_pane">
+                    <div class="about_pane_title">
+                        <p>About</p>
                     </div>
-                    <div class="hr"></div>
-                    <div class="following">
+                    <hr>
+                    <div class="infoUser">
+                        <p>Members: </p>
+                        <p class="data_info">2.5K</p>
+                    </div>
+                    <div class="infoUser">
+                        <p>Donated:</p>
                         <p class="data_info">100</p>
-                        <p>Following</p>
                     </div>
-                </div>
-
-            </div>
-        </div>
-        <div class="container">
-            <!-- The Modal edit about-->
-            <div id="myModal" class="modal">
-
-                <!-- Modal content -->
-                <div class="modal-content">
-                    <span class="close">&times;</span>
-                    <div class="toppane">
-                        <h2>Update your profile</h2>
-                        <div class="title_donate">
-                            <img src="../assets/updateinfo.png" alt="ImageCover" class="image_cover">
-                            <p>Let's update your profile...</p>
+                    <div class="infoUser">
+                        <p>Liked: </p>
+                        <p class="data_info">60K</p>
+                    </div>
+                    <div class="infoUser">
+                        <p>Shared: </p>
+                        <p class="data_info">2.5K</p>
+                    </div>
+                    <div class="infoUser">
+                        <p>Description: </p>
+                        <p class="data_info">Thank you for your donation - and help<span id="dots">...</span><span id="more"> This will be our 20th ride this year as a 
+                            team - and we have raised $7.1 Million dollars to date in our now 19 rides. Every penny counts! </span>
+                            <a href="#" onclick="myFunction();return false" id="see_more"> See more</a>
+                        </p>
+                    </div>
+                    <hr>
+                    <div class="donated">
+                        <div>
+                            <p>70.000 </p>
+                            <img src="../assets/icons8-star-48.png" />
+                            <p> of 100.000 </p>
+                            <img src="../assets/icons8-star-48.png" />
+                            <p> raised</p>
                         </div>
-                    </div>
-                    <div class="bottompane">
-                        <form action="" method="post">
-                            <div class="info_user">
-                                <div>
-                                    <p>Display Name</p>
-                                    <input class="input_text" type="text" placeholder="Display name" />
-                                </div>
-                                <div>
-                                    <p>Gender</p>
-                                    <div id="select_choose">
-                                        <div>
-                                            <input type="radio" name="my-input" id="male" checked>
-                                            <label for="male">Male</label>
-                                        </div>
-                                        <div>
-                                            <input type="radio" name="my-input" id="female">
-                                            <label for="female">Female</label>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="info_user">
-                                <div>
-                                    <p>Date of Birth</p>
-                                    <input class="input_text" type="text" />
-                                </div>
-                                <div>
-                                    <p>Education</p>
-                                    <input class="input_text" type="text" />
-                                </div>
-                            </div>
-                            <div id="info_user_description">
-                                <div>
-                                    <p>Description</p>
-                                    <textarea class="input_text" placeholder="What do you mind ?" name="Text1" cols="40" rows="4"></textarea>
-                                </div>
-                                <div id="select_btn">
-                                    <button href="#">Cancel</button>
-                                    <button href="#" id="update_btn">Update Profile</button>
-                                </div>
-                            </div>
-
-                        </form>
+                        <progress id="porgress_donated" value="70" max="100"></progress>
+                        <button onclick="">Donate</button>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <!-- The Modal edit post -->
-        <div class="container">
-            <div id="edit" class="modal_edit_post">
-                <!-- Modal content -->
-                <div class="modal-content_edit_post">
-                    <span id="close_edit_post">&times;</span>
-                    <div class="toppane">
-                        <h2>Edit Post</h2>
-                    </div>
-                    <div class="bottompane_edit_post">
-                        <form action="" method="post">
-                            <div class="name_user_edit_post">
-                                <div id="avt_edit_post">
-                                    <img src="../assets/avatar.jpg" />
-                                    <p class="name">Lê Anh Dũng</p>
-                                </div>
-                                <div id="body_edit_post">
-                                    <textarea class="newfeed__input_mind" placeholder="What do you mind ?" name="Text1" cols="40" rows="5">Hôm nay tôi buồn</textarea>
-
-                                </div>
+                <div>
+                    <div class="created_user">
+                        <div class="created_user_title">
+                            <p>Created</p>
+                        </div>
+                        <hr>
+                        <div>
+                            <div class="info_user_created">
+                                <img id="avt_user_created" src="../assets/avatar.jpg" />
+                                <p class="data_info">Lê Anh Dũng</p>
                             </div>
-                            <button id="save_post">Save</button>
-                        </form>
+                            <img id="messages_user_created" src="../assets/messages.png" />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -315,6 +210,6 @@
 <script src="../js/handle_modal.js"></script>
 <script src="../js/handler.js"></script>
 <script src="../js/handle_heart_share.js"></script>
-<script src="../js/handle_edit_post.js"></script>
+<script src="../js/handle_read_more.js"></script>
 
 </html>

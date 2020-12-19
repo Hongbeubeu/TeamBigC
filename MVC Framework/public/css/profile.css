@@ -21,7 +21,7 @@ body {
 }
 
 .background_image {
-    background-image: url("../assets/background.jpg");
+    background-image: url("/public/assets/header.jpg");
     height: 200px;
     width: 100%;
     position: relative;
@@ -49,7 +49,6 @@ body {
     width: 70%;
     color: white;
 }
-
 
 .btn-group button {
     background-color: #FFFFFF;
@@ -93,8 +92,6 @@ body {
     color: white;
 }
 
-
-
 .btn_select {
     display: flex;
 }
@@ -124,8 +121,7 @@ body {
 /*About----------- */
 
 .about_pane {
-    width: 25%;
-    height: 35%;
+    width: 50%;
     background-color: #FFFFFF;
     margin-top: 40px;
 }
@@ -198,7 +194,8 @@ body {
 
 /* The Modal (background) */
 
-.modal {
+.modal,
+.modal_edit_post {
     display: none;
     /* mặc định được ẩn đi */
     position: fixed;
@@ -217,13 +214,14 @@ body {
 
 /* Modal Content */
 
-.modal-content {
+.modal-content,
+.modal-content_edit_post {
     background-color: #E5FBFC;
     margin: auto;
     border-radius: 20px;
     border: 1px solid #888;
     width: 60%;
-    height: 480px;
+    height: 300px;
 }
 
 
@@ -231,11 +229,14 @@ body {
 
 .toppane {
     width: 100%;
-    height: 150px;
     float: top;
     text-align: left;
     border-collapse: collapse;
     text-align: center;
+}
+
+.toppane h2 {
+    margin-left: 20px;
 }
 
 .image_cover {
@@ -246,15 +247,16 @@ body {
 
 /*bottompane*/
 
-.bottompane {
+.bottompane,
+.bottompane_edit_post {
     width: 100%;
-    height: 360px;
+    height: 200px;
     position: relative;
     margin-top: 30px;
     float: bottom;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
-    background-color: #E5FBFC;
+    background-color: #FFFFFF;
     border-collapse: collapse;
 }
 
@@ -327,9 +329,73 @@ body {
 }
 
 
+/* edit post modal*/
+
+.modal-content_edit_post {
+    width: 40%;
+    height: 550px;
+}
+
+.bottompane_edit_post {
+    height: 400px;
+}
+
+.name_user_edit_post div {
+    display: flex;
+    padding: 10px;
+}
+
+#avt_edit_post img {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+}
+
+#body_edit_post {
+    display: block;
+    width: 90%;
+    height: 200px;
+    overflow: auto;
+}
+
+#body_edit_post input {
+    width: 80%;
+    height: 100px;
+    border: none;
+    outline: none;
+}
+
+#body_edit_post div {
+    display: block;
+}
+
+#body_edit_post div img {
+    width: 100%;
+}
+
+#save_post {
+    border: none;
+    color: white;
+    padding: 15px 56px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    width: 80%;
+    border-radius: 10px;
+    margin-left: 50px;
+    margin-top: 30px;
+    background-color: rgb(33, 184, 249);
+}
+
+#save_post:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+
 /* The Close Button */
 
-.close {
+.close,
+#close_edit_post {
     color: white;
     float: right;
     font-size: 28px;
@@ -338,6 +404,8 @@ body {
 }
 
 .close:hover,
+#close_edit_post:hover,
+#close_edit_post:focus,
 .close:focus {
     color: #000;
     text-decoration: none;
@@ -373,6 +441,7 @@ body {
 .name {
     margin: 1.2em 0.75em;
     font-size: 1.1em;
+    width: 400px;
 }
 
 .identify {
@@ -401,7 +470,8 @@ body {
 #notification {
     display: none;
 }
-::placeholder  {
+
+::placeholder {
     color: black;
 }
 
@@ -409,8 +479,8 @@ body {
     position: absolute;
     z-index: 2;
     width: 70vw
-
 }
+
 #newfeed__profile {
     min-width: 70% !important;
 }

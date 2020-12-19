@@ -42,10 +42,16 @@ function showSlides(n, id) {
 function onClickEditProfile() {
     openModalBox("btnEditProfile", "modalEditProfile");
 }
+
+function openModalEditPost() {
+    openModalBox("edit_post", "edit");
+}
+
 function onClickPostInput() {
     openModalBox("newfeed__status", "modalNewPost");
 
 }
+
 function openModalBox(buttonId, modalId) {
     // lấy phần Modal
     var modal = document.getElementById(modalId);
@@ -77,11 +83,11 @@ function openModalBox(buttonId, modalId) {
 
 function callAjaxComment(comment, post_id, user_id) {
     var xmlhttp = new XMLHttpRequest();
-    var data = "comment=" + comment + "&postId=" + post_id + "&userId=" +user_id; 
+    var data = "comment=" + comment + "&postId=" + post_id + "&userId=" + user_id;
     xmlhttp.open('POST', '/ajax-comment', true);
     xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xmlhttp.send(data);
-    xmlhttp.onreadystatechange = function () {
+    xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             console.log(this.responseText);
         }
@@ -90,13 +96,13 @@ function callAjaxComment(comment, post_id, user_id) {
 
 function callAjaxLike(user_id, post_id) {
     var date = new Date();
-    console.log("like:" +date.getTime());
+    console.log("like:" + date.getTime());
     var xmlhttp = new XMLHttpRequest();
     var data = "userId=" + user_id + "&postId=" + post_id;
     xmlhttp.open('POST', '/ajax-like', true);
     xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xmlhttp.send(data);
-    xmlhttp.onreadystatechange = function () {
+    xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             console.log(this.responseText);
         }
@@ -105,13 +111,13 @@ function callAjaxLike(user_id, post_id) {
 
 function callAjaxUnLike(user_id, post_id) {
     var date = new Date();
-    console.log("unlike:" +date.getTime());
+    console.log("unlike:" + date.getTime());
     var xmlhttp = new XMLHttpRequest();
     var data = "userId=" + user_id + "&postId=" + post_id;
     xmlhttp.open('POST', '/ajax-unlike', true);
     xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xmlhttp.send(data);
-    xmlhttp.onreadystatechange = function () {
+    xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
             console.log(this.responseText);
         }
@@ -160,9 +166,9 @@ function changeIcon(img, user_id, post_id) {
         likeCount.innerHTML = parseInt(likeCount.innerHTML) + 1;
         console.log(likeCount.innerHTML);
         callAjaxLike(user_id, post_id);
-    } else {                                                                                                                                                      
+    } else {
         img.src = "/public/assets/heart.png";
-        likeCount.innerHTML = (parseInt(likeCount.innerHTML)<=0)?0:(parseInt(likeCount.innerHTML) - 1);
+        likeCount.innerHTML = (parseInt(likeCount.innerHTML) <= 0) ? 0 : (parseInt(likeCount.innerHTML) - 1);
         callAjaxUnLike(user_id, post_id);
     }
 }

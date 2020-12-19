@@ -23,4 +23,7 @@
 </body>
 <script src="/public/js/handler.js"></script>
 
+<script src="/public/js/handle_see_more_group.js"></script>
+
+
 </html>

@@ -24,6 +24,9 @@
                             id="icon_select_share" /> </div>
                     <p>100</p>
                 </div>
+                <div class="newfeed_select_button">
+                                    <img id="edit_post" onclick="openModalEditPost()" src="/public/assets/icons8-edit-80.png" />
+                                </div>
             </div>
 
         </div>
