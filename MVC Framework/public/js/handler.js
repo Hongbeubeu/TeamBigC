@@ -40,38 +40,28 @@ function showSlides(n, id) {
 }
 
 function onClickEditProfile() {
-    openModalBox("btnEditProfile", "modalEditProfile");
+    openModalBox("modalEditProfile");
 }
 
 function openModalEditPost() {
-    openModalBox("edit_post", "edit");
+    openModalBox("edit");
 }
 
 function onClickPostInput() {
-    openModalBox("newfeed__status", "modalNewPost");
-
+    openModalBox("modalNewPost");
 }
 
-function openModalBox(buttonId, modalId) {
+function closeModalBox(modalId) {
+    var modal = document.getElementById(modalId);
+    modal.style.display = "none";
+}
+
+function openModalBox(modalId) {
     // lấy phần Modal
     var modal = document.getElementById(modalId);
 
-    // Lấy phần button mở Modal
-    var btn = document.getElementById(buttonId);
-
-    // Lấy phần span đóng Modal
-    var span = document.getElementsByClassName("close")[0];
-
-    // Khi button được click thi mở Modal
-    btn.onclick = function() {
-        modal.style.display = "block";
-    }
-
-    // Khi span được click thì đóng Modal
-    span.onclick = function() {
-        modal.style.display = "none";
-    }
-
+    modal.style.display = "block";
+    
     // Khi click ngoài Modal thì đóng Modal
     window.onclick = function(event) {
         if (event.target == modal) {
