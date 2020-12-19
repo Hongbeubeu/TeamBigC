@@ -40,47 +40,38 @@ function showSlides(n, id) {
 }
 
 function onClickEditProfile() {
-    openModalBox("btnEditProfile", "modalEditProfile");
+    openModalBox("modalEditProfile");
 }
 
 function openModalEditPost() {
-    openModalBox("edit_post", "edit");
+    openModalBox("edit");
 }
 
 function onClickPostInput() {
-    openModalBox("newfeed__status", "modalNewPost");
+    openModalBox("modalNewPost");
+}
 
+function closeModalBox(modalId) {
+    var modal = document.getElementById(modalId);
+    modal.style.display = "none";
 }
 
 function onClickCreateGroup() {
-    openModalBox("myBtn", "myModal");
+    openModalBox("myModal");
 
 }
 
 function openDonateDetail() {
-    openModalBox("myBtn", "myModal");
+    openModalBox("myModal_donate_detail");
 
 }
 
-function openModalBox(buttonId, modalId) {
+function openModalBox(modalId) {
+
     // lấy phần Modal
     var modal = document.getElementById(modalId);
 
-    // Lấy phần button mở Modal
-    // var btn = document.getElementById(buttonId);
-
-    // // Lấy phần span đóng Modal
-    // var span = document.getElementsByClassName("close")[0];
-
-    // Khi button được click thi mở Modal
-    // btn.onclick = function() {
     modal.style.display = "block";
-    // }
-
-    // // Khi span được click thì đóng Modal
-    // span.onclick = function() {
-    //     modal.style.display = "none";
-    // }
 
     // Khi click ngoài Modal thì đóng Modal
     window.onclick = function(event) {
@@ -183,7 +174,6 @@ function changeIcon(img, user_id, post_id) {
     }
 }
 
-// setInterval(function () { 
-//     callAjaxLike(); 
-//     callAjaxUnLike()
-// }, 3000);
+function OpenUserProfile($id) {
+    window.open('/profile/' + $id, '_self');
+}

@@ -33,4 +33,15 @@ class UserModel extends BaseModel
     public function getUserInfo(int $id) {
         return $this->dbo->table($this->table)->where([['id', $id]])->get()->toArray();
     }
+
+    public function checkId(int $id){
+        $count = $this->dbo
+                    ->table($this->table)
+                    ->where($id)
+                    ->count();
+        if ($count <= 0)
+           return false;
+        else
+            return true;
+    }
 }

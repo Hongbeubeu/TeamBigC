@@ -7,6 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link href="/public/css/style.css" rel="stylesheet" type="text/css">
+    <link href="/public/css/donate.css" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -35,7 +36,13 @@
         </div>
         <div class="under_cover">
             <div class="newfeed" id="newfeed__profile">
+                <?php 
+                    if($arr['user_id'] == $_SESSION['user_id']) { 
+                ?>
                 <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'newfeed_control.php'); ?>
+                <?php
+                    }
+                ?>
                 <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'newfeed_main.php'); ?>
             </div>
             <div>

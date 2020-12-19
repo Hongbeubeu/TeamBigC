@@ -37,7 +37,7 @@
                             <p> raised</p>
                         </div>
                         <progress id="porgress_donated" value="70" max="100"></progress>
-                        <button onclick="">Donate</button>
+                        <button onclick="openDonateDetail()">Donate</button>
                     </div>
                 </div>
                 <div>

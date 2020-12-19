@@ -31,8 +31,8 @@ class HomeController extends BaseController
             $this->setUserBaseInfo($userBaseInfo);
             $posts = $postModel->getPosts($_SESSION['user_id']);
             $this->setParameterPost($posts);
-            // $this->render(DS . "Feeds" . DS . "newfeeds");
-            $this->render(DS . "Searchs" . DS . "search");
+            $this->render(DS . "Groups" . DS . "groups");
+            // $this->render(DS . "Searchs" . DS . "search");
         } else
             header('location:/login');
     }

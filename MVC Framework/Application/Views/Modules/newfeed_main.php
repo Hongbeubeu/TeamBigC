@@ -5,7 +5,7 @@
     ?>
     <div class="newfeed__post">
         <div class="newfeed__header">
-            <div class="newfeed__identify identify" src="#">
+            <div class="newfeed__identify identify" onclick="OpenUserProfile(<?php echo $list['user_id'] ?>)">
                 <img class="avatar icon_medium" src="<?php echo $list['picture'] ?>" />
                 <p class="name" style="display: inline;"> <?php echo $list['display_name'] ?></p>
             </div>
@@ -24,9 +24,15 @@
                             id="icon_select_share" /> </div>
                     <p>100</p>
                 </div>
+                <?php 
+                    if ($_SESSION['user_id'] == $list['user_id']) {
+                ?>
                 <div class="newfeed_select_button">
-                                    <img id="edit_post" onclick="openModalEditPost()" src="/public/assets/icons8-edit-80.png" />
-                                </div>
+                    <img id="edit_post" onclick="openModalEditPost()" src="/public/assets/icons8-edit-80.png" />
+                </div>
+                <?php
+                    }
+                ?>
             </div>
 
         </div>

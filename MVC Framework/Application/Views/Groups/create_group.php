@@ -1,18 +1,4 @@
-<!DOCTYPE html>
-<html>
 
-<head>
-    <title>Create Group</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/public/css/donate.css" rel="stylesheet" type="text/css" />
-</head>
-
-<body>
-    <div class="container">
-        <button id="myBtn" onclick="onClickCreateGroup()">
-            Donate
-        </button>
         <!-- The Modal -->
         <div id="myModal" class="modal">
             <!-- Nội dung form đăng nhập -->
@@ -59,8 +45,3 @@
                 </form>
             </div>
         </div>
-    </div>
-</body>
-<script src="/public/js/handler.js"></script>
-
-</html>
