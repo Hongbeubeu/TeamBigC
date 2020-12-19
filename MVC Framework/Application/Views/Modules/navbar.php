@@ -8,11 +8,11 @@
         <p class="navbar__name" id="user_name"><?php echo $this->vars[0]['display_name'] ?></p>
         <?php endif; ?>
         <p class="navbar__email"><?php echo $_SESSION['session_id'] ?></p>
-        <a href="/logout">Log out</a>
     </div>
     <button class="navbar__donate-button">Donate</button>
+    <div class="navbar__donate-star"> <span >5000 </span> <img style="width: 16px" src="/public/assets/icons8-star-48.png"/>  </div>
     <div class="navbar__menu">
-        <h3 class="navbar__menu-title">Menu</h3>
+        <h3 class="navbar__menu-title" style="margin-bottom: 0.5rem">Menu</h3>
         <div class="navbar__menu-button">
             <img class="navbar__menu-icon" src="/public/assets/newfeed.png" />
             <a href="/newfeed" class="navbar__menu-title">Newfeeds</a>
@@ -23,7 +23,7 @@
         </div>
         <div class="navbar__menu-button">
             <img class="navbar__menu-icon" src="/public/assets/notification.png" />
-            <p href="#" class="navbar__menu-title" onclick="openPopup()">Notifications</p>
+            <span class="navbar__menu-title" onclick="openPopup()">Notifications</span>
             <div class="notification__detail" id="notification">
                 <h4>Notifications</h4>
                 <hr>
@@ -54,6 +54,10 @@
         <div class="navbar__menu-button">
             <img class="navbar__menu-icon" src="/public/assets/settings.png" />
             <a href="#" class="navbar__menu-title">Settings</a>
+        </div>
+        <div class="navbar__menu-button">
+            <img class="navbar__menu-icon" src="/public/assets/logout.png" />
+            <a href="/logout" class="navbar__menu-title">Log Out</a>
         </div>
 
     </div>
