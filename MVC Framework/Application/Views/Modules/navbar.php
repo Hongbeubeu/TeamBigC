@@ -61,9 +61,10 @@
 
     </div>
 </div>
+<?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Groups'.DS.'create_group.php'); ?>
  <!-- The Modal -->
- <div id="myModal" class="modal">
-            <!-- Nội dung form create group -->
+ <!-- <div id="myModal" class="modal">
+            
             <div class="modal-content_create_group">
                 <form action="#">
                     <span class="close" onclick="closeModalBox('myModal')">&times;</span>
@@ -106,4 +107,4 @@
 
                 </form>
             </div>
-        </div>
+        </div> -->

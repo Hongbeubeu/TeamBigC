@@ -16,8 +16,8 @@
     <div class="right_pane">
         <div class="background_image_title">
             <img src="/public/assets/avatar.jpg" />
-            <p id="name_group">Name Group</p>
-            <p id="slogan_group">Slogan</p>
+            <p id="name_group"><?php echo $this->vars[0]['group_name'] ?></p>
+            <p id="slogan_group"><?php echo $this->vars[0]['slogan'] ?></p>
         </div>
         <div class="under_cover">
             <div class="newfeed">

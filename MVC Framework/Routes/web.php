@@ -16,6 +16,9 @@ $router->post('/edit-post', 'PostController@editPost');
 $router->post('/profile/update', 'ProfileController@update');
 $router->post('/profile/updateAvt', 'ProfileController@updateAvt');
 
+$router->post('/create-group', 'GroupController@createGroup');
+$router->get('/group/{groupId}', 'HomeController@group');
+
 $router->get('/error', 'HomeController@error');
 
 //call Ajax for comment and like/unlike post

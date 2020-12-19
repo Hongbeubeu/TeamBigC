@@ -2,6 +2,7 @@
 
 namespace Application\Controllers;
 
+use Application\Models\GroupModel;
 use Application\Models\PostModel;
 use Application\Models\UserModel;
 use Application\Models\UserProfileModel;
@@ -31,7 +32,7 @@ class HomeController extends BaseController
             $this->setUserBaseInfo($userBaseInfo);
             $posts = $postModel->getPosts($_SESSION['user_id']);
             $this->setParameterPost($posts);
-            $this->render(DS . "Groups" . DS . "groups");
+            $this->render(DS . "Feeds" . DS . "newfeeds");
             // $this->render(DS . "Searchs" . DS . "search");
         } else
             header('location:/login');
@@ -50,13 +51,31 @@ class HomeController extends BaseController
                 $userProfileModel =  new UserProfileModel();
                 $postModel = new PostModel();
                 //Get information of another people profile site
-                $userBaseInfo = $userProfileModel->getUserBaseInformation($id);
+                // $userBaseInfo = $userProfileModel->getUserBaseInformation($id);
                 $userInfo = $userProfileModel->getProfileInformation($id);
                 $posts = $postModel->getPostsMyselft($id);
                 $this->setParameterPost($posts);
                 $this->setParameter($userInfo);
                 $this->render(DS . "Profile" . DS . "profile");
             }
+        }
+    }
+
+    function group($groupId)
+    {
+        if (!$this->checkLogin())
+            header('location:/login');
+        else {
+            $groupModel = new GroupModel();
+            $userProfileModel = new UserProfileModel();
+            $userBaseInfo = $userProfileModel->getUserBaseInformation($_SESSION['user_id']);
+            $groupInfo = $groupModel->getGroupInformation($groupId);
+            $postModel = new PostModel();
+            // $groupPosts = $postModel->getGroupPosts($groupId);
+            // $this->setParameterPost($groupPosts);
+            $this->setUserBaseInfo($userBaseInfo);
+            $this->setParameter($groupInfo);
+            $this->render(DS . "Groups" . DS . "groups"); 
         }
     }
 
