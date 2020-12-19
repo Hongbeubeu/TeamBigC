@@ -35,6 +35,25 @@ class PostModel extends BaseModel
             ->orderBy('id', 'DESC')
             ->get()
             ->toArray();
+        $posts = $this->getMoreInformation($posts);
+        return $posts;
+    }
+
+    public function getPostsMyselft(int $userId)
+    {
+        $posts = $this->dbo
+                        ->table($this->table)
+                        ->where([['user_id', $userId]])
+                        ->orderBy('id', 'DESC')
+                        ->limit(10)
+                        ->get()
+                        ->toArray();
+        $posts = $this->getMoreInformation($posts);
+        return $posts;
+    }
+
+    private function getMoreInformation($posts)
+    {
         $count = count($posts);
         for($i = 0; $i < $count; $i++) {
             $userProfile = new UserProfileModel();
@@ -55,19 +74,6 @@ class PostModel extends BaseModel
             $posts[$i]['like_count'] = $likeCounts;
             $isLiked = $likePostModel->isLikedByUser($_SESSION['user_id'], $posts[$i]['id']);
             $posts[$i]['is_liked'] = $isLiked;
-        }
-        return $posts;
-    }
-
-    public function getPostsMyselft(int $userId)
-    {
-        $posts = $this->dbo->table($this->table)->where([['user_id', $userId]])->get()->toArray();
-        $count = count($posts);
-        for($i = 0; $i < $count; $i++) {
-            $userProfile = new UserProfileModel();
-            $user = $userProfile->getUserBaseInformation($posts[$i]['user_id']);
-            $posts[$i]['picture'] = $user[0]['picture'];
-            $posts[$i]['display_name'] = $user[0]['display_name'];
         }
         return $posts;
     }
