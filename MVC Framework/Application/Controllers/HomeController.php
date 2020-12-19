@@ -31,7 +31,8 @@ class HomeController extends BaseController
             $this->setUserBaseInfo($userBaseInfo);
             $posts = $postModel->getPosts($_SESSION['user_id']);
             $this->setParameterPost($posts);
-            $this->render(DS . "Feeds" . DS . "newfeeds");
+            // $this->render(DS . "Feeds" . DS . "newfeeds");
+            $this->render(DS . "Searchs" . DS . "search");
         } else
             header('location:/login');
     }
@@ -61,7 +62,7 @@ class HomeController extends BaseController
 
     function error() 
     {
-        $this->render(DS . "Layouts" . DS . "error");
+        $this->render(DS . "Groups" . DS . "groups");
     }
     function test()
     {
