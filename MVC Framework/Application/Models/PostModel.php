@@ -30,8 +30,38 @@ class PostModel extends BaseModel
     {
         $posts = $this->dbo
             ->table($this->table)
+            ->select('id, user_id, caption, content')
+            ->limit(6)
+            ->orderBy('id', 'DESC')
             ->get()
             ->toArray();
+        $count = count($posts);
+        for($i = 0; $i < $count; $i++) {
+            $userProfile = new UserProfileModel();
+            $user = $userProfile->getUserBaseInformation($posts[$i]['user_id']);
+            $posts[$i]['picture'] = $user[0]['picture'];
+            $posts[$i]['display_name'] = $user[0]['display_name'];
+            $commentModel = new CommentModel();
+            $comments = $commentModel->getCommentsByPostId($posts[$i]['id']);
+            $countComment = count($comments);
+            for($j = 0; $j < $countComment; $j++){
+                $userCmt = $userProfile->getUserBaseInformation($comments[$j]['user_id']);
+                $comments[$j]['picture'] = $userCmt[0]['picture'];
+                $comments[$j]['display_name'] = $userCmt[0]['display_name'];
+            }
+            $posts[$i]['comments'] = $comments;
+            $likePostModel = new LikePostModel();
+            $likeCounts = $likePostModel->countLike($posts[$i]['id']);
+            $posts[$i]['like_count'] = $likeCounts;
+            $isLiked = $likePostModel->isLikedByUser($_SESSION['user_id'], $posts[$i]['id']);
+            $posts[$i]['is_liked'] = $isLiked;
+        }
+        return $posts;
+    }
+
+    public function getPostsMyselft(int $userId)
+    {
+        $posts = $this->dbo->table($this->table)->where([['user_id', $userId]])->get()->toArray();
         $count = count($posts);
         for($i = 0; $i < $count; $i++) {
             $userProfile = new UserProfileModel();

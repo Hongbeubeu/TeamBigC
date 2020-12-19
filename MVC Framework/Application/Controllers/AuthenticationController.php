@@ -59,7 +59,7 @@ class AuthenticationController extends BaseController
 
                 $userProfileModel = new UserProfileModel();
                 $profileParams['user_id'] = $userId;
-                $profileParams['picture'] = '/public/assets/default.jpg';
+                $profileParams['picture'] = DS .'public' .DS . 'assets' . DS . 'default.jpg';
                 $profileParams['display_name'] = $displayName;
                 $userProfileModel->setProfileInformation($profileParams);
                 $session_id = $email;

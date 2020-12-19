@@ -30,7 +30,7 @@ class HomeController extends BaseController
             $userBaseInfo = $userProfileModel->getUserBaseInformation($_SESSION['user_id']);
             $this->setUserBaseInfo($userBaseInfo);
             $posts = $postModel->getPosts($_SESSION['user_id']);
-            $this->setParameter($posts);
+            $this->setParameterPost($posts);
             $this->render(DS . "Feeds" . DS . "newfeeds");
         } else
             header('location:/login');
@@ -38,6 +38,7 @@ class HomeController extends BaseController
 
     function profile($id)
     {
+    
         if (!$this->checkLogin())
             header('location:/login');
         else {
@@ -45,8 +46,13 @@ class HomeController extends BaseController
                 header('location:/profile/' . $_SESSION['user_id']);
             else {
                 $userProfileModel =  new UserProfileModel();
+                $postModel = new PostModel();
                 $userId =  $_SESSION['user_id'];
+                //Get information of another people profile site
+                $userBaseInfo = $userProfileModel->getUserBaseInformation($_SESSION['user_id']);
                 $userInfo = $userProfileModel->getProfileInformation($userId);
+                $posts = $postModel->getPosts($_SESSION['user_id']);
+                $this->setParameterPost($posts);
                 $this->setParameter($userInfo);
                 $this->render(DS . "Profile" . DS . "profile");
             }
@@ -56,6 +62,10 @@ class HomeController extends BaseController
     function error() 
     {
         $this->render(DS . "Layouts" . DS . "error");
+    }
+    function test()
+    {
+        $this->render(DS . "Modules" . DS . "profilecopy");
     }
     // function profile(){
     //     {

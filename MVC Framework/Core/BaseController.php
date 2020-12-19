@@ -7,11 +7,17 @@ class BaseController
 {
     var $vars = [];
     var $errors = [];
+    var $varsPost = [];
     var $userBaseInfo;
 
     public function setParameter($data)
     {
         $this->vars = array_merge($this->vars, $data);
+    }
+
+    public function setParameterPost($data)
+    {
+        $this->varsPost = array_merge($this->varsPost, $data);
     }
 
     public function setUserBaseInfo($userBaseInfo) 
@@ -29,6 +35,7 @@ class BaseController
         ob_start();
         extract($this->errors);
         extract($this->vars);
+        extract($this->varsPost);
         if (file_exists(PATH_ROOT . DS . "Application" . DS . "Views" . DS . $filename . '.php'))
         {
             require(PATH_ROOT . DS . "Application" . DS . "Views" . DS . $filename . '.php');
@@ -48,7 +55,7 @@ class BaseController
         return true;
     }
 
-    private function secure_input($data)
+    protected function secure_input($data)
     {
         $data = trim($data);
         $data = stripslashes($data);
