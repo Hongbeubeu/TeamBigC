@@ -343,3 +343,8 @@ body {
 #notification {
     display: none;
 }
+.btn__disabled {
+    pointer-events: none;
+    cursor: default;
+}
+

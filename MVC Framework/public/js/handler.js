@@ -183,19 +183,19 @@ function OpenUserProfile($id) {
 }
 
 function onClickFollow(userId) {
-    var divContainer = document.getElementById(`btnFollow_${userId}`);
-    var image = divContainer.childNodes()[0];
-    var content = divContainer.childNodes()[1];
-    content.innerHTML = "Followed";
+    var content = document.getElementById(`followCardPeople_${userId}`);
+    content.innerHTML  = "Followed";
+    var image = document.getElementById(`imgCardPeople_${userId}`)
     image.setAttribute("src", "/public/assets/checked.png");
+
 }
 
 function onClickGrouped(userId) {
-    var divContainer = document.getElementById(`btnGroup_${userId}`);
-    var image = divContainer.childNodes()[0];
-    var content = divContainer.childNodes()[1];
-    content.innerHTML = "Joined";
+    var content = document.getElementById(`followCardGroup_${userId}`);
+    content.innerHTML  = "Joined";
+    var image = document.getElementById(`imgCardGroup_${userId}`)
     image.setAttribute("src", "/public/assets/checked.png");
+
 }
 
 function follow(img, followerId, userId) {
