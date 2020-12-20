@@ -219,6 +219,7 @@ body {
     width: 250px;
     background-color: #ffffff;
     border-radius: 10px;
+    height: 100%;
 }
 
 .add_friend_follow {
@@ -288,7 +289,7 @@ body {
     border-radius: 50%;
 }
 
-.name {
+.card__name {
     margin: 1.2em 0.75em;
 }
 
