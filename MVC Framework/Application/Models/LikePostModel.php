@@ -16,6 +16,11 @@ class LikePostModel extends BaseModel
         $this->dbo->insert($this->table, $params);
     }
 
+    public function deleteLikePost(int $postId)
+    {
+        $this->dbo->delete($this->table)->where([['post_id', $postId]])->exec();
+    }
+    
     public function unlike(array $paramsIn)
     {
         $this->dbo->delete($this->table, $paramsIn);

@@ -2,6 +2,8 @@
 
 namespace Application\Controllers;
 
+use Application\Models\CommentModel;
+use Application\Models\LikePostModel;
 use Application\Models\PostGroupModel;
 use Application\Models\PostModel;
 use Core\BaseController;
@@ -96,5 +98,20 @@ class PostController extends BaseController
         $url = $_POST['url'];
         $postModel->updatePost($params, $postId);
         header('location:' . $url);
+    }
+
+    public function deletePost()
+    {
+        $formPost = $_POST;
+        $this->secure_form($formPost);
+        $likePostModel = new LikePostModel();
+        $likePostModel->deleteLikePost($formPost['post_id']);
+        $postGroupModel = new PostGroupModel();
+        $postGroupModel->deletePostInGroup($formPost['post_id']);
+        $commentModel = new CommentModel();
+        $commentModel->deleteCommentsFromPost($formPost['post_id']);
+        $postModel = new PostModel();
+        $postModel->deletePost($formPost['post_id']);
+        header('location:' . $formPost['url']);
     }
 }

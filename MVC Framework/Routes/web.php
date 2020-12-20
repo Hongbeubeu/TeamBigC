@@ -14,6 +14,7 @@ $router->post('/register', "AuthenticationController@register");
 $router->post('/status', 'PostController@post');
 $router->post('/edit-post', 'PostController@editPost');
 $router->post('/profile/update', 'ProfileController@update');
+$router->post('/deletePost', 'PostController@deletePost');
 $router->post('/profile/updateAvt', 'ProfileController@updateAvt');
 
 $router->post('/create-group', 'GroupController@createGroup');

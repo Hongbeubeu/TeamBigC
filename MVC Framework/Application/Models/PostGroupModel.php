@@ -17,6 +17,11 @@ class PostGroupModel extends BaseModel
         $this->dbo->insert($this->table, $params);
     }
 
+    public function deletePostInGroup(int $postId)
+    {
+        $this->dbo->delete($this->table)->where([['post_id', $postId]])->exec();
+    }
+
     public function getGroupPosts(int $groupId)
     {
         return $this->dbo 

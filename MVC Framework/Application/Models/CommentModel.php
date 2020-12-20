@@ -25,4 +25,9 @@ class CommentModel extends BaseModel
                 ->get()
                 ->toArray();
     }
+
+    public function deleteCommentsFromPost(int $postId)
+    {
+        $this->dbo->delete($this->table)->where([['post_id', $postId]])->exec();
+    }
 }

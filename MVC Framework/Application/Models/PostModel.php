@@ -70,7 +70,7 @@ class PostModel extends BaseModel
 
     public function deletePost(int $postId)
     {
-        $this->dbo->delete($this->table, $postId);
+        $this->dbo->delete($this->table)->where([['id', $postId]])->exec();
     }
 
     private function getMoreInformation($posts)
