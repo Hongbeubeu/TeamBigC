@@ -48,6 +48,28 @@ function showSlides(n, id) {
     dots[slideIndex - 1].className += " active";
 }
 
+function follow_user() {
+    var follow = document.getElementById("btn_follow");
+    if (follow.textContent === "Follow") {
+        follow.innerHTML = "Following";
+        follow.style.backgroundColor = "#0099f1";
+    } else {
+        follow.innerHTML = "Follow";
+        follow.style.backgroundColor = "#dc3545";
+    }
+}
+
+function leave_gr() {
+    var follow = document.getElementById("leave_group");
+    if (follow.textContent === "Leave Group") {
+        follow.innerHTML = "Join Group";
+        follow.style.backgroundColor = "#0099f1";
+    } else {
+        follow.innerHTML = "Leave Group";
+        follow.style.backgroundColor = "#dc3545";
+    }
+}
+
 function onClickEditProfile() {
     openModalBox("modalEditProfile");
 }

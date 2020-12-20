@@ -63,7 +63,7 @@
             </div>
         </div>
        
-            <button class="leave__group">Leave group</button>
+            <button id="leave_group" class="leave__group" onclick="leave_gr()">Leave Group</button>
 
     </div>
 </div>
