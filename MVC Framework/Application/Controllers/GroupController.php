@@ -25,4 +25,19 @@ class GroupController extends BaseController
         $userGroupModel->addUserToGroup($_SESSION['user_id'], $groupId);
         header('location:/group/' . $groupId);
     }
+
+    public function editGroup()
+    {
+        $formPost = $_POST;
+        $this->secure_form($formPost);
+        $params['group_name'] = $formPost['groupName'];
+        $params['slogan'] = $formPost['slogan'];
+        $params['target_star'] = $formPost['targetStar'];
+        $params['description'] = $formPost['description'];
+        $groupModel = new GroupModel();
+        $arr = explode('/', $_POST['url']);
+        $groupId = end($arr);
+        $groupModel->updateGroup($params, $groupId);
+        header('location:' . $formPost['url']);
+    }
 }

@@ -18,6 +18,7 @@ $router->post('/profile/updateAvt', 'ProfileController@updateAvt');
 
 $router->post('/create-group', 'GroupController@createGroup');
 $router->get('/group/{groupId}', 'HomeController@group');
+$router->post('/edit-group', 'GroupController@editGroup');
 
 $router->get('/error', 'HomeController@error');
 

@@ -2,9 +2,15 @@
                 <div class="about_pane">
                     <div class="about_pane_title">
                         <p>About</p>
+                        <?php
+                            if($_SESSION['user_id'] == $this->vars[0]['owner_id']) { 
+                        ?>
                         <span id="btnEditProfile">
                             <img onclick="onClickEditGroup()" class="about_pane_title_img" src="/public/assets/icons8-edit-50.png" />
                         </span>
+                        <?php
+                            }
+                        ?>
                     </div>
                     <hr>
                     <div class="infoUser">

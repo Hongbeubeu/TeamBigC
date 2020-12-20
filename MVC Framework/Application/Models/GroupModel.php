@@ -46,4 +46,12 @@ class GroupModel extends BaseModel
         $params['updated_at'] = $timestamp;
         $this->dbo->update($this->table, $params, $groupId);
     }
+
+    public function updateGroup(array $paramsIn, int $groupId)
+    {
+        $timestamp = date("Y-m-d H:i:s");
+        $params['updated_at'] = $timestamp;
+        $params = array_merge($params, $paramsIn);
+        $this->dbo->update($this->table, $params)->where([['id', $groupId]])->exec();
+    }
 }

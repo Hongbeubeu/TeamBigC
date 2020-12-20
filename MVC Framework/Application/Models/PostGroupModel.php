@@ -23,7 +23,13 @@ class PostGroupModel extends BaseModel
                     ->table($this->table)
                     ->select('post_id')
                     ->where([['group_id', $groupId]])
+                    ->orderBy('id', 'DESC')
                     ->get()
                     ->toArray();
+    }
+
+    public function deletePostFromUser(int $postId, int $userId)
+    {
+        $this->dbo->delete($this->table, [['post_id', $postId], ['user_id', $userId]]);
     }
 }

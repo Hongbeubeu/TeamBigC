@@ -15,7 +15,7 @@
 <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'navbar.php'); ?>
     <div class="right_pane">
         <div class="background_image_title">
-            <img src="/public/assets/avatar.jpg" />
+            <img src="/public/assets/donation.png" />
             <p id="name_group"><?php echo $this->vars[0]['group_name'] ?></p>
             <p id="slogan_group"><?php echo $this->vars[0]['slogan'] ?></p>
         </div>

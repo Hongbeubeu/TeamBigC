@@ -68,6 +68,11 @@ class PostModel extends BaseModel
         $this->dbo->update($this->table, $params)->where([['id', $postId]])->exec();
     }
 
+    public function deletePost(int $postId)
+    {
+        $this->dbo->delete($this->table, $postId);
+    }
+
     private function getMoreInformation($posts)
     {
         $count = count($posts);
@@ -93,5 +98,7 @@ class PostModel extends BaseModel
         }
         return $posts;
     }
+
+    
     
 }
