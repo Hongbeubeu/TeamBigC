@@ -50,3 +50,4 @@
     </div>
 
 </div>
+<button id="btn_follow" onclick="follow_user()">Follow</button>
