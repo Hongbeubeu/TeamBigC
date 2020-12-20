@@ -16,6 +16,11 @@ class FollowingRelationShipModel extends BaseModel
         $params['user_id'] = $userId;
         $this->dbo->insert($this->table, $params);
     }
+
+    public function unfollow(int $unfollowerId, int $userId)
+    {
+        $this->dbo->delete($this->table)->where([['following_id', $unfollowerId], ['user_id', $userId]])->exec();
+    }
     public function getCountFollower(int $userId)
     {
         return $this->dbo
@@ -30,5 +35,17 @@ class FollowingRelationShipModel extends BaseModel
                     ->table($this->table)
                     ->where([['following_id', $followerId]])
                     ->count();
+    }
+
+    public function checkFollow(int $followerId, int $userId)
+    {
+        $count = $this->dbo
+                    ->table($this->table)
+                    ->where([['following_id', $followerId], ['user_id', $userId]])
+                    ->count();
+        if($count == 0)
+            return false;
+        else    
+            return true;
     }
 }

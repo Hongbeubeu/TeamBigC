@@ -46,12 +46,26 @@ class AjaxEndPoint extends BaseController
 	public function joinGroup()
 	{
 		$userGroupModel = new UserGroupModel();
-		$userGroupModel->addUserToGroup($_POST['userId'], $_POST['group_id']);
+		$userGroupModel->addUserToGroup($_SESSION['user_id'], $_POST['groupId']);
+		echo "Joined";
+	}
+
+	public function leaveGroup()
+	{
+		$userGroupModel = new UserGroupModel();
+		$userGroupModel->removeUserFromGroup($_SESSION['user_id'], $_POST['groupId']);
 	}
 
 	public function follow()
 	{
 		$followingRelationShipModel = new FollowingRelationShipModel();
-		$followingRelationShipModel->follow($_SESSION['user_id'], $_POST['user_id']);
+		$followingRelationShipModel->follow($_SESSION['user_id'], $_POST['userId']);
+		echo "following";
+	}
+
+	public function unfollow()
+	{
+		$followingRelationShipModel = new FollowingRelationShipModel();
+		$followingRelationShipModel->unfollow($_SESSION['user_id'], $_POST['userId']);
 	}
 }

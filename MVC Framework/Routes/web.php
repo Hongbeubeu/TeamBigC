@@ -27,8 +27,10 @@ $router->get('/error', 'HomeController@error');
 $router->post('/ajax-comment', 'AjaxEndpoint@comment');
 $router->post('/ajax-like', 'AjaxEndpoint@like');
 $router->post('/ajax-unlike', 'AjaxEndpoint@unlike');
-$router->post('/follow', 'AjaxEndpoint@follow');
-$router->post('/join-group', 'AjaxEndpoint@joinGroup');
+$router->post('/ajax-follow', 'AjaxEndpoint@follow');
+$router->post('/ajax-unfollow', 'AjaxEndpoint@unfollow');
+$router->post('/ajax-join-group', 'AjaxEndpoint@joinGroup');
+$router->post('/ajax-leave-group', 'AjaxEndpoint@leaveGroup');
 
 $router->post('/donate', 'DonateController@donate');
 $router->get('/search', 'HomeController@search');

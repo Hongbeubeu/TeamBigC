@@ -17,6 +17,11 @@ class UserGroupModel extends BaseModel
         $this->dbo->insert($this->table, $params);
     }
 
+    public function removeUserFromGroup(int $userId, int $groupId)
+    {
+        $this->dbo->delete($this->table)->where([['user_id', $userId], ['group_id', $groupId]])->exec();
+    }
+
     public function countGroupUsers(int $groupId)
     {
         return $this->dbo 
@@ -33,5 +38,17 @@ class UserGroupModel extends BaseModel
                     ->where([['user_id', $userId]])
                     ->get()
                     ->toArray();
+    }
+
+    public function checkJoined(int $userId, int $groupId)
+    {
+        $count = $this->dbo
+                    ->table($this->table)
+                    ->where([['user_id', $userId], ['group_id', $groupId]])
+                    ->count();
+        if($count == 0)
+            return false;
+        else    
+            return true;
     }
 }

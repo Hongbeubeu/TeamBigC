@@ -67,6 +67,8 @@ class HomeController extends BaseController
                 $followingRelationShipModel = new FollowingRelationShipModel();
                 $userInfo[0]['follower'] = $followingRelationShipModel->getCountFollower($id);
                 $userInfo[0]['following'] = $followingRelationShipModel->getCountFollowing($id);
+                if ($id != $_SESSION['user_id'])
+                    $userInfo[0]['is_following'] = $followingRelationShipModel->checkFollow($_SESSION['user_id'], $id);
                 $userBaseInfo = $this->getUserBaseInfo();
                 $posts = $postModel->getPostsMyselft($id);
                 $this->setUserBaseInfo($userBaseInfo);
@@ -104,6 +106,8 @@ class HomeController extends BaseController
             $groupInfo[0]['picture'] = $ownerGroupInfo[0]['picture'];
             $groupInfo[0]['name'] = $ownerGroupInfo[0]['display_name'];
             $groupInfo[0]['members'] = $userGroupModel->countGroupUsers($groupId);
+            $groupInfo[0]['isJoined'] = $userGroupModel->checkJoined($_SESSION['user_id'], $groupId);
+            
 
             //get user base information
             $userBaseInfo = $this->getUserBaseInfo();

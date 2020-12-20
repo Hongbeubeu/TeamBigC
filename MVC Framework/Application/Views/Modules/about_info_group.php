@@ -16,7 +16,7 @@
         <hr>
         <div class="infoUser">
             <p>Members: </p>
-            <p class="data_info"><?php echo $this->vars[0]['members'] ?></p>
+            <p class="data_info" id="members"><?php echo $this->vars[0]['members'] ?></p>
         </div>
         <div class="infoUser">
             <p>Donated:</p>
@@ -62,8 +62,12 @@
                 <img id="messages_user_created" src="/public/assets/messages.png" />
             </div>
         </div>
-       
-            <button id="leave_group" class="leave__group" onclick="leave_gr()">Leave Group</button>
-
+        <?php 
+        if($_SESSION['user_id'] != $this->vars[0]['owner_id']) {
+        ?>
+            <button id="leave_group" class="leave__group"<?php if($this->vars[0]['isJoined']){ ?> style="background-color: #dc3545" <?php }else {?> style="background-color: #0099f1" <?php }?>  onclick="leave_gr(<?php echo $this->vars[0]['id'] ?>)"><?php echo $this->vars[0]['isJoined']?"Leave Group":"Join Group" ?></button>
+        <?php
+        }
+        ?>
     </div>
 </div>

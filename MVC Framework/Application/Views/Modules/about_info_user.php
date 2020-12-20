@@ -39,7 +39,7 @@
     <hr>
     <div class="follow">
         <div class="follower">
-            <p class="data_info"><?php echo ($arr['follower'] ? $arr['follower'] : "0")  ?></p>
+            <p class="data_info" id="follower"><?php echo ($arr['follower'] ? $arr['follower'] : "0")  ?></p>
             <p>Followers</p>
         </div>
         <div class="hr"></div>
@@ -50,4 +50,10 @@
     </div>
 
 </div>
-<button id="btn_follow" onclick="follow_user()">Follow</button>
+<?php
+    if($_SESSION['user_id'] != $arr['user_id']) { 
+?>
+<button id="btn_follow" <?php if($arr['is_following']){ ?> style="background-color: #dc3545" <?php }else {?> style="background-color: #0099f1" <?php }?> onclick="follow_user(<?php echo $arr['user_id'] ?>)"><?php echo $arr['is_following']?"Following":"Follow" ?></button>
+<?php 
+    } 
+?>

@@ -48,25 +48,19 @@ function showSlides(n, id) {
     dots[slideIndex - 1].className += " active";
 }
 
-function follow_user() {
-    var follow = document.getElementById("btn_follow");
-    if (follow.textContent === "Follow") {
-        follow.innerHTML = "Following";
-        follow.style.backgroundColor = "#0099f1";
-    } else {
-        follow.innerHTML = "Follow";
-        follow.style.backgroundColor = "#dc3545";
-    }
-}
-
-function leave_gr() {
+function leave_gr(groupId) {
     var follow = document.getElementById("leave_group");
     if (follow.textContent === "Leave Group") {
         follow.innerHTML = "Join Group";
         follow.style.backgroundColor = "#0099f1";
+        document.getElementById('members').innerHTML = (parseInt(document.getElementById('members').innerHTML) - 1); 
+        callAjaxLeaveGroup(groupId);
     } else {
         follow.innerHTML = "Leave Group";
         follow.style.backgroundColor = "#dc3545";
+        document.getElementById('members').innerHTML = (parseInt(document.getElementById('members').innerHTML) + 1); 
+        
+        callAjaxJoinGroup(groupId);
     }
 }
 
@@ -139,8 +133,6 @@ function callAjaxComment(comment, post_id, user_id) {
 }
 
 function callAjaxLike(user_id, post_id) {
-    var date = new Date();
-    console.log("like:" + date.getTime());
     var xmlhttp = new XMLHttpRequest();
     var data = "userId=" + user_id + "&postId=" + post_id;
     xmlhttp.open('POST', '/ajax-like', true);
@@ -154,8 +146,6 @@ function callAjaxLike(user_id, post_id) {
 }
 
 function callAjaxUnLike(user_id, post_id) {
-    var date = new Date();
-    console.log("unlike:" + date.getTime());
     var xmlhttp = new XMLHttpRequest();
     var data = "userId=" + user_id + "&postId=" + post_id;
     xmlhttp.open('POST', '/ajax-unlike', true);
@@ -168,7 +158,6 @@ function callAjaxUnLike(user_id, post_id) {
     }
 }
 
-//todo send request with time out 4s
 function addComment(event, user_id, post_id) {
     if (event.code === "Enter") {
         const div = document.createElement('div');
@@ -196,11 +185,6 @@ function addComment(event, user_id, post_id) {
 
 }
 
-function test() {
-    console.log("test");
-}
-
-//todo send request with time out 4s
 function changeIcon(img, user_id, post_id) {
     var countLikeId = 'count_like_of_post_' + post_id;
     var likeCount = document.getElementById(countLikeId);
@@ -208,7 +192,6 @@ function changeIcon(img, user_id, post_id) {
     if (img.src.match("/public/assets/heart.png")) {
         img.src = "/public/assets/icons8-heart-64.png";
         likeCount.innerHTML = parseInt(likeCount.innerHTML) + 1;
-        console.log(likeCount.innerHTML);
         callAjaxLike(user_id, post_id);
     } else {
         img.src = "/public/assets/heart.png";
@@ -216,6 +199,23 @@ function changeIcon(img, user_id, post_id) {
         callAjaxUnLike(user_id, post_id);
     }
 }
+
+
+function follow_user(userId) {
+    var follow = document.getElementById("btn_follow");
+    if (follow.textContent === "Follow") {
+        follow.innerHTML = "Following";
+        follow.style.backgroundColor = "#dc3545";
+        document.getElementById('follower').innerHTML = (parseInt(document.getElementById('follower').innerHTML)+ 1); 
+        callAjaxFollow(userId);
+    } else {
+        follow.innerHTML = "Follow";
+        follow.style.backgroundColor = "#0099f1";
+        document.getElementById('follower').innerHTML = (parseInt(document.getElementById('follower').innerHTML)- 1);
+        callAjaxUnFollow(userId);
+    }
+}
+
 
 function OpenUserProfile($id) {
     window.open('/profile/' + $id, '_self');
@@ -237,15 +237,54 @@ function onClickGrouped(userId) {
 
 }
 
-function follow(img, followerId, userId) {
-    if (img.src.match("/public/assets/heart.png")) {
-        img.src = "/public/assets/icons8-heart-64.png";
-        likeCount.innerHTML = parseInt(likeCount.innerHTML) + 1;
-        console.log(likeCount.innerHTML);
-        callAjaxLike(user_id, post_id);
-    } else {
-        img.src = "/public/assets/heart.png";
-        likeCount.innerHTML = (parseInt(likeCount.innerHTML) <= 0) ? 0 : (parseInt(likeCount.innerHTML) - 1);
-        callAjaxUnLike(user_id, post_id);
+function callAjaxFollow(userId){
+    var xmlhttp = new XMLHttpRequest();
+    var data = "userId=" + userId;
+    xmlhttp.open('POST', '/ajax-follow', true);
+    xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xmlhttp.send(data);
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText);
+        }
+    }
+}
+
+function callAjaxUnFollow(userId){
+    var xmlhttp = new XMLHttpRequest();
+    var data = "userId=" + userId;
+    xmlhttp.open('POST', '/ajax-unfollow', true);
+    xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xmlhttp.send(data);
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText);
+        }
+    }
+}
+
+function callAjaxJoinGroup(groupId){
+    var xmlhttp = new XMLHttpRequest();
+    var data = "groupId=" + groupId;
+    xmlhttp.open('POST', '/ajax-join-group', true);
+    xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xmlhttp.send(data);
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText);
+        }
+    }
+}
+
+function callAjaxLeaveGroup(groupId){
+    var xmlhttp = new XMLHttpRequest();
+    var data = "groupId=" + groupId;
+    xmlhttp.open('POST', '/ajax-leave-group', true);
+    xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xmlhttp.send(data);
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText);
+        }
     }
 }
