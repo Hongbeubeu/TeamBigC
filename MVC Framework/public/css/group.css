@@ -676,3 +676,17 @@ body {
 #notification {
     display: none;
 }
+.leave__group {
+    border: none;
+    color: white;
+    padding: 15px 56px;
+    text-align: center;
+    font-size: 16px;
+    margin-left: 15%;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    background-color:#dc3545;
+    cursor: pointer;
+    outline: none;
+}
