@@ -17,10 +17,6 @@ class ProfileController extends BaseController
         $birthday = $formPost['birthday'];
         $education = $formPost['education'];
         $about = $formPost['description'];
-        //if ($display_name == "" || $gender == ""|| $birthday ==  "" || $about ==  ""){
-        //$this->render(DS . "Profile" . DS . "profile");   
-        //}
-        //else{
         $userProfileModel = new UserProfileModel();
         $userId = $_SESSION['user_id'];
         $profileParams['display_name'] = $display_name;
@@ -74,17 +70,16 @@ class ProfileController extends BaseController
                 $uploadOk = 0;
             }
 
-            if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-                $arrayImage[] = $fileName;
-            } else {
-                header('location:/profile/' . $userId);
-            }
-
             //insert data to database
             if ($uploadOk) {
-                $userProfileModel = new UserProfileModel();
-                $params['picture'] =  DS . "public" . DS . "uploads" . DS . $fileName;
-                $userProfileModel->updateInformation($params);
+                if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+                    $arrayImage[] = $fileName;
+                    $userProfileModel = new UserProfileModel();
+                    $params['picture'] =  DS . "public" . DS . "uploads" . DS . $fileName;
+                    $userProfileModel->updateInformation($params);
+                } else {
+                    header('location:/profile/' . $userId);
+                }
             } else {
                 header('location:/error');
             }
