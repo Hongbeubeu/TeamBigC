@@ -54,4 +54,9 @@ class GroupModel extends BaseModel
         $params = array_merge($params, $paramsIn);
         $this->dbo->update($this->table, $params)->where([['id', $groupId]])->exec();
     }
+
+    public function search($like)
+    {
+        return $this->dbo->table($this->table)->where([['group_name','LIKE', '%'.$like .'%']])->get()->toArray();
+    }
 }

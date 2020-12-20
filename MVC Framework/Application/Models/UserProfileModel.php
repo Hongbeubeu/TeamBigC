@@ -39,4 +39,8 @@ class UserProfileModel extends BaseModel
         $userId = $_SESSION['user_id'];
         return $this->dbo->update($this->table, $params)->where([['user_id', $userId]])->exec();
     }
+    public function search($like)
+    {
+        return $this->dbo->table($this->table)->where([['display_name','LIKE', '%'.$like .'%']])->get()->toArray();
+    }
 }

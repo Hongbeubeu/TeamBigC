@@ -22,24 +22,11 @@
             </div>
             <div class="row">
                 <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'card_people.php'); ?>
-                <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'card_people.php'); ?>
-                <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'card_people.php'); ?>
-                <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'card_people.php'); ?>
-                <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'card_people.php'); ?>
-                <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'card_people.php'); ?>
-                <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'card_people.php'); ?>
-
             </div>
             <div class="menu_select">
                 <button class="btn group" >Group</button>
             </div>
             <div class="row">
-                <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'card_group.php'); ?>
-                <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'card_group.php'); ?>
-                <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'card_group.php'); ?>
-                <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'card_group.php'); ?>
-                <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'card_group.php'); ?>
-                <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'card_group.php'); ?>
                 <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'card_group.php'); ?>
             </div>
 

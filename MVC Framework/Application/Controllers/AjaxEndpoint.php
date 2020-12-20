@@ -3,7 +3,9 @@
 namespace Application\Controllers;
 
 use Application\Models\CommentModel;
+use Application\Models\FollowingRelationShipModel;
 use Application\Models\LikePostModel;
+use Application\Models\UserGroupModel;
 use Core\BaseController;
 
 class AjaxEndPoint extends BaseController
@@ -39,5 +41,17 @@ class AjaxEndPoint extends BaseController
 		
 		$likePostModel->unlike($paramsIn);
 		echo "unliked";
+	}
+
+	public function joinGroup()
+	{
+		$userGroupModel = new UserGroupModel();
+		$userGroupModel->addUserToGroup($_POST['userId'], $_POST['group_id']);
+	}
+
+	public function follow()
+	{
+		$followingRelationShipModel = new FollowingRelationShipModel();
+		$followingRelationShipModel->follow($_SESSION['user_id'], $_POST['user_id']);
 	}
 }

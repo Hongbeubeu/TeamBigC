@@ -15,7 +15,7 @@
                  <div class="info_user">
                      <div>
                          <p>Name Group</p>
-                         <input class="input_text" type="text" name="groupName" placeholder="Name Group" value="<?php echo $this->vars[0]['group_name'] ?>" />
+                         <input class="input_text" type="text" name="groupame" placeholder="Name Group" value="<?php echo $this->vars[0]['group_name'] ?>" />
                      </div>
                      <div>
                          <p>Slogan Group</p>

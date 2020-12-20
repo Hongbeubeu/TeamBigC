@@ -197,7 +197,16 @@ function onClickGrouped(userId) {
     content.innerHTML = "Joined";
     image.setAttribute("src", "/public/assets/checked.png");
 }
-// setInterval(function () { 
-//     callAjaxLike(); 
-//     callAjaxUnLike()
-// }, 3000);
+
+function follow(img, followerId, userId) {
+    if (img.src.match("/public/assets/heart.png")) {
+        img.src = "/public/assets/icons8-heart-64.png";
+        likeCount.innerHTML = parseInt(likeCount.innerHTML) + 1;
+        console.log(likeCount.innerHTML);
+        callAjaxLike(user_id, post_id);
+    } else {
+        img.src = "/public/assets/heart.png";
+        likeCount.innerHTML = (parseInt(likeCount.innerHTML) <= 0) ? 0 : (parseInt(likeCount.innerHTML) - 1);
+        callAjaxUnLike(user_id, post_id);
+    }
+}

@@ -527,7 +527,6 @@ class QueryBuilder{
 			$this->where .= "`".trim($args[0]). "` ". $args[1]. " ?";
 			$this->bindValues[] =  $args[2];
 		}
-
 		return $this;
 	}
 
