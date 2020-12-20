@@ -39,12 +39,12 @@
     <hr>
     <div class="follow">
         <div class="follower">
-            <p class="data_info">1000</p>
+            <p class="data_info"><?php echo ($arr['follower'] ? $arr['follower'] : "0")  ?></p>
             <p>Followers</p>
         </div>
         <div class="hr"></div>
         <div class="following">
-            <p class="data_info">100</p>
+            <p class="data_info"><?php echo ($arr['following'] ? $arr['following'] : "0")  ?></p>
             <p>Following</p>
         </div>
     </div>

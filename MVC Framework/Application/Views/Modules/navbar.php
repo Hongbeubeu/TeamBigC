@@ -1,7 +1,7 @@
 <div class="navbar">
     <div class="navbar__account-info">
         <?php if($this->userBaseInfo) : ?>
-            <img class="navbar__avatar" id="user_picture" onclick="onClickEditAvt()" src="<?php echo $this->userBaseInfo[0]['picture'] ?>"></img>
+            <img class="navbar__avatar" id="user_picture" <?php if(strlen(strstr($_SERVER['REQUEST_URI'], 'profile/'.$_SESSION['user_id']))){ ?> onclick="onClickEditAvt()" <?php } ?> src="<?php echo $this->userBaseInfo[0]['picture'] ?>"></img>
             <p class="navbar__name" id="user_name"><?php echo $this->userBaseInfo[0]['display_name'] ?></p>
         
         <?php else : ?>

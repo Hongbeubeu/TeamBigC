@@ -5,7 +5,7 @@ use Core\BaseModel;
 
 class FollowingRelationShipModel extends BaseModel
 {
-    public $table = "Following_RelationShip";
+    public $table = "Following_Relationship";
 
     public function follow(int $followerId,int $userId)
     {
@@ -15,5 +15,20 @@ class FollowingRelationShipModel extends BaseModel
         $params['following_id'] = $followerId;
         $params['user_id'] = $userId;
         $this->dbo->insert($this->table, $params);
+    }
+    public function getCountFollower(int $userId)
+    {
+        return $this->dbo
+                    ->table($this->table)
+                    ->where([['user_id', $userId]])
+                    ->count();
+    }
+
+    public function getCountFollowing(int $followerId)
+    {
+        return $this->dbo
+                    ->table($this->table)
+                    ->where([['following_id', $followerId]])
+                    ->count();
     }
 }
