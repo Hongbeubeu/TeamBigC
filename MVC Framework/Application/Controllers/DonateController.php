@@ -17,10 +17,11 @@ class DonateController extends BaseController
         if (
             filter_var($formPost['amount_star'], FILTER_VALIDATE_INT) === 0 ||
             !filter_var($formPost['amount_star'], FILTER_VALIDATE_INT) === false
-        ) {
+        ) {   
             $userModel = new UserModel();
-            $currentStar = $userModel->getStar($_SESSION['user_id']);
-            if ((int)$formPost['amount_star'] <= (int)$currentStar) {
+            $currentStar = (int)$userModel->getStar($_SESSION['user_id'])[0]['star'];
+            $amountStar =  (int)$formPost['amount_star'];
+            if ($amountStar <= $currentStar) {
                 $groupModel = new GroupModel();
                 $groupModel->receiveDonation($formPost['amount_star'], $formPost['group_id']);
                 $userModel = new UserModel();
@@ -31,6 +32,6 @@ class DonateController extends BaseController
                 $this->setError("Số sao ủng hộ cao hơn số sao có trong tài khoản");
             }
         }
-        header('location:/group/' . $formPost['group_id']);
+       header('location:/group/' . $formPost['group_id']);
     }
 }
