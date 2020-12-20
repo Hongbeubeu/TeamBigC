@@ -34,6 +34,18 @@ class HomeController extends BaseController
             $this->setUserBaseInfo($userBaseInfo);
             $posts = $postModel->getPosts($_SESSION['user_id']);
             $this->setParameterPost($posts);
+            $groupModel = new GroupModel();
+            $suggestions['groups'] = $groupModel->getSuggestionGroups();
+            $userProfileModel = new UserProfileModel();
+            $suggestions['users'] = $userProfileModel->getSuggestionUsers();
+            $userGroupModel = new UserGroupModel();
+            $attended = $userGroupModel->getGroupUserAttended($_SESSION['user_id']);
+            $count = count($attended);
+            for($i = 0; $i < $count; $i++){
+                $attended[$i]['group_name'] = $groupModel->getGroupNameById($attended[$i]['group_id'])[0]['group_name'];
+            }
+            $suggestions['group_attendeds'] = $attended;
+            $this->setParameter($suggestions);
             $this->render(DS . "Feeds" . DS . "newfeeds");
         } else
             header('location:/login');

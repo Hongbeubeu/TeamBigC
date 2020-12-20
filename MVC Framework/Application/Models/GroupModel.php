@@ -28,6 +28,26 @@ class GroupModel extends BaseModel
                     ->toArray();
     }
 
+    public function getGroupNameById(int $groupId)
+    {
+        return $this->dbo
+                    ->table($this->table)
+                    ->select('group_name')
+                    ->where($groupId)
+                    ->get()
+                    ->toArray();
+    }
+
+    public function getSuggestionGroups()
+    {
+        return $this->dbo
+                    ->table($this->table)
+                    ->select('id, group_name')
+                    ->orderBy('id', 'DESC')
+                    ->get()
+                    ->toArray();
+    }
+
     public function getCurrentStar(int $groupId)
     {
         return $this->dbo 

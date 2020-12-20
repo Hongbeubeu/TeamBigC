@@ -31,6 +31,18 @@ class UserProfileModel extends BaseModel
     {
         return $this->dbo->table($this->table)->where([['user_id', $user_id]])->get()->toArray();
     }
+
+    public function getSuggestionUsers()
+    {
+        return $this->dbo
+                    ->table($this->table)
+                    ->select('user_id, picture, display_name')
+                    ->where([['user_id', '!=', $_SESSION['user_id']]])
+                    ->orderBy('id' , 'DESC')
+                    ->get()
+                    ->toArray();
+    }
+
     public function updateInformation(array $paramsIn)
     {
         $timestamp = date("Y-m-d H:i:s");

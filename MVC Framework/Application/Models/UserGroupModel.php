@@ -24,4 +24,14 @@ class UserGroupModel extends BaseModel
                     ->where([['group_id', $groupId]])
                     ->count();
     }
+
+    public function getGroupUserAttended(int $userId)
+    {
+        return $this->dbo
+                    ->table($this->table)
+                    ->select('group_id')
+                    ->where([['user_id', $userId]])
+                    ->get()
+                    ->toArray();
+    }
 }
