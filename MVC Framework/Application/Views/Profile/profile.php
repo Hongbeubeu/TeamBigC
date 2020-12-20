@@ -25,14 +25,7 @@
         <div id="search__profile">
          <?php include (PATH_ROOT.DS.'Application'.DS.'Views'.DS.'Modules'.DS.'searchbar.php'); ?>
          </div>
-            <div class="background_image">
-                <div class="background_image_change_image">
-                    <button>
-                        <img src="/public/assets/icons8-camera-50.png" />
-                        <p>Change Photo</p>
-                    </button>
-                </div>
-            </div>
+            <div class="background_image"></div>
         </div>
         <div class="under_cover">
             <div class="newfeed" id="newfeed__profile">

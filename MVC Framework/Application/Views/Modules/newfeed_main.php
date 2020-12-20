@@ -29,7 +29,11 @@
                     if ($_SESSION['user_id'] == $list['user_id']) {
                 ?>
                 <div class="newfeed_select_button">
-                    <img id="edit_post" onclick="openModalEditPost('edit_post_<?php echo $list['id']?>' )" src="/public/assets/icons8-edit-80.png" />
+                    <img id="choose_select_<?php echo $list['id']?>" onclick="openSelect('<?php echo $list['id']?>')" src="/public/assets/icons8-ellipsis-24.png" style="width:30px;height:30px" />
+                    <div class="select_remove_edit" id="select_<?php echo $list['id']?>">     
+                            <p class="select__text" id="edit_post" onclick="openModalEditPost('edit_post_<?php echo $list['id']?>' )">Edit</p>
+                            <p class="select__text" onclick="removePost(<?php echo $list['id']?>)">Remove</p>
+                    </div>
                 </div>
                 <?php
                     }

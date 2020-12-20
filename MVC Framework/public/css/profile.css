@@ -34,19 +34,6 @@ body {
     margin-left: 15%;
 }
 
-.background_image_change_image button {
-    background-color: rgb(175, 174, 174);
-    opacity: 0.7;
-    color: white;
-    border: 0px;
-    border-radius: 10px;
-    display: flex;
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    width: 200px;
-}
-
 .background_image hr {
     width: 70%;
     color: white;

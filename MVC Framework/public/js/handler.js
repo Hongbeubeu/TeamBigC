@@ -7,6 +7,15 @@ function openPopup() {
     }
 }
 
+function openSelect(id) {
+    let display = document.getElementById(`select_${id}`).style.display;
+    if (display === "") {
+        document.getElementById(`select_${id}`).style.display = "block";
+    } else {
+        document.getElementById(`select_${id}`).style.display = "";
+    }
+}
+
 var slideIndex = 1;
 
 // Next/previous controls
@@ -47,8 +56,16 @@ function onClickEditGroup() {
     openModalBox("modalEditGroup");
 }
 
+function onClickEditAvt() {
+    openModalBox("edit_avt");
+}
+
 function openModalEditPost(id) {
     openModalBox(id);
+}
+
+function removePost(id) {
+
 }
 
 function onClickPostInput() {
@@ -184,7 +201,7 @@ function OpenUserProfile($id) {
 
 function onClickFollow(userId) {
     var content = document.getElementById(`followCardPeople_${userId}`);
-    content.innerHTML  = "Followed";
+    content.innerHTML = "Followed";
     var image = document.getElementById(`imgCardPeople_${userId}`)
     image.setAttribute("src", "/public/assets/checked.png");
 
@@ -192,7 +209,7 @@ function onClickFollow(userId) {
 
 function onClickGrouped(userId) {
     var content = document.getElementById(`followCardGroup_${userId}`);
-    content.innerHTML  = "Joined";
+    content.innerHTML = "Joined";
     var image = document.getElementById(`imgCardGroup_${userId}`)
     image.setAttribute("src", "/public/assets/checked.png");
 
