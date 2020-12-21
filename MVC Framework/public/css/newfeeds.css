@@ -568,3 +568,19 @@ body {
 .image-upload>input {
     display: none;
 }
+#form__edit-button {
+    width: 100%;
+}
+#form__remove-button {
+    width: 100%;
+    border: none;
+    background-color: #47b6e9;
+    font-size: 13px;
+
+}
+#edit_post{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
+}

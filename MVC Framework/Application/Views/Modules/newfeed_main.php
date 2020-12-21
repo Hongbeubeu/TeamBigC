@@ -31,11 +31,11 @@
                 <div class="newfeed_select_button">
                     <img id="choose_select_<?php echo $list['id']?>" onclick="openSelect('<?php echo $list['id']?>')" src="/public/assets/icons8-ellipsis-24.png" style="width:30px;height:30px" />
                     <div class="select_remove_edit" id="select_<?php echo $list['id']?>">     
-                            <p class="select__text" id="edit_post" onclick="openModalEditPost('edit_post_<?php echo $list['id']?>' )">Edit</p>
-                            <form action="/deletePost" method="POST">
+                            <div class="select__text" id="edit_post" onclick="openModalEditPost('edit_post_<?php echo $list['id']?>' )">Edit</div>
+                            <form id="form__edit-button" action="/deletePost" method="POST">
                                 <input type="hidden" name="url" value="<?php echo $_SERVER['REQUEST_URI']?>"/> 
                                 <input type="hidden" name="post_id" value="<?php echo $list['id'] ?>"/> 
-                                <input class="select__text" name="submit" type="submit" value="Remove"/>
+                                <input id="form__remove-button" class="select__text" name="submit" type="submit" value="Remove"/>
                             </form>
                     </div>
                 </div>
